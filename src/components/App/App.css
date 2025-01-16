@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  height: 100vh;
+  background-color: rgb(234, 233, 241);
+}
+a, p, span, label {
+  color: black;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+h1 {
+  font-size: 1.7rem;
+}
+
+/*Flex and directions*/
+.flx {
+  display: flex;
+}
+.flx-col {
+  flex-direction: column;
+}
+.flx-center {
+  justify-content: center;
+  align-items: center;
+}
+
+/*Para todos*/
+.hidden {
+  display: none;
+}
