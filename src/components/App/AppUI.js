@@ -4,32 +4,18 @@ import { Header } from '../Header';
 import { SideMenu } from '../SideMenu';
 import { MainWindow } from '../MainWindow';
 import { Modal } from '../Modal';
-import { StoreContext } from '../StoreContext';
+import { MainContent } from '../MainContent/MainContent';
 
 function AppUI() {
-  const {
-    openMenu, setOpenMenu
-  } = React.useContext(StoreContext);
-
   return (
     <div className='flx'>
-      {openMenu && (
-        <Modal>
-          <SideMenu />
-          <div
-            className='modal'
-            onClick={
-              () => {
-                setOpenMenu(state => !state);
-              }
-            }
-          >
-          </div>
-        </Modal>
-      )}
+      <SideMenu />
       <MainWindow>
         <Header />
+        <MainContent/>
       </MainWindow>
+      <Modal>
+      </Modal>
     </div>
   );
 }
