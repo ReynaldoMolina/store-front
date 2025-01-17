@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f6d050ca.css",
+    "main.js": "/static/js/main.c3f2da76.js",
+    "static/js/488.8ddcee79.chunk.js": "/static/js/488.8ddcee79.chunk.js",
+    "static/media/providers.svg": "/static/media/providers.3236f5c663888bde6785857fa7b896d4.svg",
+    "static/media/settings.svg": "/static/media/settings.61e202a0f1b2c993af9a031e495a4bdb.svg",
+    "static/media/purchases.svg": "/static/media/purchases.09d1d9e27cd62c68bf401bc8cb9fc3b2.svg",
+    "static/media/expenses.svg": "/static/media/expenses.541469ca32803d32655c445b872e37c8.svg",
+    "static/media/products.svg": "/static/media/products.7b8adde1cb8ff97a58519576a8fe9130.svg",
+    "static/media/categories.svg": "/static/media/categories.1d9f7d9b43ce1cd459ca08b2061b0c89.svg",
+    "static/media/clients.svg": "/static/media/clients.0a0f740fc3afd40bbf8e313281b88908.svg",
+    "index.html": "/index.html",
+    "static/media/orders.svg": "/static/media/orders.cfe1be174667a015723943595d60bad0.svg",
+    "static/media/finances.svg": "/static/media/finances.10766b341bb693a05893f9b5e308c062.svg",
+    "static/media/home.svg": "/static/media/home.678cc2f84709502654aa4b22942c4805.svg",
+    "static/media/menu.svg": "/static/media/menu.dea15b0281f3acda2b5b2e95a3a7d7e3.svg",
+    "static/media/receipt.svg": "/static/media/receipt.e1ffb778968eb0efe5834a55103bf95d.svg",
+    "static/media/logout.svg": "/static/media/logout.ba3421b06304784b8a7996a47e346b70.svg",
+    "main.f6d050ca.css.map": "/static/css/main.f6d050ca.css.map",
+    "main.c3f2da76.js.map": "/static/js/main.c3f2da76.js.map",
+    "488.8ddcee79.chunk.js.map": "/static/js/488.8ddcee79.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6d050ca.css",
+    "static/js/main.c3f2da76.js"
+  ]
+}
