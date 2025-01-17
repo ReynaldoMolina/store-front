@@ -1,9 +1,12 @@
 .side-menu {
-  position: fixed;
   height: 100vh;
-  width: 200px;
+  width: 170px;
   background-color: white;
   box-shadow: 1px 0 5px gainsboro;
+  border-radius: 0 10px 10px 0;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 .sidebar-logo {
   height: 50px;
@@ -35,8 +38,7 @@
 @media (max-width: 500px) {
   .side-menu {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     box-shadow: none;
-    border-radius: 0 10px 10px 0;
   }
 }

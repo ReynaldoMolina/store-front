@@ -1,0 +1,6 @@
+.toggle-menu-button {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+}

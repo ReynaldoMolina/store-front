@@ -2,7 +2,7 @@ import React from "react";
 import "./SideMenu.css";
 import { SideMenuIcon } from "../SideMenuIcon";
 
-const className = "flx flx-center side-menu-opt";
+const menuOptionClass = "flx flx-center side-menu-opt";
 
 const menuOptions = [
   {
@@ -62,7 +62,7 @@ function SideMenu() {
 
       <nav className="flx flx-col flx-center side-menu-options">
         {menuOptions.map(option => (
-          <a href={option.route} className={className}>
+          <a href={option.route} className={menuOptionClass}>
             <SideMenuIcon name={option.name} />
             {option.name}
           </a>
