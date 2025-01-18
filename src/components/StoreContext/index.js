@@ -1,8 +1,12 @@
 import React from "react";
+import { useGetData } from "./getData";
 
 const StoreContext = React.createContext();
+const url = 'https://jahairastore.vercel.app/api/v1/clients';
 
 function StoreProvider({ children }) {
+  const {data, loading, error} = useGetData(url);
+
   const [mobileWidth, setMobileWidth] = React.useState(
     window.innerWidth > 500 ? false : true
   );
@@ -18,7 +22,10 @@ function StoreProvider({ children }) {
       openMenu,
       setOpenMenu,
       menuOption,
-      setMenuOption
+      setMenuOption,
+      data,
+      loading,
+      error
     }}>
       {children}
     </StoreContext.Provider>

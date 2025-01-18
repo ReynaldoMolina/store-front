@@ -1,0 +1,10 @@
+.table {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  background-color: white;
+  overflow: hidden;
+  table-layout: fixed;
+}

@@ -1,21 +1,21 @@
 import React from "react";
 import { StoreContext } from "../StoreContext";
 import { Home } from "../Home";
-import { Clients } from "../Clients";
+import { DataTable } from "../DataTable";
 
 const components = {
-  "Categories": () => console.log('hi'),
-  "Clients": () => <Clients/>,
-  "Expenses": () => console.log('hi'),
-  "Finances": () => console.log('hi'),
+  "Categories": () => <DataTable />,
+  "Clients": () => <DataTable />,
+  "Expenses": () => <DataTable />,
+  "Finances": () => <DataTable />,
   "Home": () => <Home />,
-  "Log out": () => console.log('hi'),
-  "Orders": () => console.log('hi'),
-  "Products": () => console.log('hi'),
-  "Providers": () => console.log('hi'),
-  "Purchases": () => console.log('hi'),
-  "Receipts": () => console.log('hi'),
-  "Settings": () => console.log('hi'),
+  "Log out": () => <DataTable />,
+  "Orders": () => <DataTable />,
+  "Products": () => <DataTable />,
+  "Providers": () => <DataTable />,
+  "Purchases": () => <DataTable />,
+  "Receipts": () => <DataTable />,
+  "Settings": () => <DataTable />,
 };
 
 function MainContent() {
