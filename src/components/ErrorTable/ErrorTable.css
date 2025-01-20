@@ -1,0 +1,17 @@
+.error {
+  margin-top: 12px;
+  background-color: gainsboro;
+  border-radius: 5px;
+  width: 100%;
+  height: 100px;
+}
+.retry-button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: rgb(255, 170, 170);
+}
+.retry-button:hover{
+  background-color: rgb(255, 99, 99);
+}

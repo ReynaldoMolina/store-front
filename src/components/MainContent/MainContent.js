@@ -1,29 +1,30 @@
 import React from "react";
 import { StoreContext } from "../StoreContext";
 import { Home } from "../Home";
-import { DataTable } from "../DataTable";
+import { DataContent } from "../DataContent";
 
 const components = {
-  "Categories": () => <DataTable />,
-  "Clients": () => <DataTable />,
-  "Expenses": () => <DataTable />,
-  "Finances": () => <DataTable />,
+  "Categories": () => <DataContent />,
+  "Clients": () => <DataContent />,
+  "Expenses": () => <DataContent />,
+  "Finances": () => <DataContent />,
   "Home": () => <Home />,
-  "Log out": () => <DataTable />,
-  "Orders": () => <DataTable />,
-  "Products": () => <DataTable />,
-  "Providers": () => <DataTable />,
-  "Purchases": () => <DataTable />,
-  "Receipts": () => <DataTable />,
-  "Settings": () => <DataTable />,
+  "Log out": () => <DataContent />,
+  "Orders": () => <DataContent />,
+  "Products": () => <DataContent />,
+  "Providers": () => <DataContent />,
+  "Purchases": () => <DataContent />,
+  "Receipts": () => <DataContent />,
+  "Settings": () => <DataContent />,
 };
 
 function MainContent() {
+  console.log('Render MainContent')
   const { menuOption } = React.useContext(StoreContext);
 
   return (
     <>
-      {components[menuOption]()}
+      {components[menuOption.name]()}
     </>
   )
 }

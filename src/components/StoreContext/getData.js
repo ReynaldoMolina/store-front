@@ -6,18 +6,24 @@ function useGetData(url) {
   const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
-    try {
-      fetch(url)
-        .then(response => response.json())
-        .then(fetchedData => setData(fetchedData));
-      setLoading(false);
-    } catch (error) {
-      // console.log(error);
-      setError(true);
+    console.log('Efecto useGetData');
+    if (url != null) {
+      setTimeout(() => {
+        try {
+          fetch(url)
+            .then(response => response.json())
+            .then(apidata => setData(apidata));
+        } catch (error) {
+          setError(true);
+        } finally {
+          setLoading(false);
+          console.log('loading after effect', loading);
+        }
+      },5000);
     }
-  }, []);
+  }, [loading, url]);
 
-  return {data, loading, error};
+  return { data, loading, error };
 }
 
 export { useGetData };

@@ -12,34 +12,42 @@ const menuOptions = [
   {
     id: 1,
     name: "Clients",
+    url: 'http://192.168.1.9:3001/api/v1/clients'
   },
   {
     id: 2,
     name: "Orders",
+    url: 'http://192.168.1.9:3001/api/v1/orders'
   },
   {
     id: 3,
     name: "Receipts",
+    url: ''
   },
   {
     id: 4,
     name: "Providers",
+    url: ''
   },
   {
     id: 5,
     name: "Purchases",
+    url: ''
   },
   {
     id: 6,
     name: "Expenses",
+    url: ''
   },
   {
     id: 7,
     name: "Products",
+    url: ''
   },
   {
     id: 8,
     name: "Categories",
+    url: ''
   },
   {
     id: 9,
@@ -56,6 +64,7 @@ const menuOptions = [
 ];
 
 function SideMenu() {
+  console.log('Render SideMenu');
   const {
     mobileWidth,
     openMenu,
@@ -75,7 +84,10 @@ function SideMenu() {
               key={option.id}
               className={menuOptionClass}
               onClick={() => {
-                setMenuOption(option.name);
+                if (mobileWidth) {
+                  setOpenMenu(false);
+                }
+                setMenuOption(option);
               }}
             >
               <SideMenuIcon name={option.name} />

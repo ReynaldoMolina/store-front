@@ -2,10 +2,11 @@ import React from "react";
 import "./MainWindow.css";
 
 function MainWindow(props) {
+  console.log('Render MainWindow')
   return (
-    <div className="flx flx-col main-window">
+    <main className="flx flx-col main-window">
       {props.children}
-    </div>
+    </main>
   )
 }
 

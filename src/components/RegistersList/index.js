@@ -2,12 +2,12 @@ import React from "react";
 import "./RegistersList.css";
 
 function RegistersList(props) {
+  console.log('Render RegistersList')
+
   return (
-    <table className="table">
-      <tbody>
-        {props.children}
-      </tbody>
-    </table>
+    <div className="main-content">
+      {props.children}
+    </div>
   )
 }
 

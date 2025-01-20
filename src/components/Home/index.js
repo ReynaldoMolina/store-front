@@ -3,6 +3,7 @@ import logo from "./logo-sm.png";
 import "./Home.css";
 
 function Home() {
+  console.log('Render Home');
   return (
     <div className="flx flx-col flx-center home">
       <img src={logo} alt="Logo"></img>

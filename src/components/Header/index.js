@@ -4,6 +4,7 @@ import { ToggleMenuButton } from '../ToggleMenuButton';
 import profilePic from "./store-logo-icon-sm.png";
 
 function Header() {
+  console.log('Render Header')
   return (
     <header className="flx flx-center header">
       <ToggleMenuButton />
