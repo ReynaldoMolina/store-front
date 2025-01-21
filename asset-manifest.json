@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/store-front/static/css/main.e2f1ac00.css",
-    "main.js": "/store-front/static/js/main.47c435f6.js",
+    "main.css": "/store-front/static/css/main.475f174f.css",
+    "main.js": "/store-front/static/js/main.c1147f1b.js",
     "static/js/488.8ddcee79.chunk.js": "/store-front/static/js/488.8ddcee79.chunk.js",
     "static/media/logo-sm.png": "/store-front/static/media/logo-sm.5fbde61a2553dd8ff70f.png",
     "static/media/providers.svg": "/store-front/static/media/providers.3236f5c663888bde6785857fa7b896d4.svg",
@@ -22,12 +22,12 @@
     "static/media/search.svg": "/store-front/static/media/search.01da7b90b09620b3b6c6.svg",
     "static/media/logout.svg": "/store-front/static/media/logout.ba3421b06304784b8a7996a47e346b70.svg",
     "static/media/add.svg": "/store-front/static/media/add.db6a1b393f18fab9302cffaee47df564.svg",
-    "main.e2f1ac00.css.map": "/store-front/static/css/main.e2f1ac00.css.map",
-    "main.47c435f6.js.map": "/store-front/static/js/main.47c435f6.js.map",
+    "main.475f174f.css.map": "/store-front/static/css/main.475f174f.css.map",
+    "main.c1147f1b.js.map": "/store-front/static/js/main.c1147f1b.js.map",
     "488.8ddcee79.chunk.js.map": "/store-front/static/js/488.8ddcee79.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2f1ac00.css",
-    "static/js/main.47c435f6.js"
+    "static/css/main.475f174f.css",
+    "static/js/main.c1147f1b.js"
   ]
 }
