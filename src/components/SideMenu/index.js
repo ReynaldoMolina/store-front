@@ -12,12 +12,14 @@ const menuOptions = [
   {
     id: 1,
     name: "Clients",
-    url: 'http://192.168.1.9:3001/api/v1/clients'
+    // url: 'http://192.168.1.9:3001/api/v1/clients',
+    url: 'http://jahairastore.vercel.app/api/v1/clients'
   },
   {
     id: 2,
     name: "Orders",
-    url: 'http://192.168.1.9:3001/api/v1/orders'
+    // url: 'http://192.168.1.9:3001/api/v1/orders',
+    url: 'http://jahairastore.vercel.app/api/v1/orders'
   },
   {
     id: 3,
