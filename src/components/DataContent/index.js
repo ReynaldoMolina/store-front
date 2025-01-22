@@ -6,16 +6,18 @@ import { ActionTools } from "../ActionTools";
 import { RegistersList } from "../RegistersList";
 import { LoadingTable } from "../LoadingTable";
 
-import { Orders } from "../Orders";
+// import { Orders } from "../Orders";
 import { Clients } from "../Clients";
+import { Providers } from "../Providers";
+import { ProviderProvider } from "../Context/ProviderContext";
 
 const components = {
   // "Categories": () => <DataContent />,
   "Clients": () => <Clients />,
   // "Expenses": () => <DataContent />,
-  "Orders": () => <Orders />,
+  // "Orders": () => <Orders />,
   // "Products": () => <DataContent />,
-  // "Providers": () => <DataContent />,
+  "Providers": () => <Providers />,
   // "Purchases": () => <DataContent />,
   // "Receipts": () => <DataContent />,
 };
@@ -29,15 +31,17 @@ function DataContent() {
     <>
       <DataProvider>
         <ClientProvider>
-          <h2>{menuOption.name}</h2>
-          <ActionTools/>
-          {isLoading && <LoadingTable/>}
+          <ProviderProvider>
+            <h2>{menuOption.name}</h2>
+            <ActionTools/>
+            {isLoading && <LoadingTable/>}
 
-          {isLoading || (
-            <RegistersList>
-              {components[menuOption.name]()}
-            </RegistersList>
-          )}
+            {isLoading || (
+              <RegistersList>
+                {components[menuOption.name]()}
+              </RegistersList>
+            )}
+          </ProviderProvider>
         </ClientProvider>
       </DataProvider>
     </>

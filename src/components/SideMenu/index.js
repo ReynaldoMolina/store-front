@@ -33,7 +33,8 @@ const menuOptions = [
   {
     id: 4,
     name: "Providers",
-    url: '',
+    url: 'http://192.168.1.9:3001/api/v1/providers',
+    // url: 'https://jahairastore.vercel.app/api/v1/providers',
     divider: false
   },
   {

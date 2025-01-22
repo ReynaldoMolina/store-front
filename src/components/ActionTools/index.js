@@ -3,6 +3,7 @@ import add from "./add.svg";
 import filter from "./filter.svg";
 import { DataContext } from "../Context/DataContext";
 import { ClientContext } from "../Context/ClientContext";
+import { ProviderContext } from "../Context/ProviderContext";
 import "./ActionTools.css"
 
 function ActionTools() {
@@ -14,6 +15,10 @@ function ActionTools() {
   const {
     setClient
   } = React.useContext(ClientContext);
+
+  const {
+    setProvider
+  } = React.useContext(ProviderContext);
   
   return (
     <div className="flx flx-center action-buttons">
@@ -36,6 +41,7 @@ function ActionTools() {
         onClick={() => {
           setOpenModal(true);
           setClient('');
+          setProvider('');
         }}
       >
         <img src={add} alt="New"></img>
