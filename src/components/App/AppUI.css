@@ -1,6 +1,8 @@
 :root {
   --background: rgb(234, 233, 241);
-  --hover: rgb(202, 237, 247)
+  --hover: rgb(202, 237, 247);
+  --action-button: rgb(172, 202, 241);
+  --action-button-hover: rgb(172, 219, 241);
 }
 * {
   margin: 0;
@@ -15,6 +17,9 @@ a, p, span, label {
   color: black;
   font-size: 1.4rem;
   text-decoration: none;
+}
+span {
+  cursor: default;
 }
 h1 {
   font-size: 1.7rem;

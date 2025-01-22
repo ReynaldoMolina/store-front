@@ -10,7 +10,7 @@ import { ReactComponent as SvgOrders } from "./orders.svg";
 import { ReactComponent as SvgProducts } from "./products.svg";
 import { ReactComponent as SvgProviders } from "./providers.svg";
 import { ReactComponent as SvgPurchases } from "./purchases.svg";
-import { ReactComponent as SvgReceipts } from "./receipt.svg";
+import { ReactComponent as SvgReceipts } from "./receipts.svg";
 import { ReactComponent as SvgSettings } from "./settings.svg";
 
 const className = "side-menu-opt-icon";
@@ -28,7 +28,6 @@ const icons = {
   "Purchases": () => <SvgPurchases className={className}/>,
   "Receipts": () => <SvgReceipts className={className}/>,
   "Settings": () => <SvgSettings className={className}/>,
-
 };
 
 function SideMenuIcon({ name }) {

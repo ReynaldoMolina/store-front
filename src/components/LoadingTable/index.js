@@ -7,6 +7,10 @@ function LoadingTable() {
       <div className="loading"></div>
       <div className="loading"></div>
       <div className="loading"></div>
+      <div className="loading"></div>
+      <div className="loading"></div>
+      <div className="loading"></div>
+      <div className="loading"></div>
     </div>
   )
 }

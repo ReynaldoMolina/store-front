@@ -1,0 +1,27 @@
+.client-options {
+  margin-top: 12px;
+  width: 100%;
+  justify-content: space-around;
+}
+.client-option {
+  border-radius: 5px;
+  padding: 7px;
+  background-color: var(--action-button);
+  box-shadow: 1px 1px 1px gray;
+  height: 35px;
+  width: 45px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.client-option:first-child {
+  margin-left: 0;
+}
+.client-option:hover {
+  background-color: var(--action-button-hover);
+}
+.active {
+  background-color: rgb(255, 136, 136);
+}
+.active:hover {
+  background-color: rgb(255, 164, 164);
+}

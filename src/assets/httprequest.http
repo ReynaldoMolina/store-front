@@ -1,0 +1,6 @@
+PATCH http://192.168.1.9:3001/api/v1/clients/1
+Content-Type: application/json
+
+{
+  "name": "rey"
+}

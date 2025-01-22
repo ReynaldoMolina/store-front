@@ -1,12 +1,18 @@
 import React from 'react';
-import { StoreProvider } from '../StoreContext';
 import { AppUI } from './AppUI';
+import { MenuProvider } from '../Context/MenuContext';
+import { MobileProvider } from '../Context/MobileContext';
+import { ClientProvider } from '../Context/ClientContext';
 
 function App() {
   return (
-    <StoreProvider>
-      <AppUI/>
-    </StoreProvider>
+    <MobileProvider>
+      <MenuProvider>
+        <ClientProvider>
+          <AppUI/>
+        </ClientProvider>
+      </MenuProvider>
+    </MobileProvider>
   );
 }
 

@@ -1,17 +1,17 @@
 import React from "react";
 import { ReactComponent as SvgMenu } from './menu.svg';
-import { StoreContext } from "../StoreContext";
+import { MenuContext } from "../../Context/MenuContext";
 import './ToggleMenuButton.css';
 
 function ToggleMenuButton() {
-  const { setOpenMenu } = React.useContext(StoreContext);
+  const { setIsMenuOpen } = React.useContext(MenuContext);
   return (
     <>
       <SvgMenu
         className="toggle-menu-button"
         onClick={
           () => {
-            setOpenMenu(state => !state);
+            setIsMenuOpen(state => !state);
           }
         }
       />

@@ -2,10 +2,10 @@ import React from "react";
 import add from "./add.svg";
 import filter from "./filter.svg";
 import "./ActionTools.css"
-import { StoreContext } from "../StoreContext";
+import { ClientContext } from "../Context/ClientContext";
 
 function ActionTools() {
-  const { searchValue, setSearchValue } = React.useContext(StoreContext);
+  const { searchValue, setSearchValue } = React.useContext(ClientContext);
   
   return (
     <div className="flx flx-center action-buttons">

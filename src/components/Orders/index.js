@@ -1,9 +1,11 @@
 import React from "react";
 import "../DataContent/DataContent.css"
-import { StoreContext } from "../StoreContext";
+import { MobileContext } from "../Context/MobileContext"
+import { ClientContext } from "../Context/ClientContext";
 
 function Orders() {
-  const { mobileWidth, data } = React.useContext(StoreContext);
+  const { mobileWidth } = React.useContext(MobileContext);
+  const { data } = React.useContext(ClientContext);
   console.log('Render Orders');
   
   return (

@@ -4,7 +4,7 @@
 .action-btn {
   margin-left: 5px;
   height: 35px;
-  background-color: rgb(172, 219, 241);
+  background-color: var(--action-button);
   border-radius: 5px;
   cursor: pointer;
   border: 0;
@@ -12,7 +12,7 @@
   width: 60px;
 }
 .action-btn:hover {
-  background-color: rgb(172, 202, 241);
+  background-color: var(--action-button-hover);
 }
 .action-btn img {
   height: 20px;
