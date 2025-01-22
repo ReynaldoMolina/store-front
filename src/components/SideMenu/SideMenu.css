@@ -9,11 +9,10 @@
   height: 50px;
   background-color: transparent;
 }
-.sidebar-logo img {
-  height: 30px;
-  margin-right: 10px;
-}
 /*Options*/
+.side-menu-div {
+  width: 100%;
+}
 .side-menu-options {
   justify-content: start;
 }
@@ -48,6 +47,9 @@
 }
 .hidden {
   display: none;
+}
+.menu-option-active {
+  background-color: rgb(255, 135, 135);
 }
 @media (max-width: 500px) {
   .side-menu {

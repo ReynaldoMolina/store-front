@@ -6,13 +6,12 @@ function MobileProvider({ children }) {
   console.log('useContext MobileContext')
 
   const [isMobile, setIsMobile] = React.useState(
-    window.innerWidth > 500 ? false : true
+    window.innerWidth < 501 ? true : false
   );
 
   return (
     <MobileContext.Provider value={{
-      isMobile,
-      setIsMobile
+      isMobile, setIsMobile
     }}>
       {children}
     </MobileContext.Provider>

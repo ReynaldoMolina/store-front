@@ -1,11 +1,19 @@
 import React from "react";
 import add from "./add.svg";
 import filter from "./filter.svg";
-import "./ActionTools.css"
+import { DataContext } from "../Context/DataContext";
 import { ClientContext } from "../Context/ClientContext";
+import "./ActionTools.css"
 
 function ActionTools() {
-  const { searchValue, setSearchValue } = React.useContext(ClientContext);
+  const {
+    searchValue, setSearchValue,
+    openModal, setOpenModal
+  } = React.useContext(DataContext);
+
+  const {
+    setClient
+  } = React.useContext(ClientContext);
   
   return (
     <div className="flx flx-center action-buttons">
@@ -14,15 +22,25 @@ function ActionTools() {
           type="search"
           id="search-bar"
           className="frm-input frm-input-icon"
-          placeholder="Search"
+          placeholder={openModal ? "Disabled" : "Search"}
           value={searchValue}
-          onChange={(event) => setSearchValue(event.target.value)}
+          onChange={(event) => {
+            if (!openModal) {
+              setSearchValue(event.target.value)
+            }
+          }}
         ></input>
       </search>
-      <button id="new-register" className="flx flx-center action-btn">
+      <button
+        className={`flx flx-center action-btn ${openModal && "disabled"}`}
+        onClick={() => {
+          setOpenModal(true);
+          setClient('');
+        }}
+      >
         <img src={add} alt="New"></img>
       </button>
-      <button className="flx flx-center action-btn">
+      <button className={`flx flx-center action-btn ${openModal && "disabled"}`}>
         <img src={filter} alt="Filter"></img>
       </button>
     </div>

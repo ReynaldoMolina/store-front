@@ -1,12 +1,14 @@
 import React from "react";
+import { MobileContext } from "./MobileContext";
 
 const MenuContext = React.createContext();
 
 function MenuProvider({ children }) {  
   console.log('useContext MenuContext')
+  const { isMobile } = React.useContext(MobileContext);
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(
-    window.innerWidth < 501 ? false : true
+    isMobile ? false : true
   );
   const [menuOption, setMenuOption] = React.useState({ name: "Home" });
 

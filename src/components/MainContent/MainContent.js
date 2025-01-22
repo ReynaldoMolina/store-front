@@ -2,6 +2,7 @@ import React from "react";
 import { MenuContext } from "../Context/MenuContext";
 import { Home } from "../Home";
 import { DataContent } from "../DataContent";
+import { DataProvider } from "../Context/DataContext";
 
 const components = {
   "Categories": () => <DataContent />,
@@ -24,7 +25,9 @@ function MainContent() {
 
   return (
     <>
-      {components[menuOption.name]()}
+      <DataProvider>
+        {components[menuOption.name]()}
+      </DataProvider>
     </>
   )
 }

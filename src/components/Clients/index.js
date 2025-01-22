@@ -1,15 +1,20 @@
 import React from "react";
+import { DataContext } from "../Context/DataContext";
 import { ClientContext } from "../Context/ClientContext";
 import { ClientForm } from "../Clients/ClientForm";
 import "./Clients.css";
 
 function Clients() {
-  const {
-    filteredClients, setClient,
-    openModal, setOpenModal, setEditable,
-    setId, setName, setLastname, setPhone, setMunicipio, setCity, setCountry, setAddress
-  } = React.useContext(ClientContext);
   console.log('Render Clients');
+  
+  const {
+    filteredClients, setClient
+  } = React.useContext(ClientContext);
+
+  const {
+    openModal, setOpenModal,
+    setIsEditing
+  } = React.useContext(DataContext);
   
   return (
     <>
@@ -22,15 +27,7 @@ function Clients() {
               onClick={() => {
                 setClient(client);
                 setOpenModal(true);
-                setId(client.id)
-                setName(client.name)
-                setLastname(client.lastname)
-                setPhone(client.phone)
-                setMunicipio(client.municipio)
-                setCity(client.departamento)
-                setCountry(client.country)
-                setAddress(client.address)
-                setEditable(false);
+                setIsEditing(true);
               }}
             >
               <span className="flx flx-center id">{client.id}</span>

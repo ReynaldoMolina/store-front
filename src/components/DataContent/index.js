@@ -1,6 +1,7 @@
 import React from "react";
-import { ClientContext } from "../Context/ClientContext";
 import { MenuContext } from "../Context/MenuContext";
+import { DataProvider, DataContext } from "../Context/DataContext";
+import { ClientProvider } from "../Context/ClientContext";
 import { ActionTools } from "../ActionTools";
 import { RegistersList } from "../RegistersList";
 import { LoadingTable } from "../LoadingTable";
@@ -21,20 +22,24 @@ const components = {
 
 function DataContent() {
   console.log('Render DataContent')
-  const { loading } = React.useContext(ClientContext);
   const { menuOption } = React.useContext(MenuContext);
+  const { isLoading } = React.useContext(DataContext);
 
   return (
     <>
-      <h2>{menuOption.name}</h2>
-      <ActionTools/>
-      {loading && <LoadingTable/>}
+      <DataProvider>
+        <ClientProvider>
+          <h2>{menuOption.name}</h2>
+          <ActionTools/>
+          {isLoading && <LoadingTable/>}
 
-      {loading || (
-        <RegistersList>
-          {components[menuOption.name]()}
-        </RegistersList>
-      )}
+          {isLoading || (
+            <RegistersList>
+              {components[menuOption.name]()}
+            </RegistersList>
+          )}
+        </ClientProvider>
+      </DataProvider>
     </>
   )
 }

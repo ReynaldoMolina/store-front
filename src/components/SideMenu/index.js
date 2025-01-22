@@ -1,11 +1,9 @@
 import React from "react";
 import { MobileContext } from "../Context/MobileContext";
 import { MenuContext } from "../Context/MenuContext";
-import { ClientContext } from "../Context/ClientContext";
 import { SideMenuIcon } from "./SideMenuIcon";
 import "./SideMenu.css";
 
-const menuOptionClass = "flx flx-center side-menu-opt";
 const menuOptions = [
   {
     id: 0,
@@ -15,15 +13,15 @@ const menuOptions = [
   {
     id: 1,
     name: "Clients",
-    // url: 'http://192.168.1.9:3001/api/v1/clients',
-    url: 'https://jahairastore.vercel.app/api/v1/clients',
+    url: 'http://192.168.1.9:3001/api/v1/clients',
+    // url: 'https://jahairastore.vercel.app/api/v1/clients',
     divider: false
   },
   {
     id: 2,
     name: "Orders",
-    // url: 'http://192.168.1.9:3001/api/v1/orders',
-    url: 'https://jahairastore.vercel.app/api/v1/orders',
+    url: 'http://192.168.1.9:3001/api/v1/orders',
+    // url: 'https://jahairastore.vercel.app/api/v1/orders',
     divider: false
   },
   {
@@ -82,8 +80,7 @@ const menuOptions = [
 function SideMenu() {
   console.log('Render SideMenu');
   const { isMobile } = React.useContext(MobileContext);
-  const { setMenuOption, isMenuOpen, setIsMenuOpen } = React.useContext(MenuContext);
-  const { setOpenModal } = React.useContext(ClientContext);
+  const { menuOption, setMenuOption, isMenuOpen, setIsMenuOpen } = React.useContext(MenuContext);
 
   return (
     <>
@@ -93,16 +90,17 @@ function SideMenu() {
         <h1 className="flx flx-center sidebar-logo">Menu</h1>
         <nav className="flx flx-col flx-center side-menu-options">
           {menuOptions.map(option => (
-            <>
+            <div
+              key={option.id}
+              className="flx flx-col flx-center side-menu-div"
+            >
               <button
-                key={option.id}
-                className={menuOptionClass}
+                className={`flx flx-center side-menu-opt ${(menuOption.name === option.name) && "menu-active"}`}
                 onClick={() => {
                   if (isMobile) {                    
                     setIsMenuOpen(false);
                   }
                   setMenuOption(option);
-                  setOpenModal(false);
                 }}
               >
                 <SideMenuIcon name={option.name} />
@@ -111,7 +109,7 @@ function SideMenu() {
               {option.divider && (
                 <div className="side-menu-divider"></div>
               )}
-            </>
+            </div>
           ))}
         </nav>
       </menu>

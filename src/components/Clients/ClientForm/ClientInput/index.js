@@ -1,8 +1,6 @@
 import React from "react";
-import { ClientContext } from "../../../Context/ClientContext";
 
 function ClientInput({ name, holder, value, setValue }) {
-  const { editable  } = React.useContext(ClientContext);
   return (
     <div className="flx flx-col">
       <label
@@ -18,11 +16,7 @@ function ClientInput({ name, holder, value, setValue }) {
         className="frm-input"
         placeholder={holder}
         value={value}
-        onChange={(event) => {
-          if (editable) {
-            setValue(event.target.value);
-          }
-        }}
+        onChange={(event) => setValue(event.target.value)}
       >
       </input>
     </div>

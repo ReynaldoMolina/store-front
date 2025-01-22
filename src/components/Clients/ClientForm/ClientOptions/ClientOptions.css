@@ -1,5 +1,5 @@
 .client-options {
-  margin-top: 12px;
+  margin-top: 8px;
   width: 100%;
   justify-content: space-around;
 }
@@ -18,10 +18,4 @@
 }
 .client-option:hover {
   background-color: var(--action-button-hover);
-}
-.active {
-  background-color: rgb(255, 136, 136);
-}
-.active:hover {
-  background-color: rgb(255, 164, 164);
 }
