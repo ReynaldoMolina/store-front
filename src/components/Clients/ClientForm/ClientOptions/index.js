@@ -3,13 +3,13 @@ import { ReactComponent as SvgOrders } from "./orders.svg";
 import { ReactComponent as SvgReceipts } from "./receipts.svg";
 import { ReactComponent as SvgProfit } from "./profit.svg";
 import { ReactComponent as SvgAddOrder } from "./addorder.svg";
-import "./ClientOptions.css"
+import "../../../styles/FormOptions.css";
 
-const svgClass = "client-option";
+const svgClass = "register-option";
 
 function ClientOptions() {
   return (
-    <div className="flx flx-center client-options">
+    <div className="flx flx-center register-options">
       <SvgOrders className={svgClass}/>
       <SvgReceipts className={svgClass}/>
       <SvgProfit className={svgClass}/>

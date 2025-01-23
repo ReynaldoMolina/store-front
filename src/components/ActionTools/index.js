@@ -2,54 +2,44 @@ import React from "react";
 import add from "./add.svg";
 import filter from "./filter.svg";
 import { DataContext } from "../Context/DataContext";
-import { ClientContext } from "../Context/ClientContext";
-import { ProviderContext } from "../Context/ProviderContext";
 import "./ActionTools.css"
 
 function ActionTools() {
   const {
     searchValue, setSearchValue,
-    openModal, setOpenModal
+    openModal, setOpenModal,
+    setRegister
   } = React.useContext(DataContext);
-
-  const {
-    setClient
-  } = React.useContext(ClientContext);
-
-  const {
-    setProvider
-  } = React.useContext(ProviderContext);
   
   return (
-    <div className="flx flx-center action-buttons">
-      <search className="flx flx-center search">
-        <input
-          type="search"
-          id="search-bar"
-          className="frm-input frm-input-icon"
-          placeholder={openModal ? "Disabled" : "Search"}
-          value={searchValue}
-          onChange={(event) => {
-            if (!openModal) {
-              setSearchValue(event.target.value)
-            }
-          }}
-        ></input>
-      </search>
-      <button
-        className={`flx flx-center action-btn ${openModal && "disabled"}`}
-        onClick={() => {
-          setOpenModal(true);
-          setClient('');
-          setProvider('');
-        }}
-      >
-        <img src={add} alt="New"></img>
-      </button>
-      <button className={`flx flx-center action-btn ${openModal && "disabled"}`}>
-        <img src={filter} alt="Filter"></img>
-      </button>
-    </div>
+    <>
+      {openModal || (
+        <div className="flx flx-center action-buttons">
+          <search className="flx flx-center search">
+            <input
+              type="search"
+              id="search-bar"
+              className="frm-input frm-input-icon"
+              placeholder={openModal ? "Disabled" : "Search"}
+              value={searchValue}
+              onChange={(event) => setSearchValue(event.target.value)}
+            ></input>
+          </search>
+          <button
+            className="flx flx-center action-btn"
+            onClick={() => {
+              setOpenModal(true);
+              setRegister('');
+            }}
+          >
+            <img src={add} alt="New"></img>
+          </button>
+          <button className="flx flx-center action-btn">
+            <img src={filter} alt="Filter"></img>
+          </button>
+        </div>
+      )}
+    </>
   )
 }
 

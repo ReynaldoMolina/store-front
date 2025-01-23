@@ -1,6 +1,5 @@
 import React from "react";
 import { DataContext } from "../Context/DataContext";
-import { ProviderContext } from "../Context/ProviderContext";
 import { ProviderForm } from "../Providers/ProviderForm";
 import "./Providers.css";
 
@@ -8,11 +7,8 @@ function Providers() {
   console.log('Render Providers');
   
   const {
-    filteredProviders, setProvider
-  } = React.useContext(ProviderContext);
-
-  const {
     openModal, setOpenModal,
+    filteredData, setRegister,
     setIsEditing
   } = React.useContext(DataContext);
   
@@ -20,20 +16,20 @@ function Providers() {
     <>
       {openModal || (
         <div className="flx flx-col register-list">
-          {filteredProviders.map(provider => (
+          {filteredData.map(register => (
             <div
-              key={provider.id}
+              key={register.id}
               className="flx register-card"
               onClick={() => {
-                setProvider(provider);
+                setRegister(register);
                 setOpenModal(true);
                 setIsEditing(true);
               }}
             >
-              <span className="flx flx-center id">{provider.id}</span>
+              <span className="flx flx-center id">{register.id}</span>
               <div className="flx info">
-                <span className="name">{provider.company}</span>
-                <span className="phone">{provider.phone}</span>
+                <span className="name">{register.company}</span>
+                <span className="phone">{register.phone}</span>
               </div>
             </div>
           ))}

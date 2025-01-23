@@ -1,10 +1,10 @@
 import React from "react";
 import { DataContext } from "../Context/DataContext";
-import { ClientForm } from "../Clients/ClientForm";
-import "./Clients.css";
+import { CategoryForm } from "../Categories/CategoryForm";
+import "./Categories.css";
 
-function Clients() {
-  console.log('Render Clients');
+function Categories() {
+  console.log('Render Categories');
   
   const {
     openModal, setOpenModal,
@@ -28,18 +28,17 @@ function Clients() {
             >
               <span className="flx flx-center id">{register.id}</span>
               <div className="flx info">
-                <span className="name">{`${register.name} ${register.lastname}`}</span>
-                <span className="phone">{register.phone}</span>
+                <span className="name">{register.name}</span>
               </div>
             </div>
           ))}
         </div>
       )}
       {openModal && (
-        <ClientForm/>
+        <CategoryForm/>
       )}
     </>
   )
 }
 
-export { Clients };
+export { Categories };

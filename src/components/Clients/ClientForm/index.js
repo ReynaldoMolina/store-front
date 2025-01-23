@@ -1,10 +1,10 @@
 import React from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
-import { ClientContext } from "../../Context/ClientContext";
-import { ClientOptions } from "./ClientOptions";
 import { FormInput } from "../../FormInput";
-import "./ClientForm.css";
+import { ClientOptions } from "./ClientOptions";
+import { FormButtons } from "../../FormInput/FormButtons";
+import "../../styles/RegisterForm.css";
 
 function ClientForm() {
   const { menuOption } = React.useContext(MenuContext);
@@ -12,25 +12,24 @@ function ClientForm() {
   const {
     setOpenModal,
     setIsUpdating,
-    isEditing, setIsEditing
+    isEditing, setIsEditing,
+    register
   } = React.useContext(DataContext);
 
-  const { client } = React.useContext(ClientContext);
+  const [id] = React.useState(register.id || '');
+  const [name, setName] = React.useState(register.name || '');
+  const [lastname, setLastname] = React.useState(register.lastname || '');
+  const [phone, setPhone] = React.useState(register.phone || '');
+  const [municipio, setMunicipio] = React.useState(register.municipio || '');
+  const [city, setCity] = React.useState(register.departamento || '');
+  const [country, setCountry] = React.useState(register.country || '');
+  const [address, setAddress] = React.useState(register.address || '');
 
-  const [id] = React.useState(client.id || '');
-  const [name, setName] = React.useState(client.name || '');
-  const [lastname, setLastname] = React.useState(client.lastname || '');
-  const [phone, setPhone] = React.useState(client.phone || '');
-  const [municipio, setMunicipio] = React.useState(client.municipio || '');
-  const [city, setCity] = React.useState(client.departamento || '');
-  const [country, setCountry] = React.useState(client.country || '');
-  const [address, setAddress] = React.useState(client.address || '');
-
-  function handleClient(formData) {
+  function handleRegister(formData) {
     let url = menuOption.url;
     let method = 'POST';
 
-    const client = {
+    const register = {
       name: formData.get('name'),
       lastname: formData.get('lastname'),
       phone: formData.get('phone'),
@@ -47,7 +46,7 @@ function ClientForm() {
 
     fetch(url, {
       method: method,
-      body: JSON.stringify(client),
+      body: JSON.stringify(register),
       headers: {
         "Content-type": "application/json"
       }
@@ -62,11 +61,11 @@ function ClientForm() {
 
   return (
     <form
-      action={handleClient}
+      action={handleRegister}
       className="flx flx-col flx-center frm-container">
       {isEditing && (
         <div className="flx obj-info">
-          <span className="flx flx-center id">{id}</span>
+          <span className="flx flx-center form-id">{id}</span>
         </div>
       )}
       <div className="flx obj-info">
@@ -89,16 +88,7 @@ function ClientForm() {
       
       {isEditing && <ClientOptions />}
 
-      <div className="flx flx-center client-frm-btn">
-        <button
-          className="flx flx-center frm-btn-cancel"
-          onClick={() => {
-            setOpenModal(false);
-            setIsEditing(false);
-          }}
-        >Cancel</button>
-        <button type="submit" value="Save" className="frm-btn-submit">{isEditing ? "Save" : "Create"}</button>
-      </div>
+      <FormButtons />
     </form>
   )
 }

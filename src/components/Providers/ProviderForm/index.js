@@ -1,10 +1,10 @@
 import React from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
-import { ProviderContext } from "../../Context/ProviderContext";
-import { ProviderOptions } from "./ProviderOptions";
 import { FormInput } from "../../FormInput";
-import "./ProviderForm.css";
+import { ProviderOptions } from "./ProviderOptions";
+import { FormButtons } from "../../FormInput/FormButtons";
+import "../../styles/RegisterForm.css";
 
 function ProviderForm() {
   const { menuOption } = React.useContext(MenuContext);
@@ -12,25 +12,24 @@ function ProviderForm() {
   const {
     setOpenModal,
     setIsUpdating,
-    isEditing, setIsEditing
+    isEditing, setIsEditing,
+    register
   } = React.useContext(DataContext);
 
-  const { provider } = React.useContext(ProviderContext);
+  const [id] = React.useState(register.id || '');
+  const [company, setCompany] = React.useState(register.company || '');
+  const [contact, setContact] = React.useState(register.contact || '');
+  const [phone, setPhone] = React.useState(register.phone || '');
+  const [city, setCity] = React.useState(register.city || '');
+  const [municipio, setMunicipio] = React.useState(register.municipio || '');
+  const [country, setCountry] = React.useState(register.country || '');
+  const [address, setAddress] = React.useState(register.address || '');
 
-  const [id] = React.useState(provider.id || '');
-  const [company, setCompany] = React.useState(provider.company || '');
-  const [contact, setContact] = React.useState(provider.contact || '');
-  const [phone, setPhone] = React.useState(provider.phone || '');
-  const [city, setCity] = React.useState(provider.city || '');
-  const [municipio, setMunicipio] = React.useState(provider.municipio || '');
-  const [country, setCountry] = React.useState(provider.country || '');
-  const [address, setAddress] = React.useState(provider.address || '');
-
-  function handleProvider(formData) {
+  function handleRegister(formData) {
     let url = menuOption.url;
     let method = 'POST';
 
-    const provider = {
+    const register = {
       company: formData.get('company'),
       contact: formData.get('contact'),
       phone: formData.get('phone'),
@@ -47,7 +46,7 @@ function ProviderForm() {
 
     fetch(url, {
       method: method,
-      body: JSON.stringify(provider),
+      body: JSON.stringify(register),
       headers: {
         "Content-type": "application/json"
       }
@@ -62,11 +61,11 @@ function ProviderForm() {
 
   return (
     <form
-      action={handleProvider}
+      action={handleRegister}
       className="flx flx-col flx-center frm-container">
       {isEditing && (
         <div className="flx obj-info">
-          <span className="flx flx-center id">{id}</span>
+          <span className="flx flx-center form-id">{id}</span>
         </div>
       )}
       <div className="flx obj-info">
@@ -88,17 +87,7 @@ function ProviderForm() {
       </div>
       
       {isEditing && <ProviderOptions />}
-
-      <div className="flx flx-center client-frm-btn">
-        <button
-          className="flx flx-center frm-btn-cancel"
-          onClick={() => {
-            setOpenModal(false);
-            setIsEditing(false);
-          }}
-        >Cancel</button>
-        <button type="submit" value="Save" className="frm-btn-submit">{isEditing ? "Save" : "Create"}</button>
-      </div>
+      <FormButtons/>
     </form>
   )
 }

@@ -27,7 +27,8 @@ const menuOptions = [
   {
     id: 3,
     name: "Receipts",
-    url: '',
+    url: 'http://192.168.1.9:3001/api/v1/receipts',
+    // url: 'https://jahairastore.vercel.app/api/v1/receipts',
     divider: true
   },
   {
@@ -40,30 +41,36 @@ const menuOptions = [
   {
     id: 5,
     name: "Purchases",
-    url: '',
+    url: 'http://192.168.1.9:3001/api/v1/purchases',
+    // url: 'https://jahairastore.vercel.app/api/v1/purchases',
     divider: false
   },
   {
     id: 6,
     name: "Expenses",
-    url: '',
+    url: 'http://192.168.1.9:3001/api/v1/expenses',
+    // url: 'https://jahairastore.vercel.app/api/v1/expenses',
     divider: true
   },
   {
     id: 7,
     name: "Products",
-    url: '',
+    url: 'http://192.168.1.9:3001/api/v1/products',
+    // url: 'https://jahairastore.vercel.app/api/v1/products',
     divider: false
   },
   {
     id: 8,
     name: "Categories",
-    url: '',
+    url: 'http://192.168.1.9:3001/api/v1/categories',
+    // url: 'https://jahairastore.vercel.app/api/v1/categories',
     divider: false
   },
   {
     id: 9,
     name: "Finances",
+    url: 'http://192.168.1.9:3001/api/v1/finances',
+    // url: 'https://jahairastore.vercel.app/api/v1/finances',
     divider: true
   },
   {
@@ -81,7 +88,10 @@ const menuOptions = [
 function SideMenu() {
   console.log('Render SideMenu');
   const { isMobile } = React.useContext(MobileContext);
-  const { menuOption, setMenuOption, isMenuOpen, setIsMenuOpen } = React.useContext(MenuContext);
+  const {
+    menuOption, setMenuOption,
+    isMenuOpen, setIsMenuOpen
+  } = React.useContext(MenuContext);
 
   return (
     <>

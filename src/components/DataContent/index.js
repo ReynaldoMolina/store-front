@@ -1,18 +1,17 @@
 import React from "react";
 import { MenuContext } from "../Context/MenuContext";
-import { DataProvider, DataContext } from "../Context/DataContext";
-import { ClientProvider } from "../Context/ClientContext";
+import { DataContext } from "../Context/DataContext";
 import { ActionTools } from "../ActionTools";
 import { RegistersList } from "../RegistersList";
 import { LoadingTable } from "../LoadingTable";
 
 // import { Orders } from "../Orders";
+import { Categories } from "../Categories";
 import { Clients } from "../Clients";
 import { Providers } from "../Providers";
-import { ProviderProvider } from "../Context/ProviderContext";
 
 const components = {
-  // "Categories": () => <DataContent />,
+  "Categories": () => <Categories/>,
   "Clients": () => <Clients />,
   // "Expenses": () => <DataContent />,
   // "Orders": () => <Orders />,
@@ -29,21 +28,15 @@ function DataContent() {
 
   return (
     <>
-      <DataProvider>
-        <ClientProvider>
-          <ProviderProvider>
-            <h2>{menuOption.name}</h2>
-            <ActionTools/>
-            {isLoading && <LoadingTable/>}
+      <h1>{menuOption.name}</h1>
+      <ActionTools/>
+      {isLoading && <LoadingTable/>}
 
-            {isLoading || (
-              <RegistersList>
-                {components[menuOption.name]()}
-              </RegistersList>
-            )}
-          </ProviderProvider>
-        </ClientProvider>
-      </DataProvider>
+      {isLoading || (
+        <RegistersList>
+          {components[menuOption.name]()}
+        </RegistersList>
+      )}
     </>
   )
 }

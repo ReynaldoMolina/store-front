@@ -1,9 +1,9 @@
-.client-options {
+.register-options {
   margin-top: 8px;
   width: 100%;
   justify-content: space-around;
 }
-.client-option {
+.register-option {
   border-radius: 5px;
   padding: 7px;
   background-color: var(--action-button);
@@ -13,9 +13,9 @@
   cursor: pointer;
   margin-left: 5px;
 }
-.client-option:first-child {
+.register-option:first-child {
   margin-left: 0;
 }
-.client-option:hover {
+.register-option:hover {
   background-color: var(--action-button-hover);
 }

@@ -1,0 +1,55 @@
+.register-list {
+  width: 100%;
+  border-radius: 5px;
+  background-color: white;
+  overflow: hidden;
+}
+.register-header {
+  background-color: antiquewhite;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+.register-card {
+  padding: 10px;
+  align-items: center;
+}
+.register-card:nth-child(2n) {
+  background-color: rgb(250, 250, 250);
+}
+.register-card:hover {
+  background-color: var(--hover);
+}
+.id {
+  background-color: rgb(142, 204, 219);
+  min-width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 1.3rem;
+}
+.info {
+  flex-wrap: wrap;
+  align-items: center;
+  flex-grow: 1;
+}
+.name {
+  flex-grow: 1;
+}
+.phone {
+  margin-left: 5px;
+  width: 110px;
+}
+@media (max-width: 500px) {
+  .info {
+    flex-direction: column;
+    align-items: start;
+  }
+  .phone {
+    margin-top: 3px;
+    color: gray;
+    margin-left: 0;
+    font-size: 1.1rem;
+  }
+}
