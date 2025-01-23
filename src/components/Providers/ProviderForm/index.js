@@ -3,7 +3,7 @@ import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
 import { ProviderContext } from "../../Context/ProviderContext";
 import { ProviderOptions } from "./ProviderOptions";
-import { ProviderInput } from "./ProviderInput";
+import { FormInput } from "../../FormInput";
 import "./ProviderForm.css";
 
 function ProviderForm() {
@@ -70,19 +70,21 @@ function ProviderForm() {
         </div>
       )}
       <div className="flx obj-info">
-        <ProviderInput name="company" holder="Company" value={company} setValue={setCompany}/>
-        <ProviderInput name="contact" holder="Contact" value={contact} setValue={setContact}/>
+        <FormInput name="company" holder="Company" value={company} setValue={setCompany}/>
       </div>
       <div className="flx obj-info">
-        <ProviderInput name="phone" holder="Phone" value={phone} setValue={setPhone}/>
-        <ProviderInput name="municipio" holder="Municipio" value={municipio} setValue={setMunicipio}/>
+        <FormInput name="contact" holder="Contact" value={contact} setValue={setContact}/>
       </div>
       <div className="flx obj-info">
-        <ProviderInput name="city" holder="City" value={city} setValue={setCity}/>
-        <ProviderInput name="country" holder="Country" value={country} setValue={setCountry}/>
+        <FormInput name="phone" holder="Phone" value={phone} setValue={setPhone}/>
+        <FormInput name="municipio" holder="Municipio" value={municipio} setValue={setMunicipio}/>
       </div>
       <div className="flx obj-info">
-        <ProviderInput name="address" holder="Address" value={address} setValue={setAddress}/>
+        <FormInput name="city" holder="City" value={city} setValue={setCity}/>
+        <FormInput name="country" holder="Country" value={country} setValue={setCountry}/>
+      </div>
+      <div className="flx obj-info">
+        <FormInput name="address" holder="Address" value={address} setValue={setAddress}/>
       </div>
       
       {isEditing && <ProviderOptions />}

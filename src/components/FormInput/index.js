@@ -1,6 +1,6 @@
 import React from "react";
 
-function ClientInput({ name, holder, value, setValue }) {
+function FormInput({ name, holder, value, setValue }) {
   return (
     <div className="flx flx-col">
       <label
@@ -23,4 +23,4 @@ function ClientInput({ name, holder, value, setValue }) {
   )
 }
 
-export { ClientInput };
+export { FormInput };

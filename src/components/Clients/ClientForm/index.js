@@ -3,7 +3,7 @@ import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
 import { ClientContext } from "../../Context/ClientContext";
 import { ClientOptions } from "./ClientOptions";
-import { ClientInput } from "./ClientInput";
+import { FormInput } from "../../FormInput";
 import "./ClientForm.css";
 
 function ClientForm() {
@@ -70,19 +70,21 @@ function ClientForm() {
         </div>
       )}
       <div className="flx obj-info">
-        <ClientInput name="name" holder="Name" value={name} setValue={setName}/>
-        <ClientInput name="lastname" holder="Last name" value={lastname} setValue={setLastname}/>
+        <FormInput name="name" holder="Name" value={name} setValue={setName}/>
       </div>
       <div className="flx obj-info">
-        <ClientInput name="phone" holder="Phone" value={phone} setValue={setPhone}/>
-        <ClientInput name="municipio" holder="Municipio" value={municipio} setValue={setMunicipio}/>
+        <FormInput name="lastname" holder="Last name" value={lastname} setValue={setLastname}/>
       </div>
       <div className="flx obj-info">
-        <ClientInput name="city" holder="City" value={city} setValue={setCity}/>
-        <ClientInput name="country" holder="Country" value={country} setValue={setCountry}/>
+        <FormInput name="phone" holder="Phone" value={phone} setValue={setPhone}/>
+        <FormInput name="municipio" holder="Municipio" value={municipio} setValue={setMunicipio}/>
       </div>
       <div className="flx obj-info">
-        <ClientInput name="address" holder="Address" value={address} setValue={setAddress}/>
+        <FormInput name="city" holder="City" value={city} setValue={setCity}/>
+        <FormInput name="country" holder="Country" value={country} setValue={setCountry}/>
+      </div>
+      <div className="flx obj-info">
+        <FormInput name="address" holder="Address" value={address} setValue={setAddress}/>
       </div>
       
       {isEditing && <ClientOptions />}
