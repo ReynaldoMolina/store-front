@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/store-front/static/css/main.10dee3d8.css",
-    "main.js": "/store-front/static/js/main.6e98188b.js",
+    "main.css": "/store-front/static/css/main.ccb697f0.css",
+    "main.js": "/store-front/static/js/main.9644c74a.js",
     "static/js/488.8ddcee79.chunk.js": "/store-front/static/js/488.8ddcee79.chunk.js",
     "static/media/logo-sm.png": "/store-front/static/media/logo-sm.5fbde61a2553dd8ff70f.png",
     "static/media/providers.svg": "/store-front/static/media/providers.3236f5c663888bde6785857fa7b896d4.svg",
+    "static/media/addpurchase.svg": "/store-front/static/media/addpurchase.d0ba0c530269d32f447dcf41560e508d.svg",
     "static/media/settings.svg": "/store-front/static/media/settings.61e202a0f1b2c993af9a031e495a4bdb.svg",
-    "static/media/edit.svg": "/store-front/static/media/edit.a574ceeb1c9ceb954e67c214b155a7b4.svg",
     "static/media/purchases.svg": "/store-front/static/media/purchases.120e9a33157c1bb7f59d6c9b21cd48d6.svg",
-    "static/media/options.svg": "/store-front/static/media/options.07792d8d10d65a8bd9e0.svg",
     "static/media/addorder.svg": "/store-front/static/media/addorder.bc558a7901df3f81864f82a6429ba2a1.svg",
     "static/media/expenses.svg": "/store-front/static/media/expenses.541469ca32803d32655c445b872e37c8.svg",
     "static/media/products.svg": "/store-front/static/media/products.7b8adde1cb8ff97a58519576a8fe9130.svg",
@@ -25,12 +24,12 @@
     "static/media/search.svg": "/store-front/static/media/search.01da7b90b09620b3b6c6.svg",
     "static/media/logout.svg": "/store-front/static/media/logout.ba3421b06304784b8a7996a47e346b70.svg",
     "static/media/add.svg": "/store-front/static/media/add.db6a1b393f18fab9302cffaee47df564.svg",
-    "main.10dee3d8.css.map": "/store-front/static/css/main.10dee3d8.css.map",
-    "main.6e98188b.js.map": "/store-front/static/js/main.6e98188b.js.map",
+    "main.ccb697f0.css.map": "/store-front/static/css/main.ccb697f0.css.map",
+    "main.9644c74a.js.map": "/store-front/static/js/main.9644c74a.js.map",
     "488.8ddcee79.chunk.js.map": "/store-front/static/js/488.8ddcee79.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.10dee3d8.css",
-    "static/js/main.6e98188b.js"
+    "static/css/main.ccb697f0.css",
+    "static/js/main.9644c74a.js"
   ]
 }
