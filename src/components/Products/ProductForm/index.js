@@ -79,7 +79,7 @@ function ProductForm() {
         <FormInput name="addedDate" holder="Added date" type="date" value={addedDate} setValue={setAddedDate}/>
       </div>
       <div className="flx obj-info">
-        <FormSelect name="category" holder="Category" value={category} setValue={setCategory} data={{data}}/>
+        <FormSelect name="category" holder="Category" value={category} setValue={setCategory} data={data}/>
         <FormInput name="sheinId" holder="Shein Id" value={sheinId} setValue={setSheinId}/>
       </div>
       <div className="flx obj-info">

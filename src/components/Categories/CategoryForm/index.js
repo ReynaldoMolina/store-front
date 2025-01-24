@@ -28,7 +28,7 @@ function CategoryForm() {
     }
     
     if (isEditing) {
-      url += '/' + id;
+      url += id;
       method = "PATCH";
     }
 

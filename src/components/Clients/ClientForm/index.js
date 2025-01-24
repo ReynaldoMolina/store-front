@@ -40,7 +40,7 @@ function ClientForm() {
     }
     
     if (isEditing) {
-      url += '/' + id;
+      url += id;
       method = "PATCH";
     }
 
