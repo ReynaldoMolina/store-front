@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/store-front/static/css/main.ccb697f0.css",
-    "main.js": "/store-front/static/js/main.9644c74a.js",
+    "main.js": "/store-front/static/js/main.ed9ff104.js",
     "static/js/488.8ddcee79.chunk.js": "/store-front/static/js/488.8ddcee79.chunk.js",
     "static/media/logo-sm.png": "/store-front/static/media/logo-sm.5fbde61a2553dd8ff70f.png",
     "static/media/providers.svg": "/store-front/static/media/providers.3236f5c663888bde6785857fa7b896d4.svg",
@@ -25,11 +25,11 @@
     "static/media/logout.svg": "/store-front/static/media/logout.ba3421b06304784b8a7996a47e346b70.svg",
     "static/media/add.svg": "/store-front/static/media/add.db6a1b393f18fab9302cffaee47df564.svg",
     "main.ccb697f0.css.map": "/store-front/static/css/main.ccb697f0.css.map",
-    "main.9644c74a.js.map": "/store-front/static/js/main.9644c74a.js.map",
+    "main.ed9ff104.js.map": "/store-front/static/js/main.ed9ff104.js.map",
     "488.8ddcee79.chunk.js.map": "/store-front/static/js/488.8ddcee79.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ccb697f0.css",
-    "static/js/main.9644c74a.js"
+    "static/js/main.ed9ff104.js"
   ]
 }
