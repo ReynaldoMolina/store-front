@@ -18,7 +18,8 @@
 }
 .obj-info div {
   width: 100%;
-}
-.obj-info div:nth-child(2) {
   margin-left: 12px;
+}
+.obj-info div:first-child {
+  margin-left: 0;
 }

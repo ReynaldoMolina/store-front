@@ -1,6 +1,7 @@
 import React from "react";
 import { DataContext } from "../Context/DataContext";
 import { ClientForm } from "../Clients/ClientForm";
+import "../styles/Registers.css";
 import "./Clients.css";
 
 function Clients() {

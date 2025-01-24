@@ -1,7 +1,7 @@
 import React from "react";
-import "./FormInput.css";
+// import "./FormSelect.css";
 
-function FormInput({ name, holder, type = "text", value, setValue }) {
+function FormSelect({ name, holder, value, setValue, data}) {
   return (
     <div className="flx flx-col">
       <label
@@ -10,18 +10,21 @@ function FormInput({ name, holder, type = "text", value, setValue }) {
       >
         {holder}
       </label>
-      <input
-        type={type}
-        name={name}
+      <select
         id={name}
+        name={name}
         className="frm-input"
-        placeholder={holder}
         value={value}
         onChange={(event) => setValue(event.target.value)}
       >
-      </input>
+        {data.map((option) => {
+          return (
+            <option key={option.id} value={option.id}>{option.name}</option>
+          )
+        })}
+      </select>
     </div>
   )
 }
 
-export { FormInput };
+export { FormSelect };

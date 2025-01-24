@@ -30,6 +30,9 @@ function DataProvider({ children }) {
       case 'Categories':
         fullInfo = `${register.id} ${register.name}`;
         break;
+      case 'Products':
+        fullInfo = `${register.id} ${register.name}`;
+        break;
     
       default:
         fullInfo = '';

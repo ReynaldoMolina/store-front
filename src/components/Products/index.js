@@ -1,11 +1,11 @@
 import React from "react";
 import { DataContext } from "../Context/DataContext";
-import { ProviderForm } from "../Providers/ProviderForm";
+import { ProductForm } from "../Products/ProductForm";
 import "../styles/Registers.css";
-import "./Providers.css";
+import "./Products.css";
 
-function Providers() {
-  console.log('Render Providers');
+function Products() {
+  console.log('Render Products');
   
   const {
     openModal, setOpenModal,
@@ -29,18 +29,22 @@ function Providers() {
             >
               <span className="flx flx-center id">{register.id}</span>
               <div className="flx info">
-                <span className="name">{register.company}</span>
-                <span className="phone">{register.phone}</span>
+                <span className="name">{register.name}</span>
+                  <div className="flx">
+                    <span className="cost-price">{register.costPrice}</span>
+                    <span className="sell-price">{register.sellPrice}</span>
+                    <span className="profit">{(register.sellPrice - register.costPrice).toFixed(2)}</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
       )}
       {openModal && (
-        <ProviderForm/>
+        <ProductForm/>
       )}
     </>
   )
 }
 
-export { Providers };
+export { Products };

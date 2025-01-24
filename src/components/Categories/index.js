@@ -1,6 +1,7 @@
 import React from "react";
 import { DataContext } from "../Context/DataContext";
 import { CategoryForm } from "../Categories/CategoryForm";
+import "../styles/Registers.css";
 import "./Categories.css";
 
 function Categories() {

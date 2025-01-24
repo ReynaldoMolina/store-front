@@ -9,13 +9,14 @@ import { LoadingTable } from "../LoadingTable";
 import { Categories } from "../Categories";
 import { Clients } from "../Clients";
 import { Providers } from "../Providers";
+import { Products } from "../Products";
 
 const components = {
-  "Categories": () => <Categories/>,
+  "Categories": () => <Categories />,
   "Clients": () => <Clients />,
   // "Expenses": () => <DataContent />,
   // "Orders": () => <Orders />,
-  // "Products": () => <DataContent />,
+  "Products": () => <Products />,
   "Providers": () => <Providers />,
   // "Purchases": () => <DataContent />,
   // "Receipts": () => <DataContent />,
