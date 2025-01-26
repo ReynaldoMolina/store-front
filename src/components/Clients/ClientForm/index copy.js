@@ -1,42 +1,35 @@
 import React from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
-import { useGetData } from "../../Hooks/useGetData";
 import { FormInput } from "../../FormInput";
 import { ClientOptions } from "./ClientOptions";
 import { FormButtons } from "../../FormInput/FormButtons";
-import { sendData } from "../../Hooks/sendData";
 import "../../styles/RegisterForm.css";
 
 function ClientForm() {
   const { menuOption } = React.useContext(MenuContext);
-  const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
-  const data = useGetData(menuOption.url + registerId);
+  
+  const {
+    setOpenModal,
+    setIsUpdating,
+    isEditing, setIsEditing,
+    register
+  } = React.useContext(DataContext);
 
-  const [id, setId] = React.useState('');
-  const [name, setName] = React.useState('');
-  const [lastname, setLastname] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [municipio, setMunicipio] = React.useState('');
-  const [city, setCity] = React.useState('');
-  const [country, setCountry] = React.useState('');
-  const [address, setAddress] = React.useState('');
-
-  React.useEffect(() => {
-    if (data) {
-      setId(data.id || '');
-      setName(data.name || '');
-      setLastname(data.lastname || '');
-      setPhone(data.phone || '');
-      setMunicipio(data.municipio || '');
-      setCity(data.departamento || '');
-      setCountry(data.country || '');
-      setAddress(data.address || '');
-    }
-  }, [data]);
+  const [id] = React.useState(register.id || '');
+  const [name, setName] = React.useState(register.name || '');
+  const [lastname, setLastname] = React.useState(register.lastname || '');
+  const [phone, setPhone] = React.useState(register.phone || '');
+  const [municipio, setMunicipio] = React.useState(register.municipio || '');
+  const [city, setCity] = React.useState(register.departamento || '');
+  const [country, setCountry] = React.useState(register.country || '');
+  const [address, setAddress] = React.useState(register.address || '');
 
   function handleRegister(formData) {
-    const fetchRegister = {
+    let url = menuOption.url;
+    let method = 'POST';
+
+    const register = {
       name: formData.get('name'),
       lastname: formData.get('lastname'),
       phone: formData.get('phone'),
@@ -46,15 +39,31 @@ function ClientForm() {
       address: formData.get('address')
     }
     
-    sendData(fetchRegister, registerId, menuOption.url, id);
+    if (isEditing) {
+      url += id;
+      method = "PATCH";
+    }
+
+    fetch(url, {
+      method: method,
+      body: JSON.stringify(register),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+
+    setIsUpdating(true);
     setOpenModal(false);
+    setIsEditing(false);
   }
 
   return (
     <form
       action={handleRegister}
       className="flx flx-col flx-center frm-container">
-      {isNew || (
+      {isEditing && (
         <div className="flx obj-info">
           <span className="flx flx-center form-id">{id}</span>
         </div>
@@ -77,9 +86,9 @@ function ClientForm() {
         <FormInput name="address" holder="Address" value={address} setValue={setAddress}/>
       </div>
       
-      {isNew || <ClientOptions />}
+      {isEditing && <ClientOptions />}
 
-      <FormButtons/>
+      <FormButtons />
     </form>
   )
 }

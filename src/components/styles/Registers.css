@@ -1,8 +1,11 @@
+.register-title {
+  margin-bottom: 12px;
+}
 .register-list {
   width: 100%;
   border-radius: 5px;
   background-color: white;
-  overflow: hidden;
+  overflow: scroll;
 }
 .register-card {
   padding: 10px;

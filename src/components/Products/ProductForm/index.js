@@ -1,37 +1,45 @@
 import React from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
+import { useGetData } from "../../Hooks/useGetData";
 import { FormInput } from "../../FormInput";
+import { FormSelect } from "../../FormSelect";
 import { ProductOptions } from "./ProductOptions";
 import { FormButtons } from "../../FormInput/FormButtons";
+import { sendData } from "../../Hooks/sendData";
 import "../../styles/RegisterForm.css";
-import { FormSelect } from "../../FormSelect";
 
 function ProductForm() {
   const { menuOption } = React.useContext(MenuContext);
-  
-  const {
-    setOpenModal,
-    setIsUpdating,
-    isEditing, setIsEditing,
-    register, data
-  } = React.useContext(DataContext);
+  const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
+  const data = useGetData(menuOption.url + registerId);
 
-  const [id] = React.useState(register.id || '');
-  const [name, setName] = React.useState(register.name || '');
-  const [sheinId, setSheinId] = React.useState(register.sheinId || '');
-  const [provider, setProvider] = React.useState(register.provider || '');
-  const [category, setCategory] = React.useState(register.category || '');
-  const [addedDate, setAddedDate] = React.useState(register.addedDate || '');
-  const [costPrice, setCostPrice] = React.useState(register.costPrice || '');
-  const [sellPrice, setSellPrice] = React.useState(register.sellPrice || '');
-  const [description, setDescription] = React.useState(register.description || '');
+  const [id, setId] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [sheinId, setSheinId] = React.useState('');
+  const [provider, setProvider] = React.useState('');
+  const [category, setCategory] = React.useState('');
+  const [addedDate, setAddedDate] = React.useState('');
+  const [costPrice, setCostPrice] = React.useState('');
+  const [sellPrice, setSellPrice] = React.useState('');
+  const [description, setDescription] = React.useState('');
+
+  React.useEffect(() => {
+    if (data) {
+      setId(data.id || '');
+      setName(data.name || '');
+      setSheinId(data.sheinId || '');
+      setProvider(data.provider || '');
+      setCategory(data.category || '');
+      setAddedDate(data.addedDate || '');
+      setCostPrice(data.costPrice || '');
+      setSellPrice(data.sellPrice || '');
+      setDescription(data.description || '');
+    }
+  }, [data]);
 
   function handleRegister(formData) {
-    let url = menuOption.url;
-    let method = 'POST';
-
-    const register = {
+    const fetchRegister = {
       name: formData.get('name'),
       sheinId: formData.get('sheinId'),
       provider: formData.get('provider'),
@@ -42,31 +50,15 @@ function ProductForm() {
       description: formData.get('description')
     }
     
-    if (isEditing) {
-      url += id;
-      method = "PATCH";
-    }
-
-    fetch(url, {
-      method: method,
-      body: JSON.stringify(register),
-      headers: {
-        "Content-type": "application/json"
-      }
-    })
-      .then((response) => response.json())
-      .then((response) => console.log(response))
-
-    setIsUpdating(true);
+    sendData(fetchRegister, registerId, menuOption.url, id);
     setOpenModal(false);
-    setIsEditing(false);
   }
 
   return (
     <form
       action={handleRegister}
       className="flx flx-col flx-center frm-container">
-      {isEditing && (
+      {isNew || (
         <div className="flx obj-info">
           <span className="flx flx-center form-id">{id}</span>
         </div>
@@ -75,11 +67,11 @@ function ProductForm() {
         <FormInput name="name" holder="Name" value={name} setValue={setName}/>
       </div>
       <div className="flx obj-info">
-        <FormSelect name="provider" holder="Provider" value={provider} setValue={setProvider} data={data}/>
+        <FormSelect name="provider" holder="Provider" value={provider} setValue={setProvider} index={4} field={"company"}/>
         <FormInput name="addedDate" holder="Added date" type="date" value={addedDate} setValue={setAddedDate}/>
       </div>
       <div className="flx obj-info">
-        <FormSelect name="category" holder="Category" value={category} setValue={setCategory} data={data}/>
+        <FormSelect name="category" holder="Category" value={category} setValue={setCategory} index={8} field={"name"}/>
         <FormInput name="sheinId" holder="Shein Id" value={sheinId} setValue={setSheinId}/>
       </div>
       <div className="flx obj-info">
@@ -100,7 +92,7 @@ function ProductForm() {
         <FormInput name="description" holder="Description" value={description} setValue={setDescription}/>
       </div>
       
-      {isEditing && <ProductOptions />}
+      {isNew || <ProductOptions />}
 
       <FormButtons />
     </form>

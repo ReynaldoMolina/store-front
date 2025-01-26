@@ -1,9 +1,6 @@
 import React from "react";
 import { MenuContext } from "../Context/MenuContext";
-import { DataContext } from "../Context/DataContext";
-import { ActionTools } from "../ActionTools";
-import { RegistersList } from "../RegistersList";
-import { LoadingTable } from "../LoadingTable";
+import { DataProvider } from "../Context/DataContext";
 
 // import { Orders } from "../Orders";
 import { Categories } from "../Categories";
@@ -25,19 +22,12 @@ const components = {
 function DataContent() {
   console.log('Render DataContent')
   const { menuOption } = React.useContext(MenuContext);
-  const { isLoading } = React.useContext(DataContext);
 
   return (
     <>
-      <h1>{menuOption.name}</h1>
-      <ActionTools/>
-      {isLoading && <LoadingTable/>}
-
-      {isLoading || (
-        <RegistersList>
-          {components[menuOption.name]()}
-        </RegistersList>
-      )}
+      <DataProvider>
+        {components[menuOption.name]()}
+      </DataProvider>
     </>
   )
 }

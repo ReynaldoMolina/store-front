@@ -1,7 +1,12 @@
 import React from "react";
+import { MenuContext } from "../Context/MenuContext";
+import { useGetData } from "../Hooks/useGetData";
 // import "./FormSelect.css";
 
-function FormSelect({ name, holder, value, setValue, data}) {
+function FormSelect({ name, holder, value, setValue, index, field}) {
+  const { menuOptions } = React.useContext(MenuContext);
+  const data = useGetData(menuOptions[index].url);
+
   return (
     <div className="flx flx-col">
       <label
@@ -19,7 +24,10 @@ function FormSelect({ name, holder, value, setValue, data}) {
       >
         {data.map((option) => {
           return (
-            <option key={option.id} value={option.id}>{option.name}</option>
+            <option
+              key={option.id}
+              value={option[field]}
+            >{option[field]}</option>
           )
         })}
       </select>

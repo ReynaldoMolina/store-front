@@ -3,10 +3,7 @@ import { DataContext } from "../Context/DataContext";
 import "./FormButtons.css";
 
 function FormButtons() {
-  const {
-    setOpenModal,
-    isEditing, setIsEditing
-  } = React.useContext(DataContext);
+  const { setOpenModal, isNew } = React.useContext(DataContext);
 
   return (
     <div className="flx flx-center register-frm-btn">
@@ -14,7 +11,6 @@ function FormButtons() {
         className="flx flx-center frm-btn-cancel"
         onClick={() => {
           setOpenModal(false);
-          setIsEditing(false);
         }}
       >Cancel</button>
       <button
@@ -22,7 +18,7 @@ function FormButtons() {
         value="Save"
         className="frm-btn-submit"
       >
-        {isEditing ? "Save" : "Create"}
+        {isNew ? "Create" : "Save"}
       </button>
     </div>
   )

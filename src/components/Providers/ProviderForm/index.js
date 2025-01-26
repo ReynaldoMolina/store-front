@@ -1,35 +1,42 @@
 import React from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
+import { useGetData } from "../../Hooks/useGetData";
 import { FormInput } from "../../FormInput";
 import { ProviderOptions } from "./ProviderOptions";
 import { FormButtons } from "../../FormInput/FormButtons";
+import { sendData } from "../../Hooks/sendData";
 import "../../styles/RegisterForm.css";
 
 function ProviderForm() {
   const { menuOption } = React.useContext(MenuContext);
-  
-  const {
-    setOpenModal,
-    setIsUpdating,
-    isEditing, setIsEditing,
-    register
-  } = React.useContext(DataContext);
+  const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
+  const data = useGetData(menuOption.url + registerId);
 
-  const [id] = React.useState(register.id || '');
-  const [company, setCompany] = React.useState(register.company || '');
-  const [contact, setContact] = React.useState(register.contact || '');
-  const [phone, setPhone] = React.useState(register.phone || '');
-  const [city, setCity] = React.useState(register.city || '');
-  const [municipio, setMunicipio] = React.useState(register.municipio || '');
-  const [country, setCountry] = React.useState(register.country || '');
-  const [address, setAddress] = React.useState(register.address || '');
+  const [id, setId] = React.useState('');
+  const [company, setCompany] = React.useState('');
+  const [contact, setContact] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [city, setCity] = React.useState('');
+  const [municipio, setMunicipio] = React.useState('');
+  const [country, setCountry] = React.useState('');
+  const [address, setAddress] = React.useState('');
+
+  React.useEffect(() => {
+    if (data) {
+      setId(data.id || '');
+      setCompany(data.company || '');
+      setContact(data.contact || '');
+      setPhone(data.phone || '');
+      setCity(data.city || '');
+      setMunicipio(data.municipio || '');
+      setCountry(data.country || '');
+      setAddress(data.address || '');
+    }
+  }, [data]);
 
   function handleRegister(formData) {
-    let url = menuOption.url;
-    let method = 'POST';
-
-    const register = {
+    const fetchRegister = {
       company: formData.get('company'),
       contact: formData.get('contact'),
       phone: formData.get('phone'),
@@ -39,31 +46,15 @@ function ProviderForm() {
       address: formData.get('address')
     }
     
-    if (isEditing) {
-      url += id;
-      method = "PATCH";
-    }
-
-    fetch(url, {
-      method: method,
-      body: JSON.stringify(register),
-      headers: {
-        "Content-type": "application/json"
-      }
-    })
-      .then((response) => response.json())
-      .then((response) => console.log(response))
-
-    setIsUpdating(true);
+    sendData(fetchRegister, registerId, menuOption.url, id);
     setOpenModal(false);
-    setIsEditing(false);
   }
 
   return (
     <form
       action={handleRegister}
       className="flx flx-col flx-center frm-container">
-      {isEditing && (
+      {isNew || (
         <div className="flx obj-info">
           <span className="flx flx-center form-id">{id}</span>
         </div>
@@ -86,7 +77,7 @@ function ProviderForm() {
         <FormInput name="address" holder="Address" value={address} setValue={setAddress}/>
       </div>
       
-      {isEditing && <ProviderOptions />}
+      {isNew || <ProviderOptions />}
       <FormButtons/>
     </form>
   )

@@ -3,6 +3,7 @@ import { MenuContext } from "../Context/MenuContext";
 import { Home } from "../Home";
 import { DataContent } from "../DataContent";
 import { DataProvider } from "../Context/DataContext";
+import "./MainContent.css";
 
 const components = {
   "Categories": () => <DataContent />,
@@ -26,7 +27,9 @@ function MainContent() {
   return (
     <>
       <DataProvider>
-        {components[menuOption.name]()}
+        <div className="flx flx-col main-content">
+          {components[menuOption.name]()}
+        </div>
       </DataProvider>
     </>
   )

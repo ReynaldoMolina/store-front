@@ -1,57 +1,42 @@
 import React from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
+import { useGetData } from "../../Hooks/useGetData";
 import { FormInput } from "../../FormInput";
 import { CategoryOptions } from "./CategoryOptions";
 import { FormButtons } from "../../FormInput/FormButtons";
+import { sendData } from "../../Hooks/sendData";
 import "../../styles/RegisterForm.css";
 
 function CategoryForm() {
   const { menuOption } = React.useContext(MenuContext);
-  
-  const {
-    setOpenModal,
-    setIsUpdating,
-    isEditing, setIsEditing,
-    register
-  } = React.useContext(DataContext);
+  const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
+  const data = useGetData(menuOption.url + registerId);
 
-  const [id] = React.useState(register.id || '');
-  const [name, setName] = React.useState(register.name || '');
+  const [id, setId] = React.useState('');
+  const [name, setName] = React.useState('');
+
+  React.useEffect(() => {
+    if (data) {
+      setId(data.id || '');
+      setName(data.name || '');
+    }
+  }, [data]);
 
   function handleRegister(formData) {
-    let url = menuOption.url;
-    let method = 'POST';
-
-    const register = {
-      name: formData.get('name')
-    }
-    
-    if (isEditing) {
-      url += id;
-      method = "PATCH";
+    const fetchRegister = {
+      name: formData.get('name'),
     }
 
-    fetch(url, {
-      method: method,
-      body: JSON.stringify(register),
-      headers: {
-        "Content-type": "application/json"
-      }
-    })
-      .then((response) => response.json())
-      .then((response) => console.log(response))
-
-    setIsUpdating(true);
+    sendData(fetchRegister, registerId, menuOption.url, id);
     setOpenModal(false);
-    setIsEditing(false);
   }
 
   return (
     <form
       action={handleRegister}
       className="flx flx-col flx-center frm-container">
-      {isEditing && (
+      {isNew || (
         <div className="flx obj-info">
           <span className="flx flx-center form-id">{id}</span>
         </div>
@@ -60,7 +45,7 @@ function CategoryForm() {
         <FormInput name="name" holder="Name" value={name} setValue={setName}/>
       </div>
       
-      {isEditing && <CategoryOptions />}
+      {isNew || <CategoryOptions />}
 
       <FormButtons />
     </form>

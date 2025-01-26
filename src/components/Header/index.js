@@ -1,7 +1,7 @@
 import React from "react";
-import "./Header.css";
 import { ToggleMenuButton } from './ToggleMenuButton';
 import profilePic from "./store-logo-icon-sm.png";
+import "./Header.css";
 
 function Header() {
   console.log('Render Header')
