@@ -19,6 +19,7 @@ async function sendData(fetchRegister, registerId, url, id) {
   })
   const data = await response.json();
   
+  console.log('sendata', data);
   return data;
 }
 

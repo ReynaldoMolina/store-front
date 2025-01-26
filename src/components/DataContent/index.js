@@ -2,9 +2,9 @@ import React from "react";
 import { MenuContext } from "../Context/MenuContext";
 import { DataProvider } from "../Context/DataContext";
 
-// import { Orders } from "../Orders";
 import { Categories } from "../Categories";
 import { Clients } from "../Clients";
+import { Orders } from "../Orders";
 import { Providers } from "../Providers";
 import { Products } from "../Products";
 
@@ -12,7 +12,7 @@ const components = {
   "Categories": () => <Categories />,
   "Clients": () => <Clients />,
   // "Expenses": () => <DataContent />,
-  // "Orders": () => <Orders />,
+  "Orders": () => <Orders />,
   "Products": () => <Products />,
   "Providers": () => <Providers />,
   // "Purchases": () => <DataContent />,
