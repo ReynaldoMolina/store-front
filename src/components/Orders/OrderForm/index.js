@@ -28,7 +28,7 @@ function OrderForm() {
       setId(data.id || '');
       setClientId(data.clientId || '');
       setOrderDate(data.orderDate || '');
-      setDelivered(data.delivered || '');
+      setDelivered(data.delivered || false);
       setTotal(data.total || '');
       setAbono(data.abono || '');
       setSaldo(data.saldo || '');
