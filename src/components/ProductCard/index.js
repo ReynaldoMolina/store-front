@@ -57,9 +57,9 @@ function ProductCard({ orderId = 1, productId = 1, productQty = 1 }) {
               onClick={() => setQuantity(quantity + 1)}
             >+</button>
           </div>
+          <span className="flx subtotal">{data.sellPrice * quantity}</span>
         </div>
       </div>
-      <span className="flx subtotal">{data.sellPrice * quantity}</span>
       <SvgDelete className="product-delete" />
     </div>
   )

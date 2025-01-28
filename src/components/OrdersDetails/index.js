@@ -7,7 +7,8 @@ import "./OrdersDetails.css";
 
 function OrdersDetails() {
   console.log('Render OrdersDetails');
-  const { registerId, setIsNew } = React.useContext(DataContext);
+  const { registerId } = React.useContext(DataContext);
+  // const { registerId, setIsNew } = React.useContext(DataContext);
   
   const url = baseUrl + 'ordersdetails/';
   const data = useGetData(url);

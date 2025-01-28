@@ -23,7 +23,7 @@ function useFilterData(data, option) {
       case 'Orders':
         fullInfo = `${register.id} ${register.clientId}`;
         break;
-    
+
       default:
         fullInfo = '';
         break;

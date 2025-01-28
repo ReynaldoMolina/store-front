@@ -30,7 +30,7 @@
   border-radius: 5px;
   height: 30px;
   min-width: 40px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 .product-name,
@@ -81,12 +81,13 @@
   background-color: gainsboro;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .product-info-container {
     flex-direction: column;
   }
   .product-info:nth-child(2) {
     margin-top: 5px;
     justify-content: left;
+    justify-content: space-between;
   }
 }

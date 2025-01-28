@@ -1,0 +1,111 @@
+.product-search {
+  margin-bottom: 12px;
+}
+.product-btn {
+  margin-left: 5px;
+  height: 35px;
+  min-width: 40px;
+  background-color: var(--action-button);
+  border-radius: 5px;
+  cursor: pointer;
+  border: 0;
+  box-shadow: 1px 1px 1px gray;
+}
+.product-btn:hover {
+  background-color: var(--action-button-hover);
+}
+.product-btn img {
+  height: 20px;
+}
+.frm-input-search {
+  background-color: white;
+  background-image: url('./search.svg');
+  background-position: 11px center;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0px 0px 5px gainsboro;
+  height: 35px;
+  padding: 0 5px 0 35px;
+  width: 100%;
+}
+.frm-input-search:hover {
+  outline: 1px solid gray;
+}
+.frm-input-search:focus-visible {
+  outline: 1px solid gray;
+}
+
+/* ******************************************************** */
+.products-list {
+  width: 100%;
+  border-radius: 5px;
+  background-color: white;
+  max-height: 30vh;
+  min-height: 30vh;
+  overflow: scroll;
+  margin-bottom: 12px;
+}
+.products {
+  padding: 5px;
+  align-items: center;
+}
+.products:nth-child(2n) {
+  background-color: rgb(250, 250, 250);
+}
+.products:hover {
+  background-color: var(--hover);
+}
+.product-search-id {
+  background-color: #8eccdb;
+  min-width: 40px;
+  height: 20px;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+.product-search-info {
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: left;
+}
+.product-search-name {
+  flex-grow: 1;
+  font-size: 1.3rem
+}
+.product-sell-price {
+  font-size: 1.3rem;
+  background-color: rgb(233, 233, 233);
+  border-radius: 2px;
+  padding: 3px 5px;
+  width: 70px;
+  text-align: right;
+  margin-left: 5px;
+  background-color: rgb(187, 243, 187);
+}
+.product-search-add {
+  height: 30px;
+  width: 30px;
+  padding: 7px;
+  margin-left: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid gainsboro;
+}
+.product-search-add:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+@media (max-width: 550px) {
+  .product-search-info {
+    flex-direction: column;
+    justify-content: left;
+  }
+  .product-sell-price {
+    text-align: center;
+    font-size: 1.1rem;
+    width: 55px;
+    margin: 3px 0 0;
+  }
+}
