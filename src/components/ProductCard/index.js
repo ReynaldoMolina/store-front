@@ -1,14 +1,14 @@
 import React from "react";
 import { ReactComponent as SvgDelete } from "./delete.svg";
 import { useGetData } from "../Hooks/useGetData";
+import { baseUrl } from "../urls/menuOptionsList";
 import "./ProductCard.css";
 
-function ProductCard({ orderId = 1, productId = 3 }) {
-  const url = 'http://192.168.1.9:3001/api/v1/products/';
-  const data = useGetData(url + productId);
+function ProductCard({ orderId = 1, productId = 1, productQty = 1 }) {
+  const data = useGetData(baseUrl + 'products/' + productId);
   console.log(data);
 
-  const [quantity, setQuantity] = React.useState(1);
+  const [quantity, setQuantity] = React.useState(productQty);
 
   // function handleRegister(formData) {
   //   const fetchRegister = {
@@ -49,7 +49,6 @@ function ProductCard({ orderId = 1, productId = 3 }) {
               className="flx flx-center quantity"
               type="number"
               value={quantity}
-              defaultValue={1}
               onChange={(event) => setQuantity(event.target.valueAsNumber)}
             ></input>
             <button

@@ -18,3 +18,20 @@
 .order-info div:first-child {
   margin-left: 0;
 }
+.order-id {
+  justify-content: center;
+}
+.order-total,
+.order-abono,
+.order-saldo {
+  justify-content: right;
+}
+.order-total {
+  background-color: rgb(240, 240, 240);
+}
+.order-abono {
+  background-color: rgb(220, 255, 220);
+}
+.order-saldo {
+  background-color: rgb(255, 220, 220);
+}

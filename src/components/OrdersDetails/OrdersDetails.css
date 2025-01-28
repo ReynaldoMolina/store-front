@@ -1,5 +1,8 @@
 .details-list {
+  border: 1px solid gainsboro;
+  border-bottom: none;
   width: 100%;
   border-radius: 5px;
   background-color: white;
+  margin-bottom: 12px;
 }

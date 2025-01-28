@@ -50,8 +50,9 @@ function OrderForm() {
         <FormSpan name="client-id" holder="Client" value={data.clientId}/>
       </div>
       <div className="flx order-info">
-        <FormSpan name="abono" holder="Abono" value={data.abono}/>
-        <FormSpan name="saldo" holder="Saldo" value={data.saldo}/>
+        <FormSpan name="order-total" holder="Total" value={data.total}/>
+        <FormSpan name="order-abono" holder="Abono" value={data.abono}/>
+        <FormSpan name="order-saldo" holder="Saldo" value={data.saldo}/>
       </div>
       
       <OrdersDetails/>

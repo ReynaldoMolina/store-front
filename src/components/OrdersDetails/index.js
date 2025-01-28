@@ -21,7 +21,11 @@ function OrdersDetails() {
     <>
       <div className="flx flx-col details-list">
         {filteredData.map(register => (
-          <ProductCard key={register.id} orderId={register.orderId} productId={register.productId}/>
+          <ProductCard
+            key={register.id}
+            orderId={register.orderId}
+            productId={register.productId}
+            productQty={register.quantity}/>
         ))}
       </div>
     </>

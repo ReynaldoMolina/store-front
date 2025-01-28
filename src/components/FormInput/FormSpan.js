@@ -3,7 +3,7 @@ import "./FormSpan.css";
 
 function FormSpan({ name, holder, value }) {
   return (
-    <div className="flx span-container">
+    <div className="flx flx-col span-container">
       <label
         htmlFor={name}
         className="frm-label"
@@ -13,7 +13,7 @@ function FormSpan({ name, holder, value }) {
       <span
         name={name}
         id={name}
-        className="flx frm-span"
+        className={`flx frm-span ${name}`}
       >
         {value}
       </span>
