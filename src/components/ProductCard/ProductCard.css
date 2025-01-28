@@ -1,0 +1,94 @@
+.product-card input[type=number]{
+  -moz-appearance: textfield;
+}
+.product-card input::-webkit-outer-spin-button,
+.product-card input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.product-card {
+  border-bottom: 1px solid gainsboro;
+  width: 100%;
+  padding: 10px 7px;
+  min-height: 55px;
+}
+.product-card:hover {
+  background-color: var(--hover);
+}
+.product-info-container {
+  flex-grow: 1;
+}
+.product-info {
+  justify-content: right;
+}
+.product-info-container {
+  justify-content: space-between;
+}
+.product-info:nth-child(2) {
+  align-items: center;
+}
+.product-id {
+  background-color: skyblue;
+  margin-right: 10px;
+  border-radius: 5px;
+  height: 30px;
+  min-width: 40px;
+  font-size: 1.2rem;
+}
+.product-name,
+.product-price {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+.quantity-container {
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.quantity {
+  height: 25px;
+  width: 35px;
+  text-align: center;
+  border: none;
+}
+.quantity:focus-visible {
+  outline: none;
+}
+.quantity-button {
+  border: none;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.quantity-button:hover {
+  background-color: gainsboro;
+}
+.subtotal {
+  margin: 0 10px;
+  width: 60px;
+  justify-content: right;
+  font-size: 1.3rem;
+}
+.product-delete {
+  border-radius: 5px;
+  padding: 3px;
+  stroke: red;
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
+  min-width: 30px;
+  cursor: pointer;
+}
+.product-delete:hover {
+  background-color: gainsboro;
+}
+
+@media (max-width: 500px) {
+  .product-info-container {
+    flex-direction: column;
+  }
+  .product-info:nth-child(2) {
+    margin-top: 5px;
+    justify-content: left;
+  }
+}

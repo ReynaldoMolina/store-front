@@ -1,13 +1,19 @@
+.span-container {
+  align-items: center;
+}
 .frm-label {
   color: gray;
-  width: 100%;
+  /* width: 100%; */
   font-size: 1.3rem;
   margin-bottom: 3px;
 }
-.frm-input-check {
+.frm-span {
+  align-items: center;
+  padding: 0 10px;
   background-color: white;
   border-radius: 4px;
   border: none;
+  box-shadow: 0px 0px 5px gainsboro;
   height: 35px;
   width: 100%;
 }

@@ -14,7 +14,7 @@ function FormCheck({ name, holder, value, setValue }) {
         type="checkbox"
         name={name}
         id={name}
-        className="frm-input"
+        className="frm-input-check"
         checked={value}
         onChange={(event) => {
           setValue(event.target.checked);

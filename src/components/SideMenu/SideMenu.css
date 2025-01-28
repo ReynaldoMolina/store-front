@@ -4,6 +4,7 @@
   box-shadow: 1px 0 5px gainsboro;
   border-radius: 0 10px 10px 0;
   z-index: 3;
+  /* overflow: scroll; */
 }
 .sidebar-logo {
   height: 50px;

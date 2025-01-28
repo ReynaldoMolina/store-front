@@ -57,7 +57,7 @@ function ProductForm() {
   return (
     <form
       action={handleRegister}
-      className="flx flx-col flx-center frm-container">
+      className="flx flx-col frm-container">
       {isNew || (
         <div className="flx obj-info">
           <span className="flx flx-center form-id">{id}</span>
