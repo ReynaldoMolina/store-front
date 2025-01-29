@@ -9,14 +9,14 @@
 .product-card {
   border-bottom: 1px solid gainsboro;
   width: 100%;
-  padding: 10px 7px;
-  min-height: 55px;
+  padding: 7px;
+  min-height: 40px;
+}
+.product-card:last-child {
+  border-bottom: none;
 }
 .product-info-container {
   flex-grow: 1;
-}
-.product-info {
-  justify-content: right;
 }
 .product-info-container {
   justify-content: space-between;
@@ -28,66 +28,73 @@
   background-color: skyblue;
   margin-right: 10px;
   border-radius: 5px;
-  height: 30px;
-  min-width: 40px;
-  font-size: 1.1rem;
-  cursor: pointer;
+  height: 20px;
+  min-width: 35px;
+  font-size: 1rem;
+}
+.product-name {
+  align-items: center;
 }
 .product-name,
 .product-price {
-  font-size: 1.3rem;
-  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+.product-price {
+  color: gray;
 }
 .quantity-container {
+  margin-left: 12px;
   border: 1px solid gainsboro;
   border-radius: 5px;
   overflow: hidden;
 }
 .quantity {
-  height: 25px;
-  width: 35px;
+  height: 20px;
+  width: 30px;
   text-align: center;
   border: none;
+  font-size: 1.1rem;
 }
 .quantity:focus-visible {
   outline: none;
 }
 .quantity-button {
   border: none;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   cursor: pointer;
 }
 .quantity-button:hover {
   background-color: gainsboro;
 }
 .subtotal {
-  margin: 0 10px;
+  margin-left: 5px;
   width: 60px;
   justify-content: right;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
 }
 .product-delete {
   border-radius: 5px;
-  padding: 3px;
+  padding: 4px;
   stroke: red;
   margin-left: 10px;
-  height: 30px;
-  width: 30px;
+  height: 27px;
+  width: 27px;
   min-width: 30px;
   cursor: pointer;
+  background-color: rgb(255, 220, 220);
 }
 .product-delete:hover {
-  background-color: gainsboro;
+  background-color: rgb(255, 170, 170);
 }
 
-@media (max-width: 550px) {
+@media (max-width: 500px) {
   .product-info-container {
     flex-direction: column;
   }
   .product-info:nth-child(2) {
     margin-top: 5px;
     justify-content: left;
-    justify-content: space-between;
   }
 }

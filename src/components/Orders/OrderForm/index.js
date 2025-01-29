@@ -4,8 +4,6 @@ import { DataContext } from "../../Context/DataContext";
 import { useGetData } from "../../Hooks/useGetData";
 import { FormInput } from "../../FormInput";
 import { FormSpan } from "../../FormInput/FormSpan";
-import { ProductSearch } from "../../ProductSearch";
-import { OpenProductSearch } from "../../OpenProductSearch";
 import { OrdersDetails } from "../../OrdersDetails";
 import { OrderOptions } from "./OrderOptions";
 import { FormButtons } from "../../FormInput/FormButtons";
@@ -16,10 +14,9 @@ function OrderForm() {
   const { menuOption } = React.useContext(MenuContext);
   const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
   const data = useGetData(menuOption.url + registerId);
-  console.log(data);
+  console.log('Order', data);
 
   const [orderDate, setOrderDate] = React.useState('');
-  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (data) {
@@ -46,22 +43,22 @@ function OrderForm() {
         action={handleRegister}
         className="flx flx-col order-container"
       >
-        <div className="flx order-info">
-          <FormSpan name="order-id" holder="Order id" value={data.id}/>
-          <FormInput name="orderDate" holder="Order date" type="date" value={orderDate} setValue={setOrderDate}/>
-        </div>
-        <div className="flx order-info">
-          <FormSpan name="client-id" holder="Client" value={data.clientId}/>
-        </div>
-        <div className="flx order-info">
-          <FormSpan name="order-total" holder="Total" value={data.total}/>
-          <FormSpan name="order-abono" holder="Abono" value={data.abono}/>
-          <FormSpan name="order-saldo" holder="Saldo" value={data.saldo}/>
+        <div className="flx flx-col order-info-container">
+          <div className="flx order-info">
+            <FormSpan name="order-id" holder="Order id" value={data.id}/>
+            <FormInput name="orderDate" holder="Order date" type="date" value={orderDate} setValue={setOrderDate}/>
+          </div>
+          <div className="flx order-info">
+            <FormSpan name="client-id" holder="Client" value={data.clientId}/>
+          </div>
+          <div className="flx order-info">
+            <FormSpan name="order-total" holder="Total" value={data.total}/>
+            <FormSpan name="order-abono" holder="Abono" value={data.abono}/>
+            <FormSpan name="order-saldo" holder="Saldo" value={data.saldo}/>
+          </div>
         </div>
         
-        <OpenProductSearch isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen}/>
-        <ProductSearch isSearchOpen={isSearchOpen}/>
-        <OrdersDetails/>
+        <OrdersDetails />
 
         {isNew || <OrderOptions />}
 

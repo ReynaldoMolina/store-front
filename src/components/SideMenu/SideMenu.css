@@ -23,6 +23,7 @@
   height: 40px;
   justify-content: left;
   border: none;
+  border-right: 5px solid transparent;
   background-color: transparent;
   font-size: 1.4rem;
   padding: 0 50px 0 30px;
@@ -50,7 +51,8 @@
   display: none;
 }
 .menu-option-active {
-  background-color: rgb(255, 135, 135);
+  background-color: var(--hover);
+  border-right: 5px solid rgb(104, 194, 255);
 }
 @media (max-width: 500px) {
   .side-menu {

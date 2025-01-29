@@ -2,11 +2,27 @@
   margin-bottom: 12px;
   cursor: pointer;
   min-height: 30px;
-  background-color: var(--action-button);
   border: none;
   box-shadow: 1px 1px 1px gray;
   border-radius: 5px;
+  background-color: var(--action-button);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
 }
 .open-product-search:hover {
   background-color: var(--action-button-hover);
+}
+.open-product-search-close {
+  background-color: rgb(255, 166, 166);
+}
+.open-product-search-close:hover {
+  background-color: rgb(255, 140, 140);
+}
+.open-product-search-dropdown {
+  height: 15px;
+  width: 15px;
+}
+.dropdown-rotate {
+  transform: rotate(180deg);
 }

@@ -1,8 +1,11 @@
 :root {
   --background: rgb(234, 233, 241);
-  --hover: rgb(202, 237, 247);
-  --action-button: rgb(172, 202, 241);
-  --action-button-hover: rgb(172, 219, 241);
+  --hover: rgb(214, 246, 255);
+  --action-button: rgb(172, 219, 241);
+  --action-button-hover: rgb(172, 202, 241);
+  --info-gray: rgb(221, 221, 221);
+  --info-green: rgb(187, 243, 187);
+  --info-red: rgb(255, 208, 208);
 }
 * {
   margin: 0;

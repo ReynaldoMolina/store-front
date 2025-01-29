@@ -9,7 +9,7 @@ function Header() {
     <header className="flx flx-center header">
       <ToggleMenuButton />
       <h1>Jahaira Store</h1>
-      <img src={profilePic} alt="User"></img>
+      <img src={profilePic} className="header-profile-pic" alt="User"></img>
     </header>
   )
 }

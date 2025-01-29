@@ -1,11 +1,17 @@
 .order-container {
-  max-width: 700px;
+  max-width: 600px;
   background-color: rgb(250, 250, 250);
   width: 100%;
   padding: 12px;
   border-radius: 5px;
   margin: auto;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+.order-info-container {
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  padding: 10px 10px 0;
 }
 .order-info {
   margin-bottom: 12px;
@@ -27,11 +33,11 @@
   justify-content: right;
 }
 .order-total {
-  background-color: rgb(240, 240, 240);
+  background-color: var(--info-gray);
 }
 .order-abono {
-  background-color: rgb(220, 255, 220);
+  background-color: var(--info-green);
 }
 .order-saldo {
-  background-color: rgb(255, 220, 220);
+  background-color: var(--info-red);
 }

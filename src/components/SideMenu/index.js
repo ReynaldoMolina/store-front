@@ -26,7 +26,7 @@ function SideMenu() {
               className="flx flx-col flx-center side-menu-div"
             >
               <button
-                className={`flx flx-center side-menu-opt ${(menuOption.name === option.name) && "menu-active"}`}
+                className={`flx flx-center side-menu-opt ${(menuOption.name === option.name) && "menu-option-active"}`}
                 onClick={() => {
                   if (isMobile) {                    
                     setIsMenuOpen(false);

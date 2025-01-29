@@ -5,10 +5,10 @@
   width: 100%;
   border-radius: 5px;
   background-color: white;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .register-card {
-  padding: 10px;
+  padding: 7px;
   align-items: center;
 }
 .register-card:nth-child(2n) {
@@ -19,10 +19,13 @@
 }
 .id {
   background-color: rgb(142, 204, 219);
-  min-width: 50px;
-  height: 30px;
+  min-width: 40px;
+  height: 25px;
   border-radius: 5px;
   margin-right: 10px;
+  font-size: 1rem;
+}
+.name {
   font-size: 1.3rem;
 }
 .info {

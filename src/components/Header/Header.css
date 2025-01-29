@@ -4,7 +4,14 @@
   margin-bottom: 12px;
   min-height: 50px;
 }
-.header img {
+.header-profile-pic {
   cursor: pointer;
   width: 25px;
+  width: 35px;
+  height: 35px;
+  padding: 4px;
+  border-radius: 100%;
+}
+.header-profile-pic:hover {
+  background-color: gainsboro;
 }

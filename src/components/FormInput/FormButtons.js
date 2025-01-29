@@ -6,7 +6,7 @@ function FormButtons() {
   const { setOpenModal, isNew } = React.useContext(DataContext);
 
   return (
-    <div className="flx flx-center register-frm-btn">
+    <div className="flx register-frm-btn">
       <button
         className="flx flx-center frm-btn-cancel"
         onClick={() => {
