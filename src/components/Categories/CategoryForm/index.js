@@ -28,7 +28,7 @@ function CategoryForm() {
       name: formData.get('name'),
     }
 
-    sendData(fetchRegister, registerId, menuOption.url, id);
+    sendData(fetchRegister, menuOption.url, registerId);
     setOpenModal(false);
   }
 

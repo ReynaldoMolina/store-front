@@ -1,11 +1,15 @@
 import React from "react";
 import { baseUrl } from "../urls/menuOptionsList";
+import { DataContext } from "../Context/DataContext";
+import { OrderContext } from "../Context/OrderContext";
 import { useGetData } from "../Hooks/useGetData";
 import { ReactComponent as SvgAdd } from "./add.svg";
 import filter from "./filter.svg";
 import "./ProductSearch.css"
 
-function ProductSearch({ isSearchOpen, productList, setProductList, orderId }) {
+function ProductSearch() {
+  const { registerId } = React.useContext(DataContext);
+  const { isSearchOpen, productList, setProductList } = React.useContext(OrderContext);
   const [searchProduct, setSearchProduct] = React.useState('');
 
   const url = baseUrl + 'products/';
@@ -53,15 +57,13 @@ function ProductSearch({ isSearchOpen, productList, setProductList, orderId }) {
                 className="flx product-search-add"
                 onClick={() => {
                   const newDetail = {
-                    id: '0',
-                    orderId: orderId,
+                    orderId: registerId,
                     productId: register.id,
                     sellPrice: register.sellPrice,
                     quantity: 1
                   };
-                  console.log('productList add', productList);
                   setProductList([...productList, newDetail]);
-                }}  
+                }}
               />
             </div>
           ))}

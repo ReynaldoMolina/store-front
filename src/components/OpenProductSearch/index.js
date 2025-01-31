@@ -1,8 +1,11 @@
 import React from "react";
+import { OrderContext } from "../Context/OrderContext";
 import { ReactComponent as SvgDropdown } from "./dropdown.svg";
 import "./OpenProductSearch.css"
 
-function OpenProductSearch({ isSearchOpen, setIsSearchOpen }) {
+function OpenProductSearch() {
+  const { isSearchOpen, setIsSearchOpen } = React.useContext(OrderContext);
+  
   return (
     <button
       type="button"

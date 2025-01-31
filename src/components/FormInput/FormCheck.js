@@ -18,8 +18,6 @@ function FormCheck({ name, holder, value, setValue }) {
         checked={value}
         onChange={(event) => {
           setValue(event.target.checked);
-          console.log('check',event.target.checked);
-          console.log('value',value);
         }}
       >
       </input>

@@ -1,6 +1,7 @@
 import React from "react";
 import { MenuContext } from "../Context/MenuContext";
 import { DataContext } from "../Context/DataContext";
+import { OrderProvider } from "../Context/OrderContext";
 import { useGetData } from "../Hooks/useGetData";
 import { ActionTools } from "../ActionTools";
 import { OrderForm } from "../Orders/OrderForm";
@@ -40,7 +41,7 @@ function Orders() {
                     <div className="flx">
                       <span className="total">{register.total}</span>
                       <span className="abono">{register.abono}</span>
-                      <span className="saldo">{register.saldo}</span>
+                      <span className="saldo">{register.total - register.abono}</span>
                   </div>
                 </div>
               </div>
@@ -49,7 +50,9 @@ function Orders() {
         </>
       )}
       {openModal && (
-        <OrderForm/>
+        <OrderProvider>
+          <OrderForm/>
+        </OrderProvider>
       )}
     </>
   )

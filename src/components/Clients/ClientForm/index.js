@@ -46,7 +46,7 @@ function ClientForm() {
       address: formData.get('address')
     }
     
-    sendData(fetchRegister, registerId, menuOption.url, id);
+    sendData(fetchRegister, menuOption.url, registerId);
     setOpenModal(false);
   }
 

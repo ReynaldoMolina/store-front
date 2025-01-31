@@ -1,26 +1,25 @@
 import React from "react";
 import { baseUrl } from "../urls/menuOptionsList";
 import { DataContext } from "../Context/DataContext";
+import { OrderContext } from "../Context/OrderContext";
 import { useGetData } from "../Hooks/useGetData";
 import { OpenProductSearch } from "../OpenProductSearch";
 import { ProductSearch } from "../ProductSearch";
 import { ProductCard } from "../ProductCard";
+import { ProductCardEmpty } from "../ProductCard/ProductCardEmpty";
 import "./OrdersDetails.css";
 
-function OrdersDetails() {
+function OrdersDetails({ setTotal }) {
   console.log('Render OrdersDetails');
   const { registerId } = React.useContext(DataContext);
-  
-  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
-  const [productList, setProductList] = React.useState([]);
+  const { productList, setProductList } = React.useContext(OrderContext);
 
   const url = baseUrl + 'ordersdetails/' + registerId;
   const data = useGetData(url);
-  console.log('productList detail', productList);
+  console.log('productList', productList);
 
   React.useEffect(() => {
     console.log('useEffect detail');
-    
     if (data) {
       setProductList(data || []);
     }
@@ -28,20 +27,14 @@ function OrdersDetails() {
 
   return (
     <>
-      <OpenProductSearch isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen}/>
-      <ProductSearch isSearchOpen={isSearchOpen} productList={productList} setProductList={setProductList} orderId={registerId}/>
+      <OpenProductSearch />
+      <ProductSearch />
       <div className="flx flx-col details-list">
-        {productList.map(register => (
-          <ProductCard
-            id={register.id}
-            orderId={register.orderId}
-            productId={register.productId}
-            productQty={register.quantity}
-            productSellPrice={register.sellPrice}  
-            productList={productList}
-            setProductList={setProductList}
-          />
-        ))}
+        {productList.length === 0 ? <ProductCardEmpty/> :
+          productList.map(register => (
+            <ProductCard register={register} />
+          ))
+        }
       </div>
     </>
   )

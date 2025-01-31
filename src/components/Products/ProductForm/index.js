@@ -50,7 +50,7 @@ function ProductForm() {
       description: formData.get('description')
     }
     
-    sendData(fetchRegister, registerId, menuOption.url, id);
+    sendData(fetchRegister, menuOption.url, registerId);
     setOpenModal(false);
   }
 

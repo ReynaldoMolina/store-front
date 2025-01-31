@@ -1,36 +1,52 @@
 import React from "react";
-import { ReactComponent as SvgDelete } from "./delete.svg";
-import { useGetData } from "../Hooks/useGetData";
 import { baseUrl } from "../urls/menuOptionsList";
+import { OrderContext } from "../Context/OrderContext";
+import { useGetData } from "../Hooks/useGetData";
+import { ReactComponent as SvgDelete } from "./delete.svg";
+import { getSum } from "../Hooks/getSum";
 import "./ProductCard.css";
 
-function ProductCard({
-  id, orderId, productId, productQty, productSellPrice,
-  productList, setProductList
-}) {
-  const data = useGetData(baseUrl + 'products/' + productId);
-  console.log(data);
+function ProductCard({ register }) {
+  const {
+    productList, setProductList, setOrderTotal
+  } = React.useContext(OrderContext);
 
-  const [quantity, setQuantity] = React.useState(productQty);
+  const data = useGetData(baseUrl + 'products/' + register.productId);
+
+  const [quantity, setQuantity] = React.useState(register.quantity);
+
+  function findId() {
+    const index = productList.findIndex((e) => e.productId === data.id);
+    return index;
+  }
+
+  function addQuantity() {
+    const index = findId();
+    
+    const newList = [...productList];
+    newList[index].quantity += 1;
+    setQuantity(quantity + 1);
+    console.log('sum button', getSum(newList));
+  }
 
   return (
     <div
-      key={id}
+      key={data.id}
       className="flx flx-center product-card"
     >
-      <span className="flx flx-center product-id">{productId}</span>
+      <span className="flx flx-center product-id">{data.id}</span>
 
       <div className="flx product-info-container">
         <span className="flx product-name">{data.name}</span>
         <div className="flx product-info">
-          <span className="product-price">$ {productSellPrice}</span>
+          <span className="product-price">$ {data.sellPrice}</span>
           <div className="flx flx-center quantity-container">
             <button
               className="quantity-button"
               type="button"
               onClick={() => { 
                 if (quantity > 1) {
-                  setQuantity(quantity - 1)
+                  setQuantity(quantity - 1);
                 }
               }}
               >-</button>
@@ -38,21 +54,25 @@ function ProductCard({
               className="flx flx-center quantity"
               type="number"
               value={quantity}
-              onChange={(event) => setQuantity(event.target.valueAsNumber)}
+              onChange={(event) => {
+                setQuantity(event.target.valueAsNumber);
+                console.log('quantity input changed');
+              }}
             ></input>
             <button
               className="quantity-button"
               type="button"
-              onClick={() => setQuantity(quantity + 1)}
+              onClick={() => addQuantity()}
             >+</button>
           </div>
         </div>
       </div>
-      <span className="flx subtotal">$ {productSellPrice * quantity}</span>
+      <span className="flx subtotal">$ {data.sellPrice * quantity}</span>
       <SvgDelete
         className="product-delete"
         onClick={() => {
-          setProductList(productList.filter(register => register.productId !== productId));
+          setProductList(productList.filter(e => e.productId !== register.productId));
+          // setTotal(getSum(productList));
         }}
       />
     </div>

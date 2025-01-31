@@ -1,7 +1,7 @@
 import React from "react";
 import "./FormInput.css";
 
-function FormInput({ name, holder, type = "text", value, setValue }) {
+function FormInput({ name, holder, type = "text", value, setValue, readonly = false }) {
   return (
     <div className="flx flx-col">
       <label
@@ -18,6 +18,7 @@ function FormInput({ name, holder, type = "text", value, setValue }) {
         placeholder={holder}
         value={value}
         onChange={(event) => setValue(event.target.value)}
+        readOnly={readonly}
       >
       </input>
     </div>

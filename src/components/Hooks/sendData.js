@@ -1,4 +1,4 @@
-async function sendData(fetchRegister, registerId, url, id) {
+async function sendData(fetchRegister, url, registerId) {
   console.log('sendData')
   let method, fetchUrl;
     
@@ -6,7 +6,7 @@ async function sendData(fetchRegister, registerId, url, id) {
     fetchUrl = url;
     method = "POST";
   } else {
-    fetchUrl = url + id;
+    fetchUrl = url + registerId;
     method = "PATCH";
   }
 

@@ -9,7 +9,7 @@
 .product-card {
   border-bottom: 1px solid gainsboro;
   width: 100%;
-  padding: 7px;
+  padding: 6px;
   min-height: 40px;
 }
 .product-card:last-child {
@@ -80,13 +80,13 @@
   stroke: red;
   margin-left: 10px;
   height: 27px;
-  width: 27px;
-  min-width: 30px;
+  max-width: 27px;
+  min-width: 27px;
   cursor: pointer;
   background-color: rgb(255, 220, 220);
 }
 .product-delete:hover {
-  background-color: rgb(255, 170, 170);
+  background-color: rgb(255, 188, 188);
 }
 
 @media (max-width: 500px) {

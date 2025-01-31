@@ -1,9 +1,10 @@
 import React from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
-import { useGetData } from "../../Hooks/useGetData";
+import { OrderContext } from "../../Context/OrderContext";
 import { FormInput } from "../../FormInput";
 import { FormSpan } from "../../FormInput/FormSpan";
+import { FormCheck } from "../../FormInput/FormCheck";
 import { OrdersDetails } from "../../OrdersDetails";
 import { OrderOptions } from "./OrderOptions";
 import { FormButtons } from "../../FormInput/FormButtons";
@@ -13,27 +14,19 @@ import "./OrderForm.css";
 function OrderForm() {
   const { menuOption } = React.useContext(MenuContext);
   const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
-  const data = useGetData(menuOption.url + registerId);
-  console.log('Order', data);
-
-  const [orderDate, setOrderDate] = React.useState('');
-
-  React.useEffect(() => {
-    if (data) {
-      setOrderDate(data.orderDate || '');
-    }
-  }, [data]);
+  const { orderData, orderDate, setOrderDate, paid, setPaid } = React.useContext(OrderContext);
 
   function handleRegister(formData) {
     const fetchRegister = {
-      clientId: data.clientId,
+      clientId: orderData.clientId,
       orderDate,
-      abono: formData.get('abono'),
-      saldo: formData.get('saldo'),
+      paid,
+      total: Number(formData.get('order-total')),
+      abono: Number(formData.get('order-abono')),
     }
     console.log(fetchRegister);
     
-    sendData(fetchRegister, registerId, menuOption.url, data.id);
+    sendData(fetchRegister, menuOption.url, registerId);
     setOpenModal(false);
   }
 
@@ -45,16 +38,17 @@ function OrderForm() {
       >
         <div className="flx flx-col order-info-container">
           <div className="flx order-info">
-            <FormSpan name="order-id" holder="Order id" value={data.id}/>
+            <FormSpan name="order-id" holder="Order id" value={orderData.id}/>
+            <FormCheck name="paid" holder="Paid" value={paid} setValue={setPaid} />
             <FormInput name="orderDate" holder="Order date" type="date" value={orderDate} setValue={setOrderDate}/>
           </div>
           <div className="flx order-info">
-            <FormSpan name="client-id" holder="Client" value={data.clientId}/>
+            <FormSpan name="client-id" holder="Client" value={orderData.clientId}/>
           </div>
           <div className="flx order-info">
-            <FormSpan name="order-total" holder="Total" value={data.total}/>
-            <FormSpan name="order-abono" holder="Abono" value={data.abono}/>
-            <FormSpan name="order-saldo" holder="Saldo" value={data.saldo}/>
+            <FormSpan name="order-total" holder="Total" value={orderData.total}/>
+            <FormSpan name="order-abono" holder="Abono" value={orderData.abono}/>
+            <FormSpan name="order-saldo" holder="Saldo" value={orderData.total - orderData.abono}/>
           </div>
         </div>
         
