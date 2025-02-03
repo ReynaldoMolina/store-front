@@ -1,14 +1,12 @@
 {
   "files": {
-    "main.css": "/store-front/static/css/main.bbfaa590.css",
-    "main.js": "/store-front/static/js/main.d44e0aa7.js",
+    "main.css": "/store-front/static/css/main.fba83016.css",
+    "main.js": "/store-front/static/js/main.fb728ffa.js",
     "static/js/488.8ddcee79.chunk.js": "/store-front/static/js/488.8ddcee79.chunk.js",
     "static/media/logo-sm.png": "/store-front/static/media/logo-sm.5fbde61a2553dd8ff70f.png",
     "static/media/providers.svg": "/store-front/static/media/providers.3236f5c663888bde6785857fa7b896d4.svg",
-    "static/media/addpurchase.svg": "/store-front/static/media/addpurchase.d0ba0c530269d32f447dcf41560e508d.svg",
     "static/media/settings.svg": "/store-front/static/media/settings.61e202a0f1b2c993af9a031e495a4bdb.svg",
     "static/media/purchases.svg": "/store-front/static/media/purchases.120e9a33157c1bb7f59d6c9b21cd48d6.svg",
-    "static/media/addorder.svg": "/store-front/static/media/addorder.bc558a7901df3f81864f82a6429ba2a1.svg",
     "static/media/expenses.svg": "/store-front/static/media/expenses.541469ca32803d32655c445b872e37c8.svg",
     "static/media/delete.svg": "/store-front/static/media/delete.1d3cd2bc3d78beee6665dc7cde7f408b.svg",
     "static/media/products.svg": "/store-front/static/media/products.7b8adde1cb8ff97a58519576a8fe9130.svg",
@@ -16,22 +14,26 @@
     "static/media/clients.svg": "/store-front/static/media/clients.b3320f41aa4caf47f5f49560c0e14ce3.svg",
     "static/media/receipts.svg": "/store-front/static/media/receipts.b7fa167e498f8591d69e52313e298dad.svg",
     "static/media/dropdown.svg": "/store-front/static/media/dropdown.0b881b45531e1aa2c55c656340ff3093.svg",
+    "static/media/other.svg": "/store-front/static/media/other.8aa6a0a035a40b506a11f2defc6bfa46.svg",
+    "static/media/one-hundred.svg": "/store-front/static/media/one-hundred.442976e3561c3356d7cc94275322db58.svg",
+    "static/media/fifty.svg": "/store-front/static/media/fifty.6dd21999200adcab9634aba1c3460622.svg",
     "static/media/finances.svg": "/store-front/static/media/finances.b7737ab0b4b4598e906be8f554a50774.svg",
     "static/media/profit.svg": "/store-front/static/media/profit.b7737ab0b4b4598e906be8f554a50774.svg",
     "index.html": "/store-front/index.html",
     "static/media/categories.svg": "/store-front/static/media/categories.628302f96183a7a3bd28cb5082576930.svg",
     "static/media/filter.svg": "/store-front/static/media/filter.96c72a4f1decc6277a1f759df3383cbd.svg",
+    "static/media/loading3.svg": "/store-front/static/media/loading3.7ab7518443fbe95e70f83c0aba583b9f.svg",
     "static/media/home.svg": "/store-front/static/media/home.678cc2f84709502654aa4b22942c4805.svg",
     "static/media/menu.svg": "/store-front/static/media/menu.dea15b0281f3acda2b5b2e95a3a7d7e3.svg",
     "static/media/search.svg": "/store-front/static/media/search.01da7b90b09620b3b6c6.svg",
     "static/media/logout.svg": "/store-front/static/media/logout.ba3421b06304784b8a7996a47e346b70.svg",
     "static/media/add.svg": "/store-front/static/media/add.db6a1b393f18fab9302cffaee47df564.svg",
-    "main.bbfaa590.css.map": "/store-front/static/css/main.bbfaa590.css.map",
-    "main.d44e0aa7.js.map": "/store-front/static/js/main.d44e0aa7.js.map",
+    "main.fba83016.css.map": "/store-front/static/css/main.fba83016.css.map",
+    "main.fb728ffa.js.map": "/store-front/static/js/main.fb728ffa.js.map",
     "488.8ddcee79.chunk.js.map": "/store-front/static/js/488.8ddcee79.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbfaa590.css",
-    "static/js/main.d44e0aa7.js"
+    "static/css/main.fba83016.css",
+    "static/js/main.fb728ffa.js"
   ]
 }
