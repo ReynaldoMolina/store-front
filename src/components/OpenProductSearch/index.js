@@ -9,11 +9,10 @@ function OpenProductSearch() {
   return (
     <button
       type="button"
-      className={`flx open-product-search ${isSearchOpen && "open-product-search-close"}`}
+      className="flx flx-center product-btn"
       onClick={() => setIsSearchOpen(state => !state)}
     >
-      {isSearchOpen ? "Close product list" : "Product list"}
-      <SvgDropdown className={`open-product-search-dropdown ${isSearchOpen && "dropdown-rotate"}`} />
+      <SvgDropdown className={`product-list-toggle-dropdown ${isSearchOpen && "dropdown-rotate"}`} />
     </button>
   )
 }

@@ -3,16 +3,21 @@ import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
 import { useGetData } from "../../Hooks/useGetData";
 import { FormInput } from "../../FormInput";
-import { FormSelect } from "../../FormSelect";
-import { ProductOptions } from "./ProductOptions";
+import { FormSpan } from "../../FormInput/FormSpan";
+import { FormSelect } from "../../FormInput/FormSelect";
 import { FormButtons } from "../../FormInput/FormButtons";
 import { sendData } from "../../Hooks/sendData";
 import "../../styles/RegisterForm.css";
+import { Loading } from "../../Loading";
 
 function ProductForm() {
   const { menuOption } = React.useContext(MenuContext);
   const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
-  const data = useGetData(menuOption.url + registerId);
+  const { data, isLoading } = useGetData(menuOption.url + registerId);
+
+  const currenDate = new Date();
+  const isoDate = currenDate.toISOString();
+  const formattedDate = isoDate.split("T")[0];
 
   const [id, setId] = React.useState('');
   const [name, setName] = React.useState('');
@@ -31,71 +36,72 @@ function ProductForm() {
       setSheinId(data.sheinId || '');
       setProvider(data.provider || '');
       setCategory(data.category || '');
-      setAddedDate(data.addedDate || '');
-      setCostPrice(data.costPrice || '');
-      setSellPrice(data.sellPrice || '');
+      setAddedDate(data.addedDate || formattedDate);
+      setCostPrice(data.costPrice || 0);
+      setSellPrice(data.sellPrice || 0);
       setDescription(data.description || '');
     }
   }, [data]);
 
-  function handleRegister(formData) {
-    const fetchRegister = {
-      name: formData.get('name'),
-      sheinId: formData.get('sheinId'),
-      provider: formData.get('provider'),
-      category: formData.get('category'),
-      addedDate: formData.get('addedDate'),
-      costPrice: formData.get('costPrice'),
-      sellPrice: formData.get('sellPrice'),
-      description: formData.get('description')
+  function handleRegister() {
+    if (name === "") {
+      alert("Name required");
+      return;
+    } else if (provider === "" || category === "") {
+      alert("Provider and Category required");
+      return;
     }
     
+    const fetchRegister = {
+      name,
+      sheinId,
+      provider,
+      category,
+      addedDate,
+      costPrice: Number(costPrice),
+      sellPrice: Number(sellPrice),
+      description,
+    }
     sendData(fetchRegister, menuOption.url, registerId);
     setOpenModal(false);
   }
 
   return (
-    <form
-      action={handleRegister}
-      className="flx flx-col frm-container">
-      {isNew || (
-        <div className="flx obj-info">
-          <span className="flx flx-center form-id">{id}</span>
-        </div>
-      )}
-      <div className="flx obj-info">
-        <FormInput name="name" holder="Name" value={name} setValue={setName}/>
-      </div>
-      <div className="flx obj-info">
-        <FormSelect name="provider" holder="Provider" value={provider} setValue={setProvider} index={4} field={"company"}/>
-        <FormInput name="addedDate" holder="Added date" type="date" value={addedDate} setValue={setAddedDate}/>
-      </div>
-      <div className="flx obj-info">
-        <FormSelect name="category" holder="Category" value={category} setValue={setCategory} index={8} field={"name"}/>
-        <FormInput name="sheinId" holder="Shein Id" value={sheinId} setValue={setSheinId}/>
-      </div>
-      <div className="flx obj-info">
-        <FormInput name="costPrice" holder="Cost price" type="number" value={costPrice} setValue={setCostPrice}/>
-        <FormInput name="sellPrice" holder="Sell Price" type="number" value={sellPrice} setValue={setSellPrice}/>
-        <div className="flx flx-col">
-          <label htmlFor={name} className="frm-label">Profit</label>
-          <input
-            type="number"
-            name="profit"
-            className="frm-input"
-            placeholder="0.00"
-            value={sellPrice - costPrice}
-            readOnly></input>
-        </div>
-      </div>
-      <div className="flx obj-info">
-        <FormInput name="description" holder="Description" value={description} setValue={setDescription}/>
-      </div>
-      
-      {isNew || <ProductOptions />}
+    <>
+      {isLoading && <Loading/>}
+      {isLoading || (
+        <form
+          action={handleRegister}
+          className="flx flx-col frm-container">
+          {isNew || (
+            <div className="flx obj-info">
+              <span className="flx flx-center form-id">{id}</span>
+            </div>
+          )}
+          <div className="flx obj-info">
+            <FormInput name="name" holder="Name" value={name} setValue={setName}/>
+          </div>
+          <div className="flx obj-info">
+            <FormSelect name="provider" holder="Provider" value={provider} setValue={setProvider} index={4} field={"company"}/>
+            <FormInput name="addedDate" holder="Added date" type="date" value={addedDate} setValue={setAddedDate}/>
+          </div>
+          <div className="flx obj-info">
+            <FormSelect name="category" holder="Category" value={category} setValue={setCategory} index={8} field={"name"}/>
+            <FormInput name="sheinId" holder="Shein Id" value={sheinId} setValue={setSheinId}/>
+          </div>
+          <div className="flx obj-info">
+            <FormInput name="costPrice" holder="Cost price" type="number" value={costPrice} setValue={setCostPrice}/>
+            <FormInput name="sellPrice" holder="Sell Price" type="number" value={sellPrice} setValue={setSellPrice}/>
+            <FormSpan name="form-profit" holder="Profit" value={sellPrice - costPrice}/>
+          </div>
+          <div className="flx obj-info">
+            <FormInput name="description" holder="Description" value={description} setValue={setDescription}/>
+          </div>
 
-      <FormButtons />
-    </form>
+          <FormButtons />
+        </form>
+      )}
+    </>
   )
 }
 

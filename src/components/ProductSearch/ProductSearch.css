@@ -1,11 +1,8 @@
 .product-search-container {
   border: 1px solid gainsboro;
   border-radius: 5px;
-  padding: 7px 5px 5px;
+  padding: 5px;
   margin-bottom: 12px;
-}
-.product-search {
-  margin-bottom: 7px;
 }
 .product-btn {
   margin-left: 5px;
@@ -45,6 +42,7 @@
 
 /* ******************************************************** */
 .products-list {
+  margin-top: 5px;
   width: 100%;
   border-radius: 5px;
   background-color: white;

@@ -1,15 +1,15 @@
 import React from "react";
-import { ReactComponent as SvgProducts } from "./products.svg";
+import { ReactComponent as SvgProfit } from "./profit.svg";
 import "../../../styles/FormOptions.css";
 
 const svgClass = "register-option";
 
-function CategoryOptions() {
+function ReceiptOptions() {
   return (
     <div className="flx flx-center register-options">
-      <SvgProducts className={svgClass}/>
+      <SvgProfit className={svgClass}/>
     </div>
   )
 }
 
-export { CategoryOptions };
+export { ReceiptOptions };

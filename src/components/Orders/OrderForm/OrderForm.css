@@ -4,18 +4,19 @@
   width: 100%;
   padding: 12px;
   border-radius: 5px;
-  margin: auto;
+  margin: 0 auto;
   overflow-y: scroll;
 }
 .order-info-container {
   border: 1px solid gainsboro;
   border-radius: 5px;
   margin-bottom: 12px;
-  padding: 10px 10px 0;
+  padding: 7px 7px 0;
 }
 .order-info {
   margin-bottom: 12px;
   width: 100%;
+  align-items: end;
 }
 .order-info div {
   width: 100%;
@@ -40,4 +41,24 @@
 }
 .order-saldo {
   background-color: var(--info-red);
+}
+.client-add {
+  height: 25px;
+  margin-bottom: 1px;
+}
+.order-totals {
+  justify-content: space-evenly;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 12px;
+}
+.order-totals-item,
+.order-totals-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.order-totals-label {
+  margin-bottom: 5px;
+  color: gray;
 }

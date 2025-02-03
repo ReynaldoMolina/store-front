@@ -6,7 +6,7 @@ function FormCheck({ name, holder, value, setValue }) {
     <div className="flx flx-col">
       <label
         htmlFor={name}
-        className="frm-label"
+        className="frm-check-label"
       >
         {holder}
       </label>

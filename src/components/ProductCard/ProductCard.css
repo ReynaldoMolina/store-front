@@ -9,8 +9,7 @@
 .product-card {
   border-bottom: 1px solid gainsboro;
   width: 100%;
-  padding: 6px;
-  min-height: 40px;
+  padding: 5px;
 }
 .product-card:last-child {
   border-bottom: none;
@@ -43,7 +42,7 @@
   color: gray;
 }
 .quantity-container {
-  margin-left: 12px;
+  margin-left: 10px;
   border: 1px solid gainsboro;
   border-radius: 5px;
   overflow: hidden;
@@ -93,8 +92,17 @@
   .product-info-container {
     flex-direction: column;
   }
+  .product-info {
+    flex-direction: row-reverse;
+  }
   .product-info:nth-child(2) {
     margin-top: 5px;
     justify-content: left;
+  }
+  .product-price {
+    margin-left: 10px;
+  }
+  .quantity-container {
+    margin-left: 0;
   }
 }

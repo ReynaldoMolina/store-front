@@ -1,0 +1,28 @@
+.total,
+.abono,
+.saldo {
+  font-size: 1.3rem;
+  border-radius: 2px;
+  padding: 3px 5px;
+  width: 55px;
+  text-align: right;
+  margin-left: 5px;
+  font-size: 1rem;
+}
+.total {
+  background-color: var(--info-gray);
+}
+.abono {
+  background-color: var(--info-green);
+}
+.saldo {
+  background-color: var(--info-red);
+}
+
+@media (max-width: 500px) {
+  .total,
+  .abono,
+  .saldo {
+    margin: 4px 5px 0 0;
+  }
+}

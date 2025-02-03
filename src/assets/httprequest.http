@@ -1,1 +1,12 @@
-GET http://192.168.1.9:3001/api/v1/ordersdetails/
+get http://192.168.1.9:3001/api/v1/products/21
+# Content-Type: application/json
+
+# {
+#   "name": "Rey",
+#   "lastname": "Hola",
+#   "phone": "+505 1234 5678",
+#   "municipio": "León",
+#   "departamento": "León",
+#   "country": "Nicaragua",
+#   "address": ""
+# }

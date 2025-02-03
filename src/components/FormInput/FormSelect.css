@@ -1,0 +1,22 @@
+.frm-select-label {
+  color: gray;
+  width: 100%;
+  font-size: 1.2rem;
+  margin-bottom: 3px;
+}
+.frm-select {
+  background-color: white;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0px 0px 5px gainsboro;
+  height: 25px;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0 5px;
+}
+.frm-select:hover {
+  outline: 1px solid gray;
+}
+.frm-select:focus-visible {
+  outline: 1px solid gray;
+}

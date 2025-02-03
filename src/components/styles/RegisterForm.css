@@ -4,11 +4,11 @@
   width: 100%;
   padding: 12px;
   border-radius: 5px;
-  margin: auto;
+  margin: 0 auto;
   overflow-y: scroll;
 }
 .form-id {
-  height: 30px;
+  height: 25px;
   font-size: 1.2rem;
   background-color: var(--action-button-hover);
   border-radius: 5px;
@@ -17,6 +17,7 @@
 .obj-info {
   margin-bottom: 12px;
   width: 100%;
+  align-items: end;
 }
 .obj-info div {
   width: 100%;

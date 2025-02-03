@@ -2,10 +2,12 @@ import React from "react";
 import { MenuContext } from "../Context/MenuContext";
 import { DataContext } from "../Context/DataContext";
 import { OrderProvider } from "../Context/OrderContext";
+import { Loading } from "../Loading";
 import { useGetData } from "../Hooks/useGetData";
 import { ActionTools } from "../ActionTools";
 import { OrderForm } from "../Orders/OrderForm";
 import { useFilterData } from "../Hooks/useFilterData";
+import { EmptyList } from "../EmptyList";
 import "../styles/Registers.css";
 import "./Orders.css";
 
@@ -15,7 +17,7 @@ function Orders() {
   const {
     openModal, setOpenModal, setRegisterId, setIsNew
   } = React.useContext(DataContext);
-  const data = useGetData(menuOption.url);
+  const { data, isLoading } = useGetData(menuOption.url);
   const filteredData = useFilterData(data, menuOption.name);
   
   return (
@@ -24,29 +26,33 @@ function Orders() {
       {openModal || (
         <>
           <ActionTools/>
-          <div className="flx flx-col register-list">
-            {filteredData.map(register => (
-              <div
-                key={register.id}
-                className="flx register-card"
-                onClick={() => {
-                  setRegisterId(register.id);
-                  setIsNew(false);
-                  setOpenModal(true);
-                }}
-              >
-                <span className="flx flx-center id">{register.id}</span>
-                <div className="flx info">
-                  <span className="name">{register.clientId}</span>
-                    <div className="flx">
-                      <span className="total">{register.total}</span>
-                      <span className="abono">{register.abono}</span>
-                      <span className="saldo">{register.total - register.abono}</span>
+          {isLoading && <Loading/>}
+          {isLoading || (
+            <div className="flx flx-col register-list">
+              {filteredData.length === 0 && ( <EmptyList/> )}
+              {filteredData.map(register => (
+                <div
+                  key={register.id}
+                  className="flx register-card"
+                  onClick={() => {
+                    setRegisterId(register.id);
+                    setIsNew(false);
+                    setOpenModal(true);
+                  }}
+                >
+                  <span className="flx flx-center id">{register.id}</span>
+                  <div className="flx info">
+                    <span className="name">{register.clientId}</span>
+                      <div className="flx">
+                        <span className="total">{register.total}</span>
+                        <span className="abono">{register.abono}</span>
+                        <span className="saldo">{register.total - register.abono}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </>
       )}
       {openModal && (

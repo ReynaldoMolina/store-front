@@ -1,10 +1,10 @@
 import React from "react";
 import { MenuContext } from "../Context/MenuContext";
-import { DataProvider } from "../Context/DataContext";
 
 import { Categories } from "../Categories";
 import { Clients } from "../Clients";
 import { Orders } from "../Orders";
+import { Receipts } from "../Receipts";
 import { Providers } from "../Providers";
 import { Products } from "../Products";
 
@@ -16,7 +16,7 @@ const components = {
   "Products": () => <Products />,
   "Providers": () => <Providers />,
   // "Purchases": () => <DataContent />,
-  // "Receipts": () => <DataContent />,
+  "Receipts": () => <Receipts />,
 };
 
 function DataContent() {
@@ -25,9 +25,7 @@ function DataContent() {
 
   return (
     <>
-      <DataProvider>
-        {components[menuOption.name]()}
-      </DataProvider>
+      {components[menuOption.name]()}
     </>
   )
 }

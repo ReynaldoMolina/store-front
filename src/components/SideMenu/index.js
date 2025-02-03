@@ -1,5 +1,6 @@
 import React from "react";
 import { MobileContext } from "../Context/MobileContext";
+import { DataContext } from "../Context/DataContext";
 import { MenuContext } from "../Context/MenuContext";
 import { SideMenuIcon } from "./SideMenuIcon";
 import "./SideMenu.css";
@@ -10,8 +11,9 @@ function SideMenu() {
   const {
     menuOptions,
     menuOption, setMenuOption,
-    isMenuOpen, setIsMenuOpen
+    isMenuOpen, setIsMenuOpen,
   } = React.useContext(MenuContext);
+  const { setOpenModal } = React.useContext(DataContext);
 
   return (
     <>
@@ -31,6 +33,7 @@ function SideMenu() {
                   if (isMobile) {                    
                     setIsMenuOpen(false);
                   }
+                  setOpenModal(false);
                   setMenuOption(option);
                 }}
               >

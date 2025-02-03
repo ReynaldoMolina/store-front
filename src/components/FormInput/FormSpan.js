@@ -6,7 +6,7 @@ function FormSpan({ name, holder, value }) {
     <div className="flx flx-col span-container">
       <label
         htmlFor={name}
-        className="frm-label"
+        className="frm-span-label"
       >
         {holder}
       </label>

@@ -2,7 +2,6 @@ import React from "react";
 import { MenuContext } from "../Context/MenuContext";
 import { Home } from "../Home";
 import { DataContent } from "../DataContent";
-import { DataProvider } from "../Context/DataContext";
 import "./MainContent.css";
 
 const components = {
@@ -26,11 +25,9 @@ function MainContent() {
 
   return (
     <>
-      <DataProvider>
-        <div className="flx flx-col main-content">
-          {components[menuOption.name]()}
-        </div>
-      </DataProvider>
+      <div className="flx flx-col main-content">
+        {components[menuOption.name]()}
+      </div>
     </>
   )
 }

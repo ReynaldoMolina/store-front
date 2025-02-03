@@ -18,7 +18,7 @@ function ActionTools() {
           <input
             type="search"
             id="search-bar"
-            className="frm-input frm-input-icon"
+            className="action-search action-icon"
             placeholder="Search"
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}

@@ -2,18 +2,59 @@ import React from "react";
 import { ReactComponent as SvgOrders } from "./orders.svg";
 import { ReactComponent as SvgReceipts } from "./receipts.svg";
 import { ReactComponent as SvgProfit } from "./profit.svg";
-import { ReactComponent as SvgAddOrder } from "./addorder.svg";
+import { MenuContext } from "../../../Context/MenuContext";
+import { DataContext } from "../../../Context/DataContext";
+import { FormOption } from "../../../FormOption";
 import "../../../styles/FormOptions.css";
 
 const svgClass = "register-option";
 
-function ClientOptions() {
+function ClientOptions({ name, lastname }) {
+  const { menuOptions, setMenuOption } = React.useContext(MenuContext);
+  const { setSearchValue, setOpenModal } = React.useContext(DataContext);
+  const client = `${name} ${lastname}`;
+  const clientOrders = menuOptions[2];
+  const clientReceipts = menuOptions[3];
+  const clientProfits = menuOptions[9];
+
+  function goToOrders() {
+    setSearchValue(client);
+    setOpenModal(false);
+    setMenuOption(clientOrders);
+  }
+
+  function goToReceipts() {
+    setSearchValue(client);
+    setOpenModal(false);
+    setMenuOption(clientReceipts);
+  }
+
+  function goToProfits() {
+    setSearchValue(client);
+    setOpenModal(false);
+    setMenuOption(clientProfits);
+  }
+
   return (
     <div className="flx flx-center register-options">
-      <SvgOrders className={svgClass}/>
-      <SvgReceipts className={svgClass}/>
-      <SvgProfit className={svgClass}/>
-      <SvgAddOrder className={svgClass}/>
+      <FormOption label="Orders">
+        <SvgOrders
+          className={svgClass}
+          onClick={goToOrders}
+        />
+      </FormOption>
+      <FormOption label="Receipts">
+        <SvgReceipts
+          className={svgClass}
+          onClick={goToReceipts}
+        />
+      </FormOption>
+      <FormOption label="Profit">
+        <SvgProfit
+          className={svgClass}
+          // onClick={goToProfits}
+        />
+      </FormOption>
     </div>
   )
 }

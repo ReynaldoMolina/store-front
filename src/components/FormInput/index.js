@@ -6,7 +6,7 @@ function FormInput({ name, holder, type = "text", value, setValue, readonly = fa
     <div className="flx flx-col">
       <label
         htmlFor={name}
-        className="frm-label"
+        className="frm-input-label"
       >
         {holder}
       </label>

@@ -9,8 +9,8 @@ function DataProvider({ children }) {
   const [registerId, setRegisterId] = React.useState('');
   const [searchValue, setSearchValue] = React.useState('');
   const [isNew, setIsNew] = React.useState(false);
-  const [error, setError] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   return (
     <DataContext.Provider value={{

@@ -2,18 +2,25 @@ import React from "react";
 import { baseUrl } from "../urls/menuOptionsList";
 import { DataContext } from "../Context/DataContext";
 import { OrderContext } from "../Context/OrderContext";
+import { OpenProductSearch } from "../OpenProductSearch";
+import { EmptyList } from "../EmptyList";
 import { useGetData } from "../Hooks/useGetData";
 import { ReactComponent as SvgAdd } from "./add.svg";
+import { getOrderTotals } from "../Hooks/getOrderTotals";
 import filter from "./filter.svg";
 import "./ProductSearch.css"
 
 function ProductSearch() {
-  const { registerId } = React.useContext(DataContext);
-  const { isSearchOpen, productList, setProductList } = React.useContext(OrderContext);
+  const { registerId, isNew } = React.useContext(DataContext);
+  const {
+    productList, setProductList,
+    isSearchOpen, setIsSearchOpen,
+    setOrderTotal, setOrderQuantity, setOrderItems
+  } = React.useContext(OrderContext);
   const [searchProduct, setSearchProduct] = React.useState('');
 
   const url = baseUrl + 'products/';
-  const data = useGetData(url);
+  const { data } = useGetData(url);
   
   const filteredData = data.filter((register) => {
     let fullInfo;
@@ -23,26 +30,60 @@ function ProductSearch() {
     return fullInfo.includes(searchText);
   });
 
+  function orderTotals(list) {
+    const totals = getOrderTotals(list);    
+    setOrderTotal(totals.total);
+    setOrderQuantity(totals.quantity);
+    setOrderItems(totals.items);
+  }
+
+  function addProduct(register) {
+    let newDetail;
+    if (isNew) {
+      newDetail = {
+        productId: register.id,
+        sellPrice: register.sellPrice,
+        quantity: 1
+      };  
+    } else {
+      newDetail = {
+        orderId: registerId,
+        productId: register.id,
+        sellPrice: register.sellPrice,
+        quantity: 1
+      };
+    }
+    setProductList([...productList, { ...newDetail }]);
+    orderTotals([...productList, newDetail]);
+  }
+
   return (
-    <div className={`flx flx-col product-search-container ${isSearchOpen || "hidden"}`}>
+    <div className="flx flx-col product-search-container">
       <div className="flx flx-center product-search">
         <search className="flx flx-center search">
           <input
             type="search"
             id="search-products"
             className="frm-input frm-input-search"
-            placeholder="Search products"
+            placeholder="Add products"
             value={searchProduct}
-            onChange={(event) => setSearchProduct(event.target.value)}
+            onChange={(event) => {
+              if (!isSearchOpen) {
+                setIsSearchOpen(true);
+              }
+              setSearchProduct(event.target.value)
+            }}
           ></input>
         </search>
 
         <button type="button" className="flx flx-center product-btn">
           <img src={filter} alt="Filter"></img>
         </button>
+        <OpenProductSearch />
       </div>
 
-      <div className="flx flx-col products-list">
+      <div className={`flx flx-col products-list ${isSearchOpen || "hidden"}`}>
+        {filteredData.length === 0 && <EmptyList/>}
         {filteredData.map(register => (
             <div
               key={register.id}
@@ -55,15 +96,7 @@ function ProductSearch() {
               <span className="product-sell-price">$ {register.sellPrice}</span>
               <SvgAdd
                 className="flx product-search-add"
-                onClick={() => {
-                  const newDetail = {
-                    orderId: registerId,
-                    productId: register.id,
-                    sellPrice: register.sellPrice,
-                    quantity: 1
-                  };
-                  setProductList([...productList, newDetail]);
-                }}
+                onClick={() => addProduct(register)}
               />
             </div>
           ))}
