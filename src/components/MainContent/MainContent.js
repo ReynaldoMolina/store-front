@@ -7,16 +7,16 @@ import "./MainContent.css";
 const components = {
   "Categories": () => <DataContent />,
   "Clients": () => <DataContent />,
-  "Expenses": () => <DataContent />,
-  "Finances": () => <DataContent />,
+  "Expenses": () => <Home />,
+  "Finances": () => <Home />,
   "Home": () => <Home />,
-  "Log out": () => <DataContent />,
+  "Log out": () => <Home />,
   "Orders": () => <DataContent />,
   "Products": () => <DataContent />,
   "Providers": () => <DataContent />,
-  "Purchases": () => <DataContent />,
+  "Purchases": () => <Home />,
   "Receipts": () => <DataContent />,
-  "Settings": () => <DataContent />,
+  "Settings": () => <Home />,
 };
 
 function MainContent() {
