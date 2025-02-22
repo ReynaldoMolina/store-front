@@ -10,13 +10,9 @@ import { getOrderTotals } from "../Hooks/getOrderTotals";
 import filter from "./filter.svg";
 import "./ProductSearch.css"
 
-function ProductSearch() {
+function ProductSearch({ isSearchProductOpen, setIsSearchProductOpen }) {
   const { registerId, isNew } = React.useContext(DataContext);
-  const {
-    productList, setProductList,
-    isSearchOpen, setIsSearchOpen,
-    setOrderTotal, setOrderQuantity, setOrderItems
-  } = React.useContext(OrderContext);
+  const { productList, setProductList, setOrderTotals } = React.useContext(OrderContext);
   const [searchProduct, setSearchProduct] = React.useState('');
 
   const url = baseUrl + 'products/';
@@ -30,19 +26,13 @@ function ProductSearch() {
     return fullInfo.includes(searchText);
   });
 
-  function orderTotals(list) {
-    const totals = getOrderTotals(list);    
-    setOrderTotal(totals.total);
-    setOrderQuantity(totals.quantity);
-    setOrderItems(totals.items);
-  }
-
   function addProduct(register) {
     let newDetail;
     if (isNew) {
       newDetail = {
         productId: register.id,
         sellPrice: register.sellPrice,
+        costPrice: register.costPrice,
         quantity: 1
       };  
     } else {
@@ -50,11 +40,12 @@ function ProductSearch() {
         orderId: registerId,
         productId: register.id,
         sellPrice: register.sellPrice,
+        costPrice: register.costPrice,
         quantity: 1
       };
     }
     setProductList([...productList, { ...newDetail }]);
-    orderTotals([...productList, newDetail]);
+    setOrderTotals(getOrderTotals([...productList, newDetail]));
   }
 
   return (
@@ -68,8 +59,8 @@ function ProductSearch() {
             placeholder="Add products"
             value={searchProduct}
             onChange={(event) => {
-              if (!isSearchOpen) {
-                setIsSearchOpen(true);
+              if (!isSearchProductOpen) {
+                setIsSearchProductOpen(true);
               }
               setSearchProduct(event.target.value)
             }}
@@ -79,10 +70,10 @@ function ProductSearch() {
         <button type="button" className="flx flx-center product-btn">
           <img src={filter} alt="Filter"></img>
         </button>
-        <OpenProductSearch />
+        <OpenProductSearch isSearchProductOpen={isSearchProductOpen} setIsSearchProductOpen={setIsSearchProductOpen}/>
       </div>
 
-      <div className={`flx flx-col products-list ${isSearchOpen || "hidden"}`}>
+      <div className={`flx flx-col products-list ${isSearchProductOpen || "hidden"}`}>
         {filteredData.length === 0 && <EmptyList/>}
         {filteredData.map(register => (
             <div
@@ -90,10 +81,13 @@ function ProductSearch() {
               className="flx products"
             >
               <span className="flx flx-center product-search-id">{register.id}</span>
-              <div className="flx product-search-info">
+              <div className="flx product-search-info-container">
                 <span className="flx product-search-name">{register.name}</span>
+                <div className="flx product-search-info">
+                  <span className="product-sell-price">$ {(register.sellPrice).toFixed(2)}</span>
+                  <span className="product-cost-price">$ {(register.costPrice).toFixed(2)}</span>
+                </div>
               </div>
-              <span className="product-sell-price">$ {register.sellPrice}</span>
               <SvgAdd
                 className="flx product-search-add"
                 onClick={() => addProduct(register)}

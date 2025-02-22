@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactComponent as SvgLoading } from "./loading3.svg";
+import { ReactComponent as SvgLoading } from "./loading.svg";
 import "./Loading.css";
 
 function Loading() {

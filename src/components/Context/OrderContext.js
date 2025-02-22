@@ -7,51 +7,40 @@ const OrderContext = React.createContext();
 
 function OrderProvider({ children }) {
   const { menuOption } = React.useContext(MenuContext);
-  const { registerId } = React.useContext(DataContext);
+  const { registerId, isNew } = React.useContext(DataContext);
+  const { data, isLoading } = useGetData(menuOption.url + registerId);
+  const currentDate = new Date().toISOString().split("T")[0];
 
-  const { data, isLoading} = useGetData(menuOption.url + registerId);
-  console.log('Order', data);
-
-  const currenDate = new Date();
-  const isoDate = currenDate.toISOString();
-  const formattedDate = isoDate.split("T")[0];
-
-  const [orderData, setOrderData] = React.useState([]);
-  const [orderDate, setOrderDate] = React.useState('');
-  const [paid, setPaid] = React.useState(false);
-  const [orderTotal, setOrderTotal] = React.useState(0);
-  const [orderQuantity, setOrderQuantity] = React.useState(0);
-  const [orderItems, setOrderItems] = React.useState(0);
-  const [originalProductList, setOriginalProductList] = React.useState([]);
+  const [order, setOrder] = React.useState({
+    clientId: '',
+    orderDate: currentDate,
+    state: 'Pendiente'
+  });
+  const [orderTotals, setOrderTotals] = React.useState({
+    totalSell: 0,
+    totalCost: 0,
+    profit: 0,
+    quantity: 0,
+    items: 0
+  });
   const [productList, setProductList] = React.useState([]);
-  const [clientId, setClientId] = React.useState('');
-  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
-  const [isSearchClientOpen, setIsSearchClientOpen] = React.useState(false);
+  const [originalProductList, setOriginalProductList] = React.useState([]);
 
   React.useEffect(() => {
-    if (data) {
-      setClientId(data.clientId || '');
-      setOrderData(data);
-      setOrderDate(data.orderDate || formattedDate);
-      setPaid(data.paid || false);
-      setOrderTotal(data.orderTotal || 0);
+    if (!isNew) {
+      if (data) {
+        setOrder(data);
+      }
     }
   }, [data]);
 
   return (
     <OrderContext.Provider value={{
-      orderData,
       isLoading,
-      orderDate, setOrderDate,
-      paid, setPaid,
-      orderTotal, setOrderTotal,
-      orderQuantity, setOrderQuantity,
-      orderItems, setOrderItems,
+      order, setOrder,
+      orderTotals, setOrderTotals,
       productList, setProductList,
       originalProductList, setOriginalProductList,
-      clientId, setClientId,
-      isSearchOpen, setIsSearchOpen,
-      isSearchClientOpen, setIsSearchClientOpen,
     }}>
       {children}
     </OrderContext.Provider>

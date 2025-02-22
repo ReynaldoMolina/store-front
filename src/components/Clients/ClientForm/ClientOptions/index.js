@@ -9,28 +9,27 @@ import "../../../styles/FormOptions.css";
 
 const svgClass = "register-option";
 
-function ClientOptions({ name, lastname }) {
+function ClientOptions({ fullname }) {
   const { menuOptions, setMenuOption } = React.useContext(MenuContext);
   const { setSearchValue, setOpenModal } = React.useContext(DataContext);
-  const client = `${name} ${lastname}`;
   const clientOrders = menuOptions[2];
   const clientReceipts = menuOptions[3];
   const clientProfits = menuOptions[9];
 
   function goToOrders() {
-    setSearchValue(client);
+    setSearchValue(fullname);
     setOpenModal(false);
     setMenuOption(clientOrders);
   }
 
   function goToReceipts() {
-    setSearchValue(client);
+    setSearchValue(fullname);
     setOpenModal(false);
     setMenuOption(clientReceipts);
   }
 
   function goToProfits() {
-    setSearchValue(client);
+    setSearchValue(fullname);
     setOpenModal(false);
     setMenuOption(clientProfits);
   }

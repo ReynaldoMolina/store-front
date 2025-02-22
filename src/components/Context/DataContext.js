@@ -10,6 +10,7 @@ function DataProvider({ children }) {
   const [searchValue, setSearchValue] = React.useState('');
   const [isNew, setIsNew] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isUpdating, setIsUpdating] = React.useState(false);
   const [error, setError] = React.useState(false);
 
   return (
@@ -19,8 +20,8 @@ function DataProvider({ children }) {
       searchValue, setSearchValue,
       isNew, setIsNew,
       isLoading, setIsLoading,
+      isUpdating, setIsUpdating,
       error, setError,
-      // isUpdating, setIsUpdating,
     }}>
       {children}
     </DataContext.Provider>

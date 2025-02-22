@@ -30,8 +30,10 @@
 }
 .order-total,
 .order-abono,
-.order-saldo {
+.order-saldo,
+.order-profit {
   justify-content: right;
+  font-size: 1.1rem;
 }
 .order-total {
   background-color: var(--info-gray);
@@ -41,6 +43,9 @@
 }
 .order-saldo {
   background-color: var(--info-red);
+}
+.order-profit {
+  background-color: var(--info-blue);
 }
 .client-add {
   height: 25px;

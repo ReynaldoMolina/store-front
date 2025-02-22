@@ -43,8 +43,8 @@ function Products() {
                   <div className="flx info">
                     <span className="name">{register.name}</span>
                       <div className="flx">
-                        <span className="cost-price">{register.costPrice}</span>
-                        <span className="sell-price">{register.sellPrice}</span>
+                        <span className="sell-price">{(register.sellPrice).toFixed(2)}</span>
+                        <span className="cost-price">{(register.costPrice).toFixed(2)}</span>
                         <span className="profit">{(register.sellPrice - register.costPrice).toFixed(2)}</span>
                     </div>
                   </div>

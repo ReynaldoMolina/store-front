@@ -24,7 +24,7 @@
   align-items: center;
 }
 .product-id {
-  background-color: skyblue;
+  background-color: var(--action-button);
   margin-right: 10px;
   border-radius: 5px;
   height: 20px;
@@ -40,6 +40,9 @@
 }
 .product-price {
   color: gray;
+  width: 50px;
+  min-width: 30px;
+  text-align: right;
 }
 .quantity-container {
   margin-left: 10px;
@@ -69,6 +72,7 @@
 .subtotal {
   margin-left: 5px;
   width: 60px;
+  min-width: 60px;
   justify-content: right;
   font-size: 1.2rem;
   border-radius: 5px;
@@ -104,5 +108,16 @@
   }
   .quantity-container {
     margin-left: 0;
+  }
+}
+@media (max-width: 350px) {
+  .product-price {
+    margin-left: 0;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  .product-info:nth-child(2) {
+    flex-direction: column;
+    align-items: start;
   }
 }

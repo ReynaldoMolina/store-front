@@ -10,45 +10,43 @@ import "../../styles/RegisterForm.css";
 
 function CategoryForm() {
   const { menuOption } = React.useContext(MenuContext);
-  const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
+  const { setOpenModal, registerId, isNew, setIsUpdating } = React.useContext(DataContext);
   const { data, isLoading } = useGetData(menuOption.url + registerId);
 
-  const [id, setId] = React.useState('');
-  const [name, setName] = React.useState('');
+  const [category, setCategory] = React.useState({name: ''})
 
   React.useEffect(() => {
-    if (data) {
-      setId(data.id || '');
-      setName(data.name || '');
+    if (!isNew) {
+      if (data) {
+        setCategory(data);
+      }
     }
   }, [data]);
 
   function handleRegister() {
-    if (name === "") {
+    if (category.name === "") {
       alert("Name is required");
       return;
     }
-    const fetchRegister = {
-      name
-    }
-    sendData(fetchRegister, menuOption.url, registerId);
+    sendData(category, menuOption.url, registerId);
     setOpenModal(false);
+    setIsUpdating(true);
   }
 
   return (
     <>
-      {isLoading && <Loading/>}
-      {isLoading || (
+      {isLoading ? <Loading/> :
+      (
         <form
           action={handleRegister}
           className="flx flx-col frm-container">
           {isNew || (
             <div className="flx obj-info">
-              <span className="flx flx-center form-id">{id}</span>
+              <span className="flx flx-center form-id">{data.id}</span>
             </div>
           )}
           <div className="flx obj-info">
-            <FormInput name="name" holder="Name" value={name} setValue={setName}/>
+            <FormInput name="name" holder="Name" value={category} setValue={setCategory}/>
           </div>
 
           <FormButtons />

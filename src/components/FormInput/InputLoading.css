@@ -1,0 +1,14 @@
+.frm-input-loading {
+    background-color: white;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0px 0px 5px gainsboro;
+    height: 25px;
+    width: 100%;
+    padding: 0 10px;
+    animation: fade infinite 1s linear;
+  }
+  @keyframes fade {
+    50% {background-color: gainsboro;}
+    100% {background-color: white;}
+  }

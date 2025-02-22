@@ -59,7 +59,7 @@
   background-color: rgb(250, 250, 250);
 }
 .product-search-id {
-  background-color: #8eccdb;
+  background-color: var(--action-button);
   min-width: 35px;
   height: 20px;
   border-radius: 5px;
@@ -67,21 +67,31 @@
   font-size: 1rem;
   cursor: pointer;
 }
+.product-search-info-container {
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
 .product-search-info {
-  flex-wrap: wrap;
-  flex-grow: 1;
   justify-content: left;
 }
 .product-search-name {
-  flex-grow: 1;
   font-size: 1.2rem
 }
-.product-sell-price {
-  color: gray;
-  font-size: 1.2rem;
-  width: 50px;
+.product-sell-price,
+.product-cost-price {
+  font-size: 1rem;
+  width: 55px;
   text-align: right;
   margin-left: 5px;
+  padding: 3px 5px;
+  border-radius: 2px;
+}
+.product-sell-price {
+  background-color: var(--info-green);
+}
+.product-cost-price {
+  background-color: var(--info-red);
 }
 .product-search-add {
   height: 27px;
@@ -96,4 +106,16 @@
 }
 .product-search-add:hover {
   background-color: rgb(170, 255, 170);
+}
+@media (max-width: 500px) {
+  .product-search-info-container {
+    flex-direction: column;
+    align-items: start;
+  }
+  .product-search-name {
+    margin-bottom: 3px;
+  }
+  .product-sell-price {
+    margin-left: 0;
+  }
 }

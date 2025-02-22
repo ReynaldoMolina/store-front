@@ -1,5 +1,5 @@
-// const baseUrl = 'http://192.168.1.9:3001/api/v1/';
-const baseUrl = 'https://jahairastore.vercel.app/api/v1/';
+const baseUrl = 'http://192.168.1.7:3001/api/v1/';
+// const baseUrl = 'https://jahairastore.vercel.app/api/v1/';
 
 const menuOptionsList = [
   {

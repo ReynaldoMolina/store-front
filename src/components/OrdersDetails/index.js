@@ -11,42 +11,37 @@ import "./OrdersDetails.css";
 
 function OrdersDetails() {
   console.log('Render OrdersDetails');
-  const { registerId, isNew } = React.useContext(DataContext);
+  const { isNew } = React.useContext(DataContext);
   const {
+    order,
     productList, setProductList,
     setOriginalProductList,
-    setOrderTotal, setOrderQuantity, setOrderItems
+    setOrderTotals
   } = React.useContext(OrderContext);
 
-  const url = `${baseUrl}ordersdetails/${registerId}`;
-  const { data } = useGetData(url);
+  const [isSearchProductOpen, setIsSearchProductOpen] = React.useState(false);
+
   console.log('productList', productList);
 
   React.useEffect(() => {
     console.log('useEffect detail');
     if (!isNew) {
-      if (data) {
-        setProductList(data || []);
-        setOriginalProductList(data || []);
+      if (order) {
+        setProductList(order.orderdetail ? order.orderdetail : []);
+        setOriginalProductList(order.orderdetail ? order.orderdetail : []);
+        setOrderTotals(getOrderTotals(order.orderdetail ? order.orderdetail : []));
       }
     }
-    orderTotals(productList);
-  }, [data]);
-
-  function orderTotals(list) {
-    const totals = getOrderTotals(list);
-    setOrderTotal(totals.total);
-    setOrderQuantity(totals.quantity);
-    setOrderItems(totals.items);
-  }
+  }, [order]);
 
   return (
     <>
-      <ProductSearch />
+      <ProductSearch isSearchProductOpen={isSearchProductOpen} setIsSearchProductOpen={setIsSearchProductOpen}/>
+
       <div className="flx flx-col details-list">
         {productList.length === 0 ? <ProductCardEmpty/> :
-          productList.map(register => (
-            <ProductCard register={register} />
+          productList.map(product => (
+            <ProductCard product={product} />
           ))
         }
       </div>

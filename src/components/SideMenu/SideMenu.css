@@ -4,11 +4,12 @@
   box-shadow: 1px 0 5px gainsboro;
   border-radius: 0 10px 10px 0;
   z-index: 3;
-  /* overflow: scroll; */
+  overflow: hidden;
 }
 .sidebar-logo {
   height: 50px;
   background-color: transparent;
+  min-height: 50px;
 }
 /*Options*/
 .side-menu-div {
@@ -16,6 +17,7 @@
 }
 .side-menu-options {
   justify-content: start;
+  overflow: scroll;
 }
 .side-menu-opt {
   color: #333333;
@@ -54,8 +56,9 @@
   background-color: rgb(239, 249, 255);
   border-right: 5px solid rgb(104, 194, 255);
 }
-@media (max-width: 500px) {
+@media (max-width: 650px) {
   .side-menu {
+    max-height: 100vh;
     position: absolute;
     z-index: 2;
     box-shadow: none;

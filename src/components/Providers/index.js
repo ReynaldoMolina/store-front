@@ -42,7 +42,7 @@ function Providers() {
                   <span className="flx flx-center id">{register.id}</span>
                   <div className="flx info">
                     <span className="name">{register.company}</span>
-                    <span className="phone">{register.phone}</span>
+                    <span className="phone">{register.phone ? register.phone : '(Empty)'}</span>
                   </div>
                 </div>
               ))}

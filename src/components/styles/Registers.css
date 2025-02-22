@@ -18,7 +18,7 @@
   background-color: var(--hover);
 }
 .id {
-  background-color: rgb(142, 204, 219);
+  background-color: var(--action-button);
   min-width: 40px;
   height: 25px;
   border-radius: 5px;
@@ -32,6 +32,19 @@
   flex-wrap: wrap;
   align-items: center;
   flex-grow: 1;
+}
+.total,
+.abono,
+.saldo,
+.date,
+.profit {
+  font-size: 1.3rem;
+  border-radius: 2px;
+  padding: 3px 5px;
+  text-align: right;
+  margin-left: 5px;
+  font-size: 1rem;
+  width: 50px;
 }
 
 @media (max-width: 500px) {

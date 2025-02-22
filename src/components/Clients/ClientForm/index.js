@@ -11,84 +11,72 @@ import "../../styles/RegisterForm.css";
 
 function ClientForm() {
   const { menuOption } = React.useContext(MenuContext);
-  const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
-  const { data, isLoading } = useGetData(menuOption.url + registerId);
+  const { setOpenModal, registerId, isNew, setIsUpdating } = React.useContext(DataContext);
+  const { data, isLoading } = useGetData(menuOption.url + registerId, isNew);
 
-  const [id, setId] = React.useState('');
-  const [name, setName] = React.useState('');
-  const [lastname, setLastname] = React.useState('');
-  const [phone, setPhone] = React.useState('+505 ');
-  const [municipio, setMunicipio] = React.useState('');
-  const [city, setCity] = React.useState('');
-  const [country, setCountry] = React.useState('');
-  const [address, setAddress] = React.useState('');
+  const [client, setClient] = React.useState({
+    name: "",
+    lastname: "",
+    phone: "",
+    municipio: "",
+    city: "",
+    country: "",
+    address: ""
+  });
 
   React.useEffect(() => {
-    if (data) {
-      setId(data.id || '');
-      setName(data.name || '');
-      setLastname(data.lastname || '');
-      setPhone(data.phone || '');
-      setMunicipio(data.municipio || '');
-      setCity(data.departamento || '');
-      setCountry(data.country || '');
-      setAddress(data.address || '');
-    }
+    if (!isNew) {
+      if (data) {
+        setClient(data);
+      }
+    } 
   }, [data]);
-
+  
   function handleRegister() {
-    if (name === "" || lastname === "") {
+    if (client.name === "" || client.lastname === "") {
       alert("Name and lastname are needed.")
       return;
     }
-    const fetchRegister = {
-      name,
-      lastname,
-      phone,
-      municipio,
-      departamento: city,
-      country,
-      address
-    }
-    sendData(fetchRegister, menuOption.url, registerId);
+    sendData(client, menuOption.url, registerId);
     setOpenModal(false);
+    setIsUpdating(true);
   }
 
   return (
     <>
-      {isLoading && <Loading/>}
-      {isLoading || (
-        <form
-          action={handleRegister}
-          className="flx flx-col frm-container">
-          {isNew || (
+      {isLoading ? <Loading/> :
+        (
+          <form
+            action={handleRegister}
+            className="flx flx-col frm-container">
+            {isNew || (
+              <div className="flx obj-info">
+                <span className="flx flx-center form-id">{data.id}</span>
+              </div>
+            )}
             <div className="flx obj-info">
-              <span className="flx flx-center form-id">{id}</span>
+              <FormInput name="name" holder="Name" value={client} setValue={setClient}/>
             </div>
-          )}
-          <div className="flx obj-info">
-            <FormInput name="name" holder="Name" value={name} setValue={setName}/>
-          </div>
-          <div className="flx obj-info">
-            <FormInput name="lastname" holder="Last name" value={lastname} setValue={setLastname}/>
-          </div>
-          <div className="flx obj-info">
-            <FormInput name="phone" holder="Phone" value={phone} setValue={setPhone}/>
-            <FormInput name="municipio" holder="Municipio" value={municipio} setValue={setMunicipio}/>
-          </div>
-          <div className="flx obj-info">
-            <FormInput name="city" holder="City" value={city} setValue={setCity}/>
-            <FormInput name="country" holder="Country" value={country} setValue={setCountry}/>
-          </div>
-          <div className="flx obj-info">
-            <FormInput name="address" holder="Address" value={address} setValue={setAddress}/>
-          </div>
-          
-          {isNew || <ClientOptions name={name} lastname={lastname} />}
+            <div className="flx obj-info">
+              <FormInput name="lastname" holder="Last name" value={client} setValue={setClient}/>
+            </div>
+            <div className="flx obj-info">
+              <FormInput name="phone" holder="Phone" value={client} setValue={setClient}/>
+              <FormInput name="municipio" holder="Municipio" value={client} setValue={setClient}/>
+            </div>
+            <div className="flx obj-info">
+              <FormInput name="city" holder="City" value={client} setValue={setClient}/>
+              <FormInput name="country" holder="Country" value={client} setValue={setClient}/>
+            </div>
+            <div className="flx obj-info">
+              <FormInput name="address" holder="Address" value={client} setValue={setClient}/>
+            </div>
+            
+            {isNew || <ClientOptions fullname={`${client.name} ${client.lastname}`} />}
 
-          <FormButtons/>
-        </form>
-      )}
+            <FormButtons/>
+          </form>
+        )}
     </>
   )
 }

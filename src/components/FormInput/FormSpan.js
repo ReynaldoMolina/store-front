@@ -1,7 +1,7 @@
 import React from "react";
 import "./FormSpan.css";
 
-function FormSpan({ name, holder, value }) {
+function FormSpan({ name, holder, value, type = 'text' }) {
   return (
     <div className="flx flx-col span-container">
       <label
@@ -15,7 +15,7 @@ function FormSpan({ name, holder, value }) {
         id={name}
         className={`flx frm-span ${name}`}
       >
-        {value}
+        {type === 'text' ? value : value.toFixed(2)}
       </span>
     </div>
   )

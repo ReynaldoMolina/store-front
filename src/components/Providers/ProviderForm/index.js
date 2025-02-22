@@ -11,77 +11,65 @@ import "../../styles/RegisterForm.css";
 
 function ProviderForm() {
   const { menuOption } = React.useContext(MenuContext);
-  const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
+  const { setOpenModal, registerId, isNew, setIsUpdating } = React.useContext(DataContext);
   const { data, isLoading } = useGetData(menuOption.url + registerId);
 
-  const [id, setId] = React.useState('');
-  const [company, setCompany] = React.useState('');
-  const [contact, setContact] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [city, setCity] = React.useState('');
-  const [municipio, setMunicipio] = React.useState('');
-  const [country, setCountry] = React.useState('');
-  const [address, setAddress] = React.useState('');
+  const [provider, setProvider] = React.useState({
+    company: '',
+    contact: '',
+    phone: '',
+    city: '',
+    municipio: '',
+    country: '',
+    address: ''
+  });
 
   React.useEffect(() => {
-    if (data) {
-      setId(data.id || '');
-      setCompany(data.company || '');
-      setContact(data.contact || '');
-      setPhone(data.phone || '');
-      setCity(data.city || '');
-      setMunicipio(data.municipio || '');
-      setCountry(data.country || '');
-      setAddress(data.address || '');
+    if (!isNew) {
+      if (data) {
+        setProvider(data);
+      }
     }
   }, [data]);
 
   function handleRegister() {
-    if (company === "" || contact === "") {
+    if (provider.company === "" || provider.contact === "") {
       alert("Company and Contact required");
       return;
     }
-    const fetchRegister = {
-      company,
-      contact,
-      phone,
-      city,
-      municipio,
-      country,
-      address
-    }
-    sendData(fetchRegister, menuOption.url, registerId);
+    sendData(provider, menuOption.url, registerId);
     setOpenModal(false);
+    setIsUpdating(true);
   }
 
   return (
     <>
-      {isLoading && <Loading/>}
-      {isLoading || (
+      {isLoading ? <Loading/> :
+      (
         <form
           action={handleRegister}
           className="flx flx-col frm-container">
           {isNew || (
             <div className="flx obj-info">
-              <span className="flx flx-center form-id">{id}</span>
+              <span className="flx flx-center form-id">{data.id}</span>
             </div>
           )}
           <div className="flx obj-info">
-            <FormInput name="company" holder="Company" value={company} setValue={setCompany}/>
+            <FormInput name="company" holder="Company" value={provider} setValue={setProvider}/>
           </div>
           <div className="flx obj-info">
-            <FormInput name="contact" holder="Contact" value={contact} setValue={setContact}/>
+            <FormInput name="contact" holder="Contact" value={provider} setValue={setProvider}/>
           </div>
           <div className="flx obj-info">
-            <FormInput name="phone" holder="Phone" value={phone} setValue={setPhone}/>
-            <FormInput name="municipio" holder="Municipio" value={municipio} setValue={setMunicipio}/>
+            <FormInput name="phone" holder="Phone" value={provider} setValue={setProvider}/>
+            <FormInput name="municipio" holder="Municipio" value={provider} setValue={setProvider}/>
           </div>
           <div className="flx obj-info">
-            <FormInput name="city" holder="City" value={city} setValue={setCity}/>
-            <FormInput name="country" holder="Country" value={country} setValue={setCountry}/>
+            <FormInput name="city" holder="City" value={provider} setValue={setProvider}/>
+            <FormInput name="country" holder="Country" value={provider} setValue={setProvider}/>
           </div>
           <div className="flx obj-info">
-            <FormInput name="address" holder="Address" value={address} setValue={setAddress}/>
+            <FormInput name="address" holder="Address" value={provider} setValue={setProvider}/>
           </div>
           
           {isNew || <ProviderOptions />}

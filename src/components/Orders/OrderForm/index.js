@@ -7,7 +7,6 @@ import { Loading } from "../../Loading";
 import { ClientSearch } from "../../ClientSearch";
 import { FormInput } from "../../FormInput";
 import { FormSpan } from "../../FormInput/FormSpan";
-import { FormCheck } from "../../FormInput/FormCheck";
 import { OrdersDetails } from "../../OrdersDetails";
 import { OrderOptions } from "./OrderOptions";
 import { FormButtons } from "../../FormInput/FormButtons";
@@ -18,20 +17,18 @@ import "./OrderForm.css";
 
 function OrderForm() {
   const { menuOption } = React.useContext(MenuContext);
-  const { setOpenModal, registerId, isNew } = React.useContext(DataContext);
+  const { setOpenModal, registerId, isNew, setIsUpdating } = React.useContext(DataContext);
   const {
-    orderData,
-    orderDate, setOrderDate,
-    paid, setPaid,
+    isLoading,
+    order, setOrder,
+    orderTotals,
     productList, originalProductList,
-    clientId, setClientId,
-    setIsSearchClientOpen, isSearchClientOpen,
-    isLoading
   } = React.useContext(OrderContext);
-  const { orderTotal, orderQuantity, orderItems } = React.useContext(OrderContext);
+
+  const [isSearchClientOpen, setIsSearchClientOpen] = React.useState(false);
 
   function handleRegister() {
-    if (clientId === "") {
+    if (order.clientId === "") {
       alert("Please select a client");
       return;
     }
@@ -40,13 +37,10 @@ function OrderForm() {
       return;
     }
     const fetchRegister = {
-      clientId,
-      orderDate,
-      paid,
-      total: orderTotal,
-      abono: orderData.abono,
+      clientId: order.clientId,
+      orderDate: order.orderDate,
+      state: order.state
     }
-    console.log(fetchRegister);
     
     const url = `${baseUrl}ordersdetails/`;
     
@@ -68,30 +62,47 @@ function OrderForm() {
       }
     }
 
-    console.log('originalProductList', originalProductList);
-    console.log('productList', productList);
-    console.log('url', url);
-    sendOrder();
-    
+    sendOrder();    
     setOpenModal(false);
+    setIsUpdating(true);
   }
 
   return (
     <>
-      {isLoading && <Loading/>}
-      {isLoading || (
+      {isLoading ? <Loading/> :
+      (
         <form
           action={handleRegister}
           className="flx flx-col order-container"
         >
           <div className="flx flx-col order-info-container">
             <div className="flx order-info">
-              <FormSpan name="order-id" holder="Order" value={orderData.id}/>
-              <FormCheck name="paid" holder="Paid" value={paid} setValue={setPaid} />
-              <FormInput name="orderDate" holder="Order date" type="date" value={orderDate} setValue={setOrderDate}/>
+              <FormSpan name="order-id" holder="Order" value={order.id}/>
+
+              <div className="flx flx-col">
+                <label
+                  htmlFor="state"
+                  className="frm-select-label"
+                >
+                  Estado
+                </label>
+                <select
+                  id="state"
+                  name="state"
+                  className="frm-select"
+                  value={order.state}
+                  onChange={(event) => setOrder(event.target.value)}
+                >
+                  <option key="1" value="Pendiente">Pendiente</option>
+                  <option key="2" value="Cancelado">Cancelado</option>
+                  <option key="3" value="Entregado">Entregado</option>
+                </select>
+              </div>
+              <FormInput name="orderDate" holder="Date" type="date" value={order} setValue={setOrder}/>
             </div>
+
             <div className="flx order-info">
-              <FormSpan name="client-id" holder="Client" value={clientId}/>
+              <FormSpan name="client-id" holder="Client" value={order.fullname}/>
               <button
                 type="button"
                 className="flx flx-center client-btn client-add"
@@ -100,27 +111,36 @@ function OrderForm() {
                 <img src={addIcon} alt="Add"></img>
               </button>
             </div>
-            <ClientSearch setClientId={setClientId} isSearchClientOpen={isSearchClientOpen} setIsSearchClientOpen={setIsSearchClientOpen}/>
+
+            <ClientSearch register={order} setRegister={setOrder} isSearchClientOpen={isSearchClientOpen} setIsSearchClientOpen={setIsSearchClientOpen}/>
+
             <div className="flx order-info">
-              <FormSpan name="order-total" holder="Total" value={orderTotal}/>
-              <FormSpan name="order-abono" holder="Abono" value={orderData.abono ? orderData.abono : 0}/>
-              <FormSpan name="order-saldo" holder="Saldo" value={orderTotal - (orderData.abono ? orderData.abono : 0)}/>
+              <FormSpan name="order-total" holder="Total" value={orderTotals.totalSell ? orderTotals.totalSell : 0} type="number"/>
+              <FormSpan name="order-abono" holder="Abono" value={order.abonos ? order.abonos : 0} type="number"/>
+              <FormSpan name="order-saldo" holder="Saldo" value={(orderTotals.orderTotalSell ? orderTotals.orderTotalSell : 0) - (order.abonos ? order.abonos : 0)} type="number"/>
+              <FormSpan name="order-profit" holder="Profit" value={orderTotals.profit ? orderTotals.profit : 0} type="number"/>
             </div>
           </div>
 
           <OrdersDetails />
+
           <div className="flx order-totals">
             <span className="flx flx-col flx-center order-totals-item">
               <label className="order-totals-label">Items</label>
-              {orderItems}
+              {orderTotals.items}
             </span>
             <span className="flx flx-col flx-center order-totals-item">
               <label className="order-totals-label">Quantity</label>
-              {orderQuantity}
+              {orderTotals.quantity}
             </span>
             <span className="flx flx-col flx-center order-totals-item">
-              <label className="order-totals-label">Total</label>
-              $ {orderTotal}</span>
+              <label className="order-totals-label">Total sell</label>
+              $ {orderTotals.totalSell.toFixed(2)}
+            </span>
+            <span className="flx flx-col flx-center order-totals-item">
+              <label className="order-totals-label">Total cost</label>
+              $ {orderTotals.totalCost.toFixed(2)}
+            </span>
           </div>
 
           {isNew || <OrderOptions />}

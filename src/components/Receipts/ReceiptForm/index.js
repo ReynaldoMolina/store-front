@@ -15,50 +15,41 @@ import "../../styles/RegisterForm.css";
 
 function ReceiptForm() {
   const { menuOption } = React.useContext(MenuContext);
-  const { setOpenModal, registerId, isNew} = React.useContext(DataContext);
+  const { setOpenModal, registerId, isNew, setIsUpdating } = React.useContext(DataContext);
 
+  const currenDate = new Date().toISOString().split("T")[0];
   const url = `${menuOption.url}${registerId}`;
   const { data, isLoading } = useGetData(url);
-  console.log('Receipt', data);
-
-  const [clientId, setClientId] = React.useState('');
-  const [receiptDate, setReceiptDate] = React.useState('');
-  const [abono, setAbono] = React.useState(0);
-  const [concepto, setConcepto] = React.useState('');
-  const [isSearchClientOpen, setIsSearchClientOpen] = React.useState('');
   
+  const [isSearchClientOpen, setIsSearchClientOpen] = React.useState(false);
+  const [receipt, setReceipt] = React.useState({
+    orderId: '',
+    clientId: '',
+    receiptDate: currenDate,
+    abono: 0,
+    concepto: ''
+  });
+
   React.useEffect(() => {
-    if (data) {
-      setReceiptDate(data.receiptDate || '');
-      setClientId(data.clientId || '');
-      setAbono(data.abono || 0);
-      setConcepto(data.concepto || '');
+    if (!isNew) {
+      if (data) {
+        const { id, ...newData } = data
+        setReceipt(newData);
+      }
     }
   }, [data]);
-
-  // const {
-  //   orderTotal
-  // } = React.useContext(OrderContext);
-
+  
   function handleRegister() {
-    const fetchRegister = {
-      orderId: data.orderId,
-      clientId,
-      receiptDate,
-      abono: Number(abono),
-      concepto
-    }
-    console.log(fetchRegister);
-    console.log(fetchRegister, url, registerId);    
-    
-    sendData(fetchRegister, menuOption.url, registerId);    
+    const { fullname, ...newData } = receipt;
+    sendData(newData, menuOption.url, registerId);
     setOpenModal(false);
+    setIsUpdating(true);
   }
 
   return (
     <>
-      {isLoading && <Loading/>}
-      {isLoading || (
+      {isLoading ? <Loading/> :
+      (
         <form
           action={handleRegister}
           className="flx flx-col frm-container"
@@ -69,11 +60,11 @@ function ReceiptForm() {
             </div>
           )}
           <div className="flx obj-info">
-            <FormSpan name="order-id" holder="Order" value={data.orderId}/>
-            <FormInput name="orderDate" holder="Order date" type="date" value={receiptDate} setValue={setReceiptDate}/>
+            <FormInput name="orderId" holder="Order" type="number" value={receipt} setValue={setReceipt}/>
+            <FormInput name="receiptDate" holder="Receipt date" type="date" value={receipt} setValue={setReceipt}/>
           </div>
           <div className="flx obj-info">
-            <FormSpan name="client-id" holder="Client" value={clientId}/>
+            <FormSpan name="client-id" holder="Client" value={receipt.fullname}/>
             <button
               type="button"
               className="flx flx-center client-btn client-add"
@@ -82,12 +73,14 @@ function ReceiptForm() {
               <img src={addIcon} alt="Add"></img>
             </button>
           </div>
-          <ClientSearch setClientId={setClientId} isSearchClientOpen={isSearchClientOpen} setIsSearchClientOpen={setIsSearchClientOpen}/>
+
+          <ClientSearch register={receipt} setRegister={setReceipt} isSearchClientOpen={isSearchClientOpen} setIsSearchClientOpen={setIsSearchClientOpen}/>
+
           <div className="flx obj-info">
-            <FormInput name="receipt-abono" holder="Abono" type="number" value={abono} setValue={setAbono}/>
+            <FormInput name="abono" holder="Abono" type="number" value={receipt} setValue={setReceipt}/>
           </div>
           <div className="flx obj-info">
-            <FormInput name="receipt-concepto" holder="Concepto" value={concepto} setValue={setConcepto}/>
+            <FormInput name="concepto" holder="Concepto" value={receipt} setValue={setReceipt}/>
           </div>
 
           {isNew || <ReceiptOptions />}

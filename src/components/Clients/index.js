@@ -44,8 +44,8 @@ function Clients() {
                 >
                   <span className="flx flx-center id">{register.id}</span>
                   <div className="flx info">
-                    <span className="name">{`${register.name} ${register.lastname}`}</span>
-                    <span className="phone">{register.phone}</span>
+                    <span className="name">{register.fullname}</span>
+                    <span className="phone">{register.phone ? register.phone : '(Empty)'}</span>
                   </div>
                 </div>
               ))}

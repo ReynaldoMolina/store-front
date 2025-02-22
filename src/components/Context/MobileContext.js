@@ -6,7 +6,7 @@ function MobileProvider({ children }) {
   console.log('useContext MobileContext')
 
   const [isMobile, setIsMobile] = React.useState(
-    window.innerWidth < 501 ? true : false
+    window.innerWidth < 651 ? true : false
   );
 
   return (

@@ -1,13 +1,5 @@
-.total,
-.abono,
-.saldo {
-  font-size: 1.3rem;
-  border-radius: 2px;
-  padding: 3px 5px;
-  width: 55px;
-  text-align: right;
-  margin-left: 5px;
-  font-size: 1rem;
+.date {
+  width: 60px;
 }
 .total {
   background-color: var(--info-gray);
@@ -18,11 +10,20 @@
 .saldo {
   background-color: var(--info-red);
 }
+.profit {
+  background-color: var(--info-blue);
+}
 
 @media (max-width: 500px) {
   .total,
   .abono,
-  .saldo {
+  .saldo,
+  .date,
+  .profit {
     margin: 4px 5px 0 0;
+  }
+  .date {
+    text-align: left;
+    padding: 3px 0;
   }
 }

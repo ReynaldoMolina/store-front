@@ -42,10 +42,10 @@ function Receipts() {
                 >
                   <span className="flx flx-center id">{register.id}</span>
                   <div className="flx info">
-                    <span className="name">{register.clientId}</span>
+                    <span className="name">{register.fullname}</span>
                       <div className="flx">
                         <span className="total">{register.orderId}</span>
-                        <span className="abono">{register.abono}</span>
+                        <span className="abono">{(register.abono).toFixed(2)}</span>
                     </div>
                   </div>
                 </div>

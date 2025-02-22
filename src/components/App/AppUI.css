@@ -6,6 +6,7 @@
   --info-gray: rgb(221, 221, 221);
   --info-green: rgb(187, 243, 187);
   --info-red: rgb(255, 208, 208);
+  --info-blue: rgb(209, 216, 255);
 }
 * {
   margin: 0;

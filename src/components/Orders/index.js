@@ -42,11 +42,13 @@ function Orders() {
                 >
                   <span className="flx flx-center id">{register.id}</span>
                   <div className="flx info">
-                    <span className="name">{register.clientId}</span>
-                      <div className="flx">
-                        <span className="total">{register.total}</span>
-                        <span className="abono">{register.abono}</span>
-                        <span className="saldo">{register.total - register.abono}</span>
+                    <span className="name">{register.fullname}</span>
+                    <span className="date">{register.orderDate}</span>
+                    <div className="flx">
+                        <span className="total">{(register.totalSell).toFixed(2)}</span>
+                        <span className="abono">{(register.abonos).toFixed(2)}</span>
+                        <span className="saldo">{(register.saldo).toFixed(2)}</span>
+                        <span className="profit">{(register.profit).toFixed(2)}</span>
                     </div>
                   </div>
                 </div>

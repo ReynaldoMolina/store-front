@@ -9,7 +9,7 @@ function useFilterData(data, option) {
 
     switch (option) {
       case 'Clients':
-        fullInfo = `${register.id} ${register.name} ${register.lastname}`;
+        fullInfo = `${register.id} ${register.fullname}`;
         break;
       case 'Providers':
         fullInfo = `${register.id} ${register.company}`;
@@ -21,10 +21,10 @@ function useFilterData(data, option) {
         fullInfo = `${register.id} ${register.name}`;
         break;
       case 'Orders':
-        fullInfo = `${register.id} ${register.clientId}`;
+        fullInfo = `${register.id} ${register.fullname}`;
         break;
       case 'Receipts':
-        fullInfo = `${register.id} ${register.orderId} ${register.clientId}`;
+        fullInfo = `${register.id} ${register.orderId} ${register.fullname}`;
         break;
 
       default:

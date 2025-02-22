@@ -1,20 +1,25 @@
 import React from "react";
 import { baseUrl } from "../urls/menuOptionsList";
+import { OrderContext } from "../Context/OrderContext";
 import { useGetData } from "../Hooks/useGetData";
 import { ReactComponent as SvgAdd } from "./add.svg";
 import { EmptyList } from "../EmptyList";
+import { useFilterData } from "../Hooks/useFilterData";
 import filter from "./filter.svg";
 import "./ClientSearch.css"
 
-function ClientSearch({ setClientId, isSearchClientOpen, setIsSearchClientOpen }) {
+function ClientSearch({ register, setRegister, isSearchClientOpen, setIsSearchClientOpen }) {
+  // const {
+  //   setClientId, setFullname,
+  //   isSearchClientOpen, setIsSearchClientOpen
+  // } = React.useContext(OrderContext);
   const [searchClient, setSearchClient] = React.useState('');
-
   const url = baseUrl + 'clients/';
   const { data } = useGetData(url);
   
   const filteredData = data.filter((register) => {
     let fullInfo;
-    fullInfo = `${register.id} ${register.name} ${register.lastname}`;
+    fullInfo = `${register.id} ${register.fullname}`;
     fullInfo = fullInfo.toLowerCase();
     const searchText = searchClient.toLowerCase();
     return fullInfo.includes(searchText);
@@ -41,19 +46,24 @@ function ClientSearch({ setClientId, isSearchClientOpen, setIsSearchClientOpen }
 
       <div className="flx flx-col clients-list">
         {filteredData.length === 0 && <EmptyList/>}
-        {filteredData.map(register => (
+        {filteredData.map(element => (
             <div
-              key={register.id}
+              key={element.id}
               className="flx clients"
             >
-              <span className="flx flx-center client-search-id">{register.id}</span>
+              <span className="flx flx-center client-search-id">{element.id}</span>
               <div className="flx client-search-info">
-                <span className="flx client-search-name">{`${register.name} ${register.lastname}`}</span>
+                <span className="flx client-search-name">{element.fullname}</span>
               </div>
               <SvgAdd
                 className="flx client-search-add"
                 onClick={() => {
-                  setClientId(register.id);
+                  const newRegister = {
+                    ...register,
+                    ['clientId']: element.id,
+                    ['fullname']: element.fullname
+                  }
+                  setRegister(newRegister);
                   setIsSearchClientOpen(false);
                 }}
               />

@@ -1,6 +1,8 @@
 import React from "react";
+import { DataContext } from "../Context/DataContext";
 
 function useGetData(url) {
+  const { isUpdating, setIsUpdating } = React.useContext(DataContext);
   const [data, setData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
@@ -17,11 +19,12 @@ function useGetData(url) {
       }
       finally {
         setIsLoading(false);
+        setIsUpdating(false);
       }
     };
 
     fetchData();
-  }, [url]);
+  }, [url, isUpdating]);
 
   return { data, isLoading, error };
 }
