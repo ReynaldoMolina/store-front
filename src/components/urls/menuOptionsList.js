@@ -22,7 +22,7 @@ const menuOptionsList = [
   {
     id: 3,
     name: "Receipts",
-    url: baseUrl + 'receipts/',
+    url: baseUrl + 'sales/',
     divider: true
   },
   {

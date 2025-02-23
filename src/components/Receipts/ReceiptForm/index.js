@@ -1,7 +1,6 @@
 import React from "react";
 import { MenuContext } from "../../Context/MenuContext";
 import { DataContext } from "../../Context/DataContext";
-// import { OrderContext } from "../../Context/OrderContext";
 import { Loading } from "../../Loading";
 import { ClientSearch } from "../../ClientSearch";
 import { FormInput } from "../../FormInput";
@@ -15,19 +14,20 @@ import "../../styles/RegisterForm.css";
 
 function ReceiptForm() {
   const { menuOption } = React.useContext(MenuContext);
-  const { setOpenModal, registerId, isNew, setIsUpdating } = React.useContext(DataContext);
-
-  const currenDate = new Date().toISOString().split("T")[0];
+  const { setOpenModal, registerId, orderReceipt, isNew, setIsUpdating } = React.useContext(DataContext);
+  
   const url = `${menuOption.url}${registerId}`;
   const { data, isLoading } = useGetData(url);
+  const currenDate = new Date().toISOString().split("T")[0];
   
   const [isSearchClientOpen, setIsSearchClientOpen] = React.useState(false);
   const [receipt, setReceipt] = React.useState({
-    orderId: '',
-    clientId: '',
-    receiptDate: currenDate,
-    abono: 0,
-    concepto: ''
+    orderId: orderReceipt.id,
+    clientId: orderReceipt.clientId,
+    fullname: orderReceipt.fullname,
+    saleDate: currenDate,
+    abono: orderReceipt.abono,
+    concepto: orderReceipt.concepto
   });
 
   React.useEffect(() => {
@@ -61,7 +61,7 @@ function ReceiptForm() {
           )}
           <div className="flx obj-info">
             <FormInput name="orderId" holder="Order" type="number" value={receipt} setValue={setReceipt}/>
-            <FormInput name="receiptDate" holder="Receipt date" type="date" value={receipt} setValue={setReceipt}/>
+            <FormInput name="saleDate" holder="Receipt date" type="date" value={receipt} setValue={setReceipt}/>
           </div>
           <div className="flx obj-info">
             <FormSpan name="client-id" holder="Client" value={receipt.fullname}/>

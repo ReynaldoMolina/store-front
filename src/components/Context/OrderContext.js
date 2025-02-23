@@ -6,7 +6,9 @@ import { useGetData } from "../Hooks/useGetData";
 const OrderContext = React.createContext();
 
 function OrderProvider({ children }) {
-  const { menuOption } = React.useContext(MenuContext);
+  console.log("Order context");
+  
+  const { menuOption, menuOptions } = React.useContext(MenuContext);
   const { registerId, isNew } = React.useContext(DataContext);
   const { data, isLoading } = useGetData(menuOption.url + registerId);
   const currentDate = new Date().toISOString().split("T")[0];
@@ -40,7 +42,7 @@ function OrderProvider({ children }) {
       order, setOrder,
       orderTotals, setOrderTotals,
       productList, setProductList,
-      originalProductList, setOriginalProductList,
+      originalProductList, setOriginalProductList
     }}>
       {children}
     </OrderContext.Provider>

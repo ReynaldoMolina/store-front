@@ -7,6 +7,7 @@ function DataProvider({ children }) {
 
   const [openModal, setOpenModal] = React.useState(false);
   const [registerId, setRegisterId] = React.useState('');
+  const [orderReceipt, setOrderReceipt] = React.useState({});
   const [searchValue, setSearchValue] = React.useState('');
   const [isNew, setIsNew] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -17,6 +18,7 @@ function DataProvider({ children }) {
     <DataContext.Provider value={{
       openModal, setOpenModal,
       registerId, setRegisterId,
+      orderReceipt, setOrderReceipt,
       searchValue, setSearchValue,
       isNew, setIsNew,
       isLoading, setIsLoading,

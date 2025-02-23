@@ -5,7 +5,7 @@ import deleteinput from "./deleteinput.svg";
 import "./ActionTools.css"
 import { DataContext } from "../Context/DataContext";
 
-function ActionTools() {
+function ActionTools({ allowNew = true }) {
   const {
     searchValue, setSearchValue,
     setOpenModal,
@@ -27,11 +27,15 @@ function ActionTools() {
         </search>
         <button
           className="flx flx-center action-btn"
-          onClick={() => setSearchValue('')}>
+          onClick={() => {
+            if (searchValue !== '') {
+              setSearchValue('');
+            }
+          }}>
           <img src={deleteinput} alt="Delete search"></img>
         </button>
         <button
-          className="flx flx-center action-btn"
+          className={`flx flx-center action-btn ${allowNew || "hidden"}`}
           onClick={() => {
             setRegisterId('');
             setIsNew(true);

@@ -1,7 +1,7 @@
 import React from "react";
 import { MenuContext } from "../Context/MenuContext";
 import { DataContext } from "../Context/DataContext";
-import { OrderProvider } from "../Context/OrderContext";
+import { OrderContext, OrderProvider } from "../Context/OrderContext";
 import { useGetData } from "../Hooks/useGetData";
 import { ActionTools } from "../ActionTools";
 import { ReceiptForm } from "../Receipts/ReceiptForm";
@@ -17,6 +17,7 @@ function Receipts() {
   const {
     openModal, setOpenModal, setRegisterId, setIsNew
   } = React.useContext(DataContext);
+  
   const { data, isLoading } = useGetData(menuOption.url);
   const filteredData = useFilterData(data, menuOption.name);
   
@@ -25,7 +26,7 @@ function Receipts() {
       <h1 className="register-title">Receipts</h1>
       {openModal || (
         <>
-          <ActionTools/>
+          <ActionTools allowNew={false}/>
           {isLoading && <Loading/>}
           {isLoading || (
             <div className="flx flx-col register-list">

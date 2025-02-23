@@ -71,6 +71,7 @@ function OrderForm() {
     <>
       {isLoading ? <Loading/> :
       (
+
         <form
           action={handleRegister}
           className="flx flx-col order-container"
@@ -117,7 +118,7 @@ function OrderForm() {
             <div className="flx order-info">
               <FormSpan name="order-total" holder="Total" value={orderTotals.totalSell ? orderTotals.totalSell : 0} type="number"/>
               <FormSpan name="order-abono" holder="Abono" value={order.abonos ? order.abonos : 0} type="number"/>
-              <FormSpan name="order-saldo" holder="Saldo" value={(orderTotals.orderTotalSell ? orderTotals.orderTotalSell : 0) - (order.abonos ? order.abonos : 0)} type="number"/>
+              <FormSpan name="order-saldo" holder="Saldo" value={(orderTotals.totalSell ? orderTotals.totalSell : 0) - (order.abonos ? order.abonos : 0)} type="number"/>
               <FormSpan name="order-profit" holder="Profit" value={orderTotals.profit ? orderTotals.profit : 0} type="number"/>
             </div>
           </div>
@@ -143,7 +144,11 @@ function OrderForm() {
             </span>
           </div>
 
-          {isNew || <OrderOptions />}
+          {isNew ||
+          <OrderOptions
+            order={order}
+            saldo={(orderTotals.totalSell ? orderTotals.totalSell : 0) - (order.abonos ? order.abonos : 0)}
+          />}
 
           <FormButtons />
         </form>

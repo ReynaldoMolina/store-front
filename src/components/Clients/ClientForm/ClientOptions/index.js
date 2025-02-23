@@ -1,7 +1,6 @@
 import React from "react";
 import { ReactComponent as SvgOrders } from "./orders.svg";
 import { ReactComponent as SvgReceipts } from "./receipts.svg";
-import { ReactComponent as SvgProfit } from "./profit.svg";
 import { MenuContext } from "../../../Context/MenuContext";
 import { DataContext } from "../../../Context/DataContext";
 import { FormOption } from "../../../FormOption";
@@ -46,12 +45,6 @@ function ClientOptions({ fullname }) {
         <SvgReceipts
           className={svgClass}
           onClick={goToReceipts}
-        />
-      </FormOption>
-      <FormOption label="Profit">
-        <SvgProfit
-          className={svgClass}
-          // onClick={goToProfits}
         />
       </FormOption>
     </div>
