@@ -10,12 +10,13 @@ import "../../../styles/FormOptions.css";
 
 const svgClass = "register-option";
 
-function OrderOptions({ order, saldo }) {
+function OrderOptions({ order, orderTotals }) {
   const { menuOptions, setMenuOption } = React.useContext(MenuContext);
-  const { setSearchValue, setOpenModal, setIsNew, setOrderReceipt } = React.useContext(DataContext);
+  const { setSearchValue, setOpenModal, setRegisterId, setIsNew, setOrderReceipt } = React.useContext(DataContext);
 
   const [paymentMenu, setPaymentMenu] = React.useState(false);
   const clientReceipts = menuOptions[3];
+  const saldoInicial = orderTotals.totalSell - order.abonos;
 
   function goToReceipts() {
     setSearchValue(`${order.id} ${order.fullname}`);
@@ -25,15 +26,15 @@ function OrderOptions({ order, saldo }) {
 
   function payReceipt(payment) {
     let abono = 0;
-    let concepto = `Abono pedido #${order.id}`;
+    let concepto = `Abono pedido ${order.id}`;
     switch (payment) {
       case 'half':
-        abono = saldo / 2;
-        concepto = `Abono 50% pedido #${order.id}`;
+        abono = saldoInicial / 2;
+        concepto = `Abono 50% pedido ${order.id}`;
         break;
       case 'full':
-        abono = saldo;
-        concepto = `Cancelación pedido #${order.id}`;
+        abono = saldoInicial;
+        concepto = `Cancelación pedido ${order.id}`;
         break;
       default:
         break;
@@ -43,13 +44,15 @@ function OrderOptions({ order, saldo }) {
       clientId: order.clientId,
       fullname: order.fullname,
       abono,
+      saldoInicial,
       concepto
     }
     console.log('receiptOrder', receiptOrder);
     
     setOrderReceipt(receiptOrder);
-    setMenuOption(clientReceipts);
+    setRegisterId('');
     setIsNew(true);
+    setMenuOption(clientReceipts);
   }
 
   return (
@@ -59,7 +62,7 @@ function OrderOptions({ order, saldo }) {
           <SvgReceipts
           className={svgClass}
           onClick={() => {
-            if (saldo > 0) {
+            if (saldoInicial > 0) {
               setPaymentMenu(state => !state)
             } else {
               alert("Pedido pagado")

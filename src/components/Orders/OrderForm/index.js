@@ -147,7 +147,7 @@ function OrderForm() {
           {isNew ||
           <OrderOptions
             order={order}
-            saldo={(orderTotals.totalSell ? orderTotals.totalSell : 0) - (order.abonos ? order.abonos : 0)}
+            orderTotals={orderTotals}
           />}
 
           <FormButtons />

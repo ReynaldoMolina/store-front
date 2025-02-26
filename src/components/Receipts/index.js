@@ -45,6 +45,7 @@ function Receipts() {
                   <div className="flx info">
                     <span className="name">{register.fullname}</span>
                       <div className="flx">
+                        <span className="date">{register.saleDate}</span>
                         <span className="total">{register.orderId}</span>
                         <span className="abono">{(register.abono).toFixed(2)}</span>
                     </div>

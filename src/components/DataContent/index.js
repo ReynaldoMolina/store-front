@@ -7,6 +7,7 @@ import { Orders } from "../Orders";
 import { Receipts } from "../Receipts";
 import { Providers } from "../Providers";
 import { Products } from "../Products";
+import { ReceiptPdf } from "../ReceiptPdf";
 
 const components = {
   "Categories": () => <Categories />,
@@ -17,6 +18,7 @@ const components = {
   "Providers": () => <Providers />,
   // "Purchases": () => <DataContent />,
   "Receipts": () => <Receipts />,
+  "Finances": () => <ReceiptPdf/>
 };
 
 function DataContent() {

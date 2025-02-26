@@ -53,21 +53,21 @@ const menuOptionsList = [
     id: 8,
     name: "Categories",
     url: baseUrl + 'categories/',
-    divider: false
-  },
-  {
-    id: 9,
-    name: "Finances",
-    url: baseUrl + 'finances/',
     divider: true
   },
+  // {
+  //   id: 9,
+  //   name: "Finances",
+  //   url: baseUrl + 'finances/',
+  //   divider: true
+  // },
   {
-    id: 10,
+    id: 9,
     name: "Settings",
     divider: false
   },
   {
-    id: 11,
+    id: 10,
     name: "Log out",
     divider: false
   }

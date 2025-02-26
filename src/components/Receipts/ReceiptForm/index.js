@@ -22,14 +22,15 @@ function ReceiptForm() {
   
   const [isSearchClientOpen, setIsSearchClientOpen] = React.useState(false);
   const [receipt, setReceipt] = React.useState({
-    orderId: orderReceipt.id,
-    clientId: orderReceipt.clientId,
-    fullname: orderReceipt.fullname,
+    clientId: orderReceipt.clientId || '',
+    orderId: orderReceipt.id || '',
     saleDate: currenDate,
-    abono: orderReceipt.abono,
-    concepto: orderReceipt.concepto
+    abono: orderReceipt.abono || 0,
+    saldo: orderReceipt.saldoInicial || 0,
+    concepto: orderReceipt.concepto || "",
+    fullname: orderReceipt.fullname || '',
   });
-
+  
   React.useEffect(() => {
     if (!isNew) {
       if (data) {
@@ -37,10 +38,17 @@ function ReceiptForm() {
         setReceipt(newData);
       }
     }
-  }, [data]);
+  }, [data, isNew]);
   
+  console.log(receipt);
+
   function handleRegister() {
+    if (receipt.saldo < 0) {
+      alert('El saldo no puede ser menor a cero');
+      return;
+    }
     const { fullname, ...newData } = receipt;
+    console.log(newData, menuOption.url, registerId);
     sendData(newData, menuOption.url, registerId);
     setOpenModal(false);
     setIsUpdating(true);
@@ -78,12 +86,13 @@ function ReceiptForm() {
 
           <div className="flx obj-info">
             <FormInput name="abono" holder="Abono" type="number" value={receipt} setValue={setReceipt}/>
+            <FormSpan name="saldo" holder="Saldo" value={receipt.saldo ? (receipt.saldo - receipt.abono) : 0} type="number"/>
           </div>
           <div className="flx obj-info">
             <FormInput name="concepto" holder="Concepto" value={receipt} setValue={setReceipt}/>
           </div>
 
-          {isNew || <ReceiptOptions />}
+          {isNew || <ReceiptOptions/>}
 
           <FormButtons />
         </form>
