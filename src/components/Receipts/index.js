@@ -1,7 +1,7 @@
 import React from "react";
 import { MenuContext } from "../Context/MenuContext";
 import { DataContext } from "../Context/DataContext";
-import { OrderContext, OrderProvider } from "../Context/OrderContext";
+import { OrderProvider } from "../Context/OrderContext";
 import { useGetData } from "../Hooks/useGetData";
 import { ActionTools } from "../ActionTools";
 import { ReceiptForm } from "../Receipts/ReceiptForm";

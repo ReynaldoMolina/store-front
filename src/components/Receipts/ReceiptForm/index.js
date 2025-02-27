@@ -26,7 +26,7 @@ function ReceiptForm() {
     orderId: orderReceipt.id || '',
     saleDate: currenDate,
     abono: orderReceipt.abono || 0,
-    saldo: orderReceipt.saldoInicial || 0,
+    saldo: orderReceipt.saldoInicial - orderReceipt.abono || 0,
     concepto: orderReceipt.concepto || "",
     fullname: orderReceipt.fullname || '',
   });
@@ -40,9 +40,22 @@ function ReceiptForm() {
     }
   }, [data, isNew]);
   
+  let saldoInicialActual = 0;
+  if (isNew) {
+    saldoInicialActual = orderReceipt.saldoInicial;
+    console.log(saldoInicialActual);
+  } else {
+    saldoInicialActual = data.saldo;
+    console.log(saldoInicialActual);
+  }
+
   console.log(receipt);
 
   function handleRegister() {
+    if (receipt.abono <= 0) {
+      alert('El abono debe ser mayor a cero');
+      return;
+    }
     if (receipt.saldo < 0) {
       alert('El saldo no puede ser menor a cero');
       return;
@@ -85,8 +98,35 @@ function ReceiptForm() {
           <ClientSearch register={receipt} setRegister={setReceipt} isSearchClientOpen={isSearchClientOpen} setIsSearchClientOpen={setIsSearchClientOpen}/>
 
           <div className="flx obj-info">
-            <FormInput name="abono" holder="Abono" type="number" value={receipt} setValue={setReceipt}/>
-            <FormSpan name="saldo" holder="Saldo" value={receipt.saldo ? (receipt.saldo - receipt.abono) : 0} type="number"/>
+
+            <div className="flx flx-col">
+              <label
+                htmlFor="abono"
+                className="frm-input-label"
+              >
+                Abono
+              </label>
+              <input
+                type="number"
+                name="abono"
+                id="abono"
+                className="frm-input"
+                placeholder="Abono"
+                value={receipt['abono']}
+                onChange={(event) => {
+                  const {id, ...valueNoId} = receipt;
+                  const newValue = {
+                    ...valueNoId,
+                    'abono': event.target.valueAsNumber,
+                    'saldo': saldoInicialActual - event.target.value
+                  }
+                  setReceipt(newValue)
+                }}
+              >
+              </input>
+            </div>
+
+            <FormSpan name="saldo" holder="Saldo" value={receipt.saldo ? receipt.saldo : 0} type="number"/>
           </div>
           <div className="flx obj-info">
             <FormInput name="concepto" holder="Concepto" value={receipt} setValue={setReceipt}/>
