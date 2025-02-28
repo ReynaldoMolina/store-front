@@ -8,22 +8,22 @@ function useFilterData(data, option) {
     let fullInfo;
 
     switch (option) {
-      case 'Clients':
+      case 'Clientes':
         fullInfo = `${register.id} ${register.fullname}`;
         break;
-      case 'Providers':
+      case 'Proveedores':
         fullInfo = `${register.id} ${register.company}`;
         break;
-      case 'Categories':
+      case 'Categorías':
         fullInfo = `${register.id} ${register.name}`;
         break;
-      case 'Products':
+      case 'Productos':
         fullInfo = `${register.id} ${register.name}`;
         break;
-      case 'Orders':
+      case 'Pedidos':
         fullInfo = `${register.id} ${register.fullname}`;
         break;
-      case 'Receipts':
+      case 'Ventas':
         fullInfo = `${register.id} ${register.orderId} ${register.fullname}`;
         break;
 
