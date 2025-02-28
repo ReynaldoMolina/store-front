@@ -4,7 +4,7 @@ import "./ErrorTable.css";
 function ErrorTable() {
   return (
     <div className="flx flx-col flx-center error">
-      <p>Hubo un error</p>
+      <p>Ha ocurrido un error</p>
       <button className="retry-button">Reintentar</button>
     </div>
   )
