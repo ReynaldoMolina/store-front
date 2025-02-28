@@ -69,7 +69,7 @@ function ReceiptPdf({ receipt }) {
             <View style={styles.tableSaldo}>
               <View style={styles.orderSaldoContainer}>
                 <Text style={styles.saldoLabel}>Abono:</Text>
-                <Text style={styles.saldo}>${receipt.abono}</Text>
+                <Text style={styles.saldo}>${(receipt.abono).toFixed(2)}</Text>
               </View>
               <View style={styles.orderSaldoContainer}>
                 <Text style={styles.saldoLabel}>Saldo:</Text>
