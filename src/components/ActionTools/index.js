@@ -20,7 +20,7 @@ function ActionTools({ allowNew = true }) {
             type="search"
             id="search-bar"
             className="action-search action-icon"
-            placeholder="Search"
+            placeholder="Buscar"
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
           ></input>

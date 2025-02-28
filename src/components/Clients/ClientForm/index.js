@@ -55,21 +55,21 @@ function ClientForm() {
               </div>
             )}
             <div className="flx obj-info">
-              <FormInput name="name" holder="Name" value={client} setValue={setClient}/>
+              <FormInput name="name" holder="Nombre" value={client} setValue={setClient}/>
             </div>
             <div className="flx obj-info">
-              <FormInput name="lastname" holder="Last name" value={client} setValue={setClient}/>
+              <FormInput name="lastname" holder="Apellido" value={client} setValue={setClient}/>
             </div>
             <div className="flx obj-info">
-              <FormInput name="phone" holder="Phone" value={client} setValue={setClient}/>
+              <FormInput name="phone" holder="Teléfono" value={client} setValue={setClient}/>
               <FormInput name="municipio" holder="Municipio" value={client} setValue={setClient}/>
             </div>
             <div className="flx obj-info">
-              <FormInput name="city" holder="City" value={client} setValue={setClient}/>
-              <FormInput name="country" holder="Country" value={client} setValue={setClient}/>
+              <FormInput name="city" holder="Ciudad" value={client} setValue={setClient}/>
+              <FormInput name="country" holder="País" value={client} setValue={setClient}/>
             </div>
             <div className="flx obj-info">
-              <FormInput name="address" holder="Address" value={client} setValue={setClient}/>
+              <FormInput name="address" holder="Dirección" value={client} setValue={setClient}/>
             </div>
             
             {isNew || <ClientOptions fullname={`${client.name} ${client.lastname}`} />}

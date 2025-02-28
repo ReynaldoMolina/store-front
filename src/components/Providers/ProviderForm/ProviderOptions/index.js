@@ -9,10 +9,10 @@ const svgClass = "register-option";
 function ProviderOptions() {
   return (
     <div className="flx flx-center register-options">
-      <FormOption label="Purchases">
+      <FormOption label="Compras">
         <SvgPurchases className={svgClass}/>
       </FormOption>
-      <FormOption label="Expenses">
+      <FormOption label="Gastos">
         <SvgExpenses className={svgClass}/>
       </FormOption>
     </div>

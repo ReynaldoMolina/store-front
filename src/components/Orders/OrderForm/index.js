@@ -29,11 +29,11 @@ function OrderForm() {
 
   function handleRegister() {
     if (order.clientId === "") {
-      alert("Please select a client");
+      alert("Selecciona un cliente");
       return;
     }
     if (productList.length === 0) {
-      alert("Please add products");
+      alert("Añade productos");
       return;
     }
     const fetchRegister = {
@@ -78,7 +78,7 @@ function OrderForm() {
         >
           <div className="flx flx-col order-info-container">
             <div className="flx order-info">
-              <FormSpan name="order-id" holder="Order" value={order.id}/>
+              <FormSpan name="order-id" holder="Pedido" value={order.id}/>
 
               <div className="flx flx-col">
                 <label
@@ -99,11 +99,11 @@ function OrderForm() {
                   <option key="3" value="Entregado">Entregado</option>
                 </select>
               </div>
-              <FormInput name="orderDate" holder="Date" type="date" value={order} setValue={setOrder}/>
+              <FormInput name="orderDate" holder="Fecha" type="date" value={order} setValue={setOrder}/>
             </div>
 
             <div className="flx order-info">
-              <FormSpan name="client-id" holder="Client" value={order.fullname}/>
+              <FormSpan name="client-id" holder="Cliente" value={order.fullname}/>
               <button
                 type="button"
                 className="flx flx-center client-btn client-add"
@@ -119,7 +119,7 @@ function OrderForm() {
               <FormSpan name="order-total" holder="Total" value={orderTotals.totalSell ? orderTotals.totalSell : 0} type="number"/>
               <FormSpan name="order-abono" holder="Abono" value={order.abonos ? order.abonos : 0} type="number"/>
               <FormSpan name="order-saldo" holder="Saldo" value={(orderTotals.totalSell ? orderTotals.totalSell : 0) - (order.abonos ? order.abonos : 0)} type="number"/>
-              <FormSpan name="order-profit" holder="Profit" value={orderTotals.profit ? orderTotals.profit : 0} type="number"/>
+              <FormSpan name="order-profit" holder="Ganancia" value={orderTotals.profit ? orderTotals.profit : 0} type="number"/>
             </div>
           </div>
 
@@ -127,19 +127,19 @@ function OrderForm() {
 
           <div className="flx order-totals">
             <span className="flx flx-col flx-center order-totals-item">
-              <label className="order-totals-label">Items</label>
+              <label className="order-totals-label">Productos</label>
               {orderTotals.items}
             </span>
             <span className="flx flx-col flx-center order-totals-item">
-              <label className="order-totals-label">Quantity</label>
+              <label className="order-totals-label">Cantidad</label>
               {orderTotals.quantity}
             </span>
             <span className="flx flx-col flx-center order-totals-item">
-              <label className="order-totals-label">Total sell</label>
+              <label className="order-totals-label">Total venta</label>
               $ {orderTotals.totalSell.toFixed(2)}
             </span>
             <span className="flx flx-col flx-center order-totals-item">
-              <label className="order-totals-label">Total cost</label>
+              <label className="order-totals-label">Total costo</label>
               $ {orderTotals.totalCost.toFixed(2)}
             </span>
           </div>

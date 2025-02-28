@@ -56,7 +56,7 @@ function ProductSearch({ isSearchProductOpen, setIsSearchProductOpen }) {
             type="search"
             id="search-products"
             className="frm-input frm-input-search"
-            placeholder="Add products"
+            placeholder="Buscar producto"
             value={searchProduct}
             onChange={(event) => {
               if (!isSearchProductOpen) {

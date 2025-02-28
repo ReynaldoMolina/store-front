@@ -9,10 +9,6 @@ import filter from "./filter.svg";
 import "./ClientSearch.css"
 
 function ClientSearch({ register, setRegister, isSearchClientOpen, setIsSearchClientOpen }) {
-  // const {
-  //   setClientId, setFullname,
-  //   isSearchClientOpen, setIsSearchClientOpen
-  // } = React.useContext(OrderContext);
   const [searchClient, setSearchClient] = React.useState('');
   const url = baseUrl + 'clients/';
   const { data } = useGetData(url);
@@ -33,7 +29,7 @@ function ClientSearch({ register, setRegister, isSearchClientOpen, setIsSearchCl
             type="search"
             id="search-clients"
             className="frm-input frm-input-search"
-            placeholder="Search client"
+            placeholder="Buscar cliente"
             value={searchClient}
             onChange={(event) => setSearchClient(event.target.value)}
           ></input>

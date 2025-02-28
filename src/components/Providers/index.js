@@ -21,7 +21,7 @@ function Providers() {
   
   return (
     <>
-      <h1 className="register-title">Providers</h1>
+      <h1 className="register-title">Proveedores</h1>
       {openModal || (
         <>
           <ActionTools/>
@@ -42,7 +42,7 @@ function Providers() {
                   <span className="flx flx-center id">{register.id}</span>
                   <div className="flx info">
                     <span className="name">{register.company}</span>
-                    <span className="phone">{register.phone ? register.phone : '(Empty)'}</span>
+                    <span className="phone">{register.phone ? register.phone : '(Sin teléfono)'}</span>
                   </div>
                 </div>
               ))}

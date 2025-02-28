@@ -55,21 +55,21 @@ function ProviderForm() {
             </div>
           )}
           <div className="flx obj-info">
-            <FormInput name="company" holder="Company" value={provider} setValue={setProvider}/>
+            <FormInput name="company" holder="Compañía" value={provider} setValue={setProvider}/>
           </div>
           <div className="flx obj-info">
-            <FormInput name="contact" holder="Contact" value={provider} setValue={setProvider}/>
+            <FormInput name="contact" holder="Contacto" value={provider} setValue={setProvider}/>
           </div>
           <div className="flx obj-info">
-            <FormInput name="phone" holder="Phone" value={provider} setValue={setProvider}/>
+            <FormInput name="phone" holder="Teléfono" value={provider} setValue={setProvider}/>
             <FormInput name="municipio" holder="Municipio" value={provider} setValue={setProvider}/>
           </div>
           <div className="flx obj-info">
-            <FormInput name="city" holder="City" value={provider} setValue={setProvider}/>
-            <FormInput name="country" holder="Country" value={provider} setValue={setProvider}/>
+            <FormInput name="city" holder="Ciudad" value={provider} setValue={setProvider}/>
+            <FormInput name="country" holder="País" value={provider} setValue={setProvider}/>
           </div>
           <div className="flx obj-info">
-            <FormInput name="address" holder="Address" value={provider} setValue={setProvider}/>
+            <FormInput name="address" holder="Dirección" value={provider} setValue={setProvider}/>
           </div>
           
           {isNew || <ProviderOptions />}

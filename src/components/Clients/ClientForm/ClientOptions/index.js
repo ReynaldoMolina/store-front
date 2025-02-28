@@ -35,13 +35,13 @@ function ClientOptions({ fullname }) {
 
   return (
     <div className="flx flx-center register-options">
-      <FormOption label="Orders">
+      <FormOption label="Pedidos">
         <SvgOrders
           className={svgClass}
           onClick={goToOrders}
         />
       </FormOption>
-      <FormOption label="Receipts">
+      <FormOption label="Ventas">
         <SvgReceipts
           className={svgClass}
           onClick={goToReceipts}

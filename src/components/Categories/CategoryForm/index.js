@@ -46,7 +46,7 @@ function CategoryForm() {
             </div>
           )}
           <div className="flx obj-info">
-            <FormInput name="name" holder="Name" value={category} setValue={setCategory}/>
+            <FormInput name="name" holder="Nombre" value={category} setValue={setCategory}/>
           </div>
 
           <FormButtons />

@@ -22,7 +22,7 @@ function Clients() {
 
   return (
     <>
-      <h1 className="register-title">Clients</h1>
+      <h1 className="register-title">Clientes</h1>
       {openModal || (
         <>
           <ActionTools/>
@@ -45,7 +45,7 @@ function Clients() {
                   <span className="flx flx-center id">{register.id}</span>
                   <div className="flx info">
                     <span className="name">{register.fullname}</span>
-                    <span className="phone">{register.phone ? register.phone : '(Empty)'}</span>
+                    <span className="phone">{register.phone ? register.phone : '(Sin teléfono)'}</span>
                   </div>
                 </div>
               ))}

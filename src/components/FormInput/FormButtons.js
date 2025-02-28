@@ -12,13 +12,13 @@ function FormButtons() {
         onClick={() => {
           setOpenModal(false);
         }}
-      >Cancel</button>
+      >Cancelar</button>
       <button
         type="submit"
         value="Save"
         className="frm-btn-submit"
       >
-        {isNew ? "Create" : "Save"}
+        {isNew ? "Crear" : "Guardar"}
       </button>
     </div>
   )

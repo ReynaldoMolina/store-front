@@ -22,7 +22,7 @@ function Orders() {
   
   return (
     <>
-      <h1 className="register-title">Orders</h1>
+      <h1 className="register-title">Pedidos</h1>
       {openModal || (
         <>
           <ActionTools/>

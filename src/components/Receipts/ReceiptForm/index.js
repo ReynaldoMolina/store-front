@@ -81,11 +81,11 @@ function ReceiptForm() {
             </div>
           )}
           <div className="flx obj-info">
-            <FormInput name="orderId" holder="Order" type="number" value={receipt} setValue={setReceipt}/>
-            <FormInput name="saleDate" holder="Receipt date" type="date" value={receipt} setValue={setReceipt}/>
+            <FormInput name="orderId" holder="Pedido" type="number" value={receipt} setValue={setReceipt}/>
+            <FormInput name="saleDate" holder="Fecha" type="date" value={receipt} setValue={setReceipt}/>
           </div>
           <div className="flx obj-info">
-            <FormSpan name="client-id" holder="Client" value={receipt.fullname}/>
+            <FormSpan name="client-id" holder="Cliente" value={receipt.fullname}/>
             <button
               type="button"
               className="flx flx-center client-btn client-add"

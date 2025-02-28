@@ -5,18 +5,18 @@ import { DataContent } from "../DataContent";
 import "./MainContent.css";
 
 const components = {
-  "Categories": () => <DataContent />,
-  "Clients": () => <DataContent />,
-  "Expenses": () => <Home />,
-  "Finances": () => <DataContent />,
+  "Categorías": () => <DataContent />,
+  "Clientes": () => <DataContent />,
+  "Gastos": () => <Home />,
+  "Finanzas": () => <DataContent />,
   "Home": () => <Home />,
-  "Log out": () => <Home />,
-  "Orders": () => <DataContent />,
-  "Products": () => <DataContent />,
-  "Providers": () => <DataContent />,
-  "Purchases": () => <Home />,
-  "Receipts": () => <DataContent />,
-  "Settings": () => <Home />,
+  "Cerra sesión": () => <Home />,
+  "Pedidos": () => <DataContent />,
+  "Productos": () => <DataContent />,
+  "Proveedores": () => <DataContent />,
+  "Compras": () => <Home />,
+  "Ventas": () => <DataContent />,
+  "Configuración": () => <Home />,
 };
 
 function MainContent() {

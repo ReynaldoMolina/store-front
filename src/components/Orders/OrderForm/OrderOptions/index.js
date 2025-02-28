@@ -58,7 +58,7 @@ function OrderOptions({ order, orderTotals }) {
   return (
     <div className="flx flx-center register-options">
       <div className="flx">
-        <FormOption label="Pay">
+        <FormOption label="Pagar">
           <SvgReceipts
           className={svgClass}
           onClick={() => {
@@ -87,7 +87,7 @@ function OrderOptions({ order, orderTotals }) {
         </div>
       </div>
 
-      <FormOption label="Receipts">
+      <FormOption label="Ventas">
         <SvgReceipts
           className={svgClass}
           onClick={() => goToReceipts()}

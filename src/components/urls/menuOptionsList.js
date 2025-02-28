@@ -1,5 +1,5 @@
-const baseUrl = 'http://192.168.1.7:3001/api/v1/';
-// const baseUrl = 'https://jahairastore-api.vercel.app/api/v1/';
+// const baseUrl = 'http://192.168.1.7:3001/api/v1/';
+const baseUrl = 'https://jahairastore-api.vercel.app/api/v1/';
 
 const menuOptionsList = [
   {
@@ -9,66 +9,66 @@ const menuOptionsList = [
   },
   {
     id: 1,
-    name: "Clients",
+    name: "Clientes",
     url: baseUrl + 'clients/',
     divider: false
   },
   {
     id: 2,
-    name: "Orders",
+    name: "Pedidos",
     url: baseUrl + 'orders/',
     divider: false
   },
   {
     id: 3,
-    name: "Receipts",
+    name: "Ventas",
     url: baseUrl + 'sales/',
     divider: true
   },
   {
     id: 4,
-    name: "Providers",
+    name: "Proveedores",
     url: baseUrl + 'providers/',
     divider: false
   },
   {
     id: 5,
-    name: "Purchases",
+    name: "Compras",
     url: baseUrl + 'purchases/',
     divider: false
   },
   {
     id: 6,
-    name: "Expenses",
+    name: "Gastos",
     url: baseUrl + 'expenses/',
     divider: true
   },
   {
     id: 7,
-    name: "Products",
+    name: "Productos",
     url: baseUrl + 'products/',
     divider: false
   },
   {
     id: 8,
-    name: "Categories",
+    name: "Categorías",
     url: baseUrl + 'categories/',
     divider: true
   },
   // {
   //   id: 9,
-  //   name: "Finances",
+  //   name: "Finanzas",
   //   url: baseUrl + 'finances/',
   //   divider: true
   // },
   {
     id: 9,
-    name: "Settings",
+    name: "Configuración",
     divider: false
   },
   {
     id: 10,
-    name: "Log out",
+    name: "Cerrar sesión",
     divider: false
   }
 ];

@@ -10,15 +10,15 @@ import { Products } from "../Products";
 import { ReceiptPdf } from "../ReceiptPdf";
 
 const components = {
-  "Categories": () => <Categories />,
-  "Clients": () => <Clients />,
+  "Categorías": () => <Categories />,
+  "Clientes": () => <Clients />,
   // "Expenses": () => <DataContent />,
-  "Orders": () => <Orders />,
-  "Products": () => <Products />,
-  "Providers": () => <Providers />,
+  "Pedidos": () => <Orders />,
+  "Productos": () => <Products />,
+  "Proveedores": () => <Providers />,
   // "Purchases": () => <DataContent />,
-  "Receipts": () => <Receipts />,
-  "Finances": () => <ReceiptPdf/>
+  "Ventas": () => <Receipts />,
+  "Finanzas": () => <ReceiptPdf/>
 };
 
 function DataContent() {
